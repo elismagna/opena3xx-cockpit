@@ -41,44 +41,22 @@
     )
   )
   (placement
-    (component Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical
-      (place J1 128230.000000 -82775.000000 back 0.000000 (PN Conn_01x02_Pin))
-    )
     (component Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical
-      (place J2 128230.000000 -71300.000000 back 0.000000 (PN Conn_01x04_Pin))
+      (place J2 128030.000000 -74850.000000 front 0.000000 (PN Conn_01x04_Pin))
     )
     (component LED_THT:LED_D3.0mm
-      (place D4 134210.000000 -72900.000000 front 0.000000 (PN LED))
-      (place D1 134110.000000 -83900.000000 front 0.000000 (PN LED))
+      (place D2 133910.000000 -83500.000000 front 0.000000 (PN LED))
+      (place D1 133910.000000 -73300.000000 front 0.000000 (PN LED))
     )
     (component OpenA3XX:Korry_Switch_Discrete
-      (place U1 141430.000000 -82500.000000 front 0.000000 (PN ~))
+      (place U1 141180.000000 -82462.500000 front 0.000000 (PN ~))
     )
-    (component Resistor_SMD:R_1210_3225Metric_Pad1.30x2.65mm_HandSolder
-      (place R4 140730.000000 -71400.000000 front 0.000000 (PN R))
-      (place R2 140580.000000 -85450.000000 front 180.000000 (PN R))
+    (component Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal
+      (place R2 140560.000000 -86050.000000 front 180.000000 (PN R))
+      (place R1 130430.000000 -70800.000000 front 0.000000 (PN R))
     )
   )
   (library
-    (image Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical
-      (outline (path signal 120  -1380 1380  0 1380))
-      (outline (path signal 120  -1380 0  -1380 1380))
-      (outline (path signal 120  -1380 -1270  -1380 -3920))
-      (outline (path signal 120  -1380 -1270  1380 -1270))
-      (outline (path signal 120  -1380 -3920  1380 -3920))
-      (outline (path signal 120  1380 -1270  1380 -3920))
-      (outline (path signal 50  -1770 1770  -1770 -4320))
-      (outline (path signal 50  -1770 -4320  1770 -4320))
-      (outline (path signal 50  1770 1770  -1770 1770))
-      (outline (path signal 50  1770 -4320  1770 1770))
-      (outline (path signal 100  -1270 635  -635 1270))
-      (outline (path signal 100  -1270 -3810  -1270 635))
-      (outline (path signal 100  -635 1270  1270 1270))
-      (outline (path signal 100  1270 1270  1270 -3810))
-      (outline (path signal 100  1270 -3810  -1270 -3810))
-      (pin Rect[A]Pad_1700.000000x1700.000000_um 1 0 0)
-      (pin Round[A]Pad_1700.000000_um 2 0 -2540)
-    )
     (image Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical
       (outline (path signal 120  -1380 1380  0 1380))
       (outline (path signal 120  -1380 0  -1380 1380))
@@ -191,19 +169,21 @@
       (pin Round[A]Pad_2100.000000_um 5 -2850 4100)
       (pin Round[A]Pad_2100.000000_um 6 -2850 6500)
     )
-    (image Resistor_SMD:R_1210_3225Metric_Pad1.30x2.65mm_HandSolder
-      (outline (path signal 120  -723.737 1355  723.737 1355))
-      (outline (path signal 120  -723.737 -1355  723.737 -1355))
-      (outline (path signal 50  -2450 1580  2450 1580))
-      (outline (path signal 50  -2450 -1580  -2450 1580))
-      (outline (path signal 50  2450 1580  2450 -1580))
-      (outline (path signal 50  2450 -1580  -2450 -1580))
-      (outline (path signal 100  -1600 1245  1600 1245))
-      (outline (path signal 100  -1600 -1245  -1600 1245))
-      (outline (path signal 100  1600 1245  1600 -1245))
-      (outline (path signal 100  1600 -1245  -1600 -1245))
-      (pin RoundRect[T]Pad_1300.000000x2650.000000_250.951000_um_0.000000_0 1 -1550 0)
-      (pin RoundRect[T]Pad_1300.000000x2650.000000_250.951000_um_0.000000_0 2 1550 0)
+    (image Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal
+      (outline (path signal 120  1040 0  1810 0))
+      (outline (path signal 120  9120 0  8350 0))
+      (outline (path signal 120  1810 1370  8350 1370  8350 -1370  1810 -1370))
+      (outline (path signal 50  -1050 1500  11210 1500  11210 -1500  -1050 -1500))
+      (outline (path signal 100  0 0  1930 0))
+      (outline (path signal 100  10160 0  8230 0))
+      (outline (path signal 100  1930 1250  8230 1250  8230 -1250  1930 -1250))
+      (pin Round[A]Pad_1600.000000_um 1 0 0)
+      (pin Round[A]Pad_1600.000000_um 2 10160 0)
+    )
+    (padstack Round[A]Pad_1600.000000_um
+      (shape (circle F.Cu 1600))
+      (shape (circle B.Cu 1600))
+      (attach off)
     )
     (padstack Round[A]Pad_1700.000000_um
       (shape (circle F.Cu 1700))
@@ -218,15 +198,6 @@
     (padstack Round[A]Pad_2100.000000_um
       (shape (circle F.Cu 2100))
       (shape (circle B.Cu 2100))
-      (attach off)
-    )
-    (padstack RoundRect[T]Pad_1300.000000x2650.000000_250.951000_um_0.000000_0
-      (shape (polygon F.Cu 0  -650.951 1075  -631.848 1171.04  -577.449 1252.45  -496.035 1306.85
-            -399.999 1325.95  400 1325.95  496.035 1306.85  577.449 1252.45
-            631.848 1171.04  650.95 1075  650.951 -1075  631.848 -1171.04
-            577.449 -1252.45  496.035 -1306.85  399.999 -1325.95  -400 -1325.95
-            -496.035 -1306.85  -577.449 -1252.45  -631.848 -1171.04  -650.95 -1075
-            -650.951 1075))
       (attach off)
     )
     (padstack Rect[A]Pad_1700.000000x1700.000000_um
@@ -247,22 +218,16 @@
   )
   (network
     (net "Net-(D1-K)"
-      (pins D1-1 R2-1)
+      (pins D1-1 R1-1)
     )
-    (net "Net-(J2-Pin_2)"
-      (pins J2-2 R2-2)
-    )
-    (net "Net-(D4-K)"
-      (pins D4-1 R4-1)
+    (net "Net-(D2-K)"
+      (pins D2-1 R2-1)
     )
     (net "Net-(J2-Pin_3)"
-      (pins J2-3 R4-2)
+      (pins J2-3 U1-2)
     )
-    (net "Net-(J1-Pin_2)"
-      (pins J1-2 U1-2)
-    )
-    (net "Net-(J1-Pin_1)"
-      (pins J1-1 U1-1)
+    (net "Net-(J2-Pin_4)"
+      (pins J2-4 U1-1 R2-2 R1-2)
     )
     (net "unconnected-(U1-NC-Pad4)"
       (pins U1-4)
@@ -279,13 +244,12 @@
     (net "Net-(D1-A)"
       (pins J2-1 D1-2)
     )
-    (net "Net-(D4-A)"
-      (pins J2-4 D4-2)
+    (net "Net-(D2-A)"
+      (pins J2-2 D2-2)
     )
-    (class kicad_default "Net-(D1-A)" "Net-(D1-K)" "Net-(D4-A)" "Net-(D4-K)"
-      "Net-(J1-Pin_1)" "Net-(J1-Pin_2)" "Net-(J2-Pin_2)" "Net-(J2-Pin_3)"
-      "unconnected-(U1-NC-Pad3)" "unconnected-(U1-NC-Pad4)" "unconnected-(U1-NC-Pad5)"
-      "unconnected-(U1-NC-Pad6)"
+    (class kicad_default "Net-(D1-A)" "Net-(D1-K)" "Net-(D2-A)" "Net-(D2-K)"
+      "Net-(J2-Pin_3)" "Net-(J2-Pin_4)" "unconnected-(U1-NC-Pad3)" "unconnected-(U1-NC-Pad4)"
+      "unconnected-(U1-NC-Pad5)" "unconnected-(U1-NC-Pad6)"
       (circuit
         (use_via "Via[0-1]_600:300_um")
       )
@@ -296,9 +260,5 @@
     )
   )
   (wiring
-    (wire (path B.Cu 500  131507 -80800  132330 -80800)(net "Net-(J1-Pin_1)")(type route))
-    (wire (path F.Cu 500  142280 -71400  141727 -71400)(net "Net-(J2-Pin_3)")(type route))
-    (wire (path B.Cu 500  128230 -76140.7  128230 -76380)(net "Net-(J2-Pin_3)")(type route))
-    (wire (path F.Cu 500  139077 -71297.2  139180 -71400)(net "Net-(D4-K)")(type route))
   )
 )

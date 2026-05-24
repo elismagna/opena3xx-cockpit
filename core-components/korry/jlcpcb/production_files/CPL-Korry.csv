@@ -1,0 +1,6 @@
+Designator,Val,Package,Mid X,Mid Y,Rotation,Layer
+D1,LED,LED_D3.0mm,39.1,-53.3,0.0,top
+D2,LED,LED_D3.0mm,39.1,-63.5,0.0,top
+J1,Conn_01x04_Pin,PinHeader_1x04_P2.54mm_Vertical,31.95,-58.66,90.0,bottom
+R1,R,R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal,39.43,-50.8,0.0,top
+R2,R,R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal,39.4,-66.05,180.0,top
