@@ -1,0 +1,10 @@
+PCBWay fab notes — 22-evac (Rev0 from face SVG)
+Source: vendor\mobiflight-panels\aircraft\airbus-a32x\overhead\evac\a320-overhead-evac.svg
+Size: 147.00 × 48.00 mm
+Mount holes: 6
+Button footprints: 3
+Knob/extra: 2
+Header pins: 8
+
+2-layer, 1.6 mm, HASL, black or green mask, white silk, qty 5.
+VERIFY in Gerber viewer / _previews before order.

@@ -1,0 +1,388 @@
+{
+  "boards": [
+    {
+      "id": "01-mcdu",
+      "title": "MCDU",
+      "file": "circuits/01-mcdu.txt",
+      "controls": [
+        "SKPMAPE010"
+      ]
+    },
+    {
+      "id": "02-overhead-lights",
+      "title": "Overhead lights",
+      "file": "circuits/02-overhead-lights.txt",
+      "controls": [
+        "Pushbutton 1",
+        "Pushbutton 2",
+        "Pushbutton 3",
+        "Pushbutton 4",
+        "Pushbutton 5",
+        "Pushbutton 6",
+        "Pushbutton 7",
+        "Pushbutton 8",
+        "Pushbutton 9",
+        "Pushbutton 10"
+      ]
+    },
+    {
+      "id": "03-engine-start",
+      "title": "Engine start",
+      "file": "circuits/03-engine-start.txt",
+      "controls": [
+        "Pushbutton 1",
+        "Pushbutton 2",
+        "Pushbutton 3",
+        "Pushbutton 4",
+        "Pushbutton 5",
+        "Knob 1",
+        "Knob 2",
+        "Knob 3"
+      ]
+    },
+    {
+      "id": "04-fcu",
+      "title": "FCU",
+      "file": "circuits/04-fcu.txt",
+      "controls": [
+        "SPD / MACH",
+        "HDG / TRK",
+        "ALT",
+        "V/S / FPA",
+        "AP 1",
+        "AP 2",
+        "A/THR",
+        "LOC",
+        "APPR",
+        "EXPED"
+      ]
+    },
+    {
+      "id": "05-efis-left",
+      "title": "EFIS (captain)",
+      "file": "circuits/05-efis-left.txt",
+      "controls": [
+        "B3F-1055",
+        "Switch1-8 SR16 (5 Pos)",
+        "Switch1-8 SR16 (6 Pos)",
+        "PEC11R-4220F-S0024"
+      ]
+    },
+    {
+      "id": "06-efis-left-mini",
+      "title": "EFIS mini",
+      "file": "circuits/06-efis-left-mini.txt",
+      "controls": [
+        "B3F-1055",
+        "Switch1-8 SR16 (5 Pos)",
+        "Switch1-8 SR16 (6 Pos)",
+        "PEC11R-4220F-S0024"
+      ]
+    },
+    {
+      "id": "07-efis-right",
+      "title": "EFIS (FO)",
+      "file": "circuits/07-efis-right.txt",
+      "controls": [
+        "B3F-1055",
+        "Switch1-8 SR16 (5 Pos)",
+        "Switch1-8 SR16 (6 Pos)",
+        "PEC11R-4220F-S0024"
+      ]
+    },
+    {
+      "id": "08-warning",
+      "title": "Warning",
+      "file": "circuits/08-warning.txt",
+      "controls": [
+        "B3F-1055"
+      ]
+    },
+    {
+      "id": "09-autobrake",
+      "title": "Autobrake",
+      "file": "circuits/09-autobrake.txt",
+      "controls": [
+        "B3F-1055"
+      ]
+    },
+    {
+      "id": "10-chrono",
+      "title": "Chronometer",
+      "file": "circuits/10-chrono.txt",
+      "controls": [
+        "B3F-1052"
+      ]
+    },
+    {
+      "id": "11-illumination",
+      "title": "Illumination",
+      "file": "circuits/11-illumination.txt",
+      "controls": [
+        "B3F-1055"
+      ]
+    },
+    {
+      "id": "12-mini-overhead",
+      "title": "Mini overhead",
+      "file": "circuits/12-mini-overhead.txt",
+      "controls": [
+        "Anti-ice",
+        "Battery",
+        "External power",
+        "Fuel pumps",
+        "APU master",
+        "APU start",
+        "APU bleed",
+        "B3F-1055"
+      ]
+    },
+    {
+      "id": "13-atc-tcas",
+      "title": "ATC / TCAS",
+      "file": "circuits/13-atc-tcas.txt",
+      "controls": [
+        "IDX",
+        "B3F-1052",
+        "RM Series Rotary"
+      ]
+    },
+    {
+      "id": "14-ecam",
+      "title": "ECAM control",
+      "file": "circuits/14-ecam.txt",
+      "controls": [
+        "B3F-1052"
+      ]
+    },
+    {
+      "id": "16-terr-on-nd",
+      "title": "TERR ON ND",
+      "file": "circuits/16-terr-on-nd.txt",
+      "controls": [
+        "Pushbutton 1"
+      ]
+    },
+    {
+      "id": "17-flood-light",
+      "title": "Flood light",
+      "file": "circuits/17-flood-light.txt",
+      "controls": [
+        "Pushbutton 1",
+        "Pushbutton 2",
+        "Knob 1",
+        "Knob 2"
+      ]
+    },
+    {
+      "id": "18-flt-ctl-fo",
+      "title": "Flight controls FO",
+      "file": "circuits/18-flt-ctl-fo.txt",
+      "controls": [
+        "Pushbutton 1",
+        "Pushbutton 2",
+        "Pushbutton 3",
+        "Pushbutton 4"
+      ]
+    },
+    {
+      "id": "19-gndservices",
+      "title": "Ground services",
+      "file": "circuits/19-gndservices.txt",
+      "controls": [
+        "Pushbutton 1",
+        "Pushbutton 2",
+        "Pushbutton 3",
+        "Pushbutton 4",
+        "Pushbutton 5",
+        "Pushbutton 6",
+        "Pushbutton 7",
+        "Pushbutton 8",
+        "Pushbutton 9",
+        "Pushbutton 10"
+      ]
+    },
+    {
+      "id": "20-fire",
+      "title": "Fire",
+      "file": "circuits/20-fire.txt",
+      "controls": [
+        "Pushbutton 1",
+        "Pushbutton 2",
+        "Pushbutton 3",
+        "Pushbutton 4",
+        "Pushbutton 5",
+        "Pushbutton 6",
+        "Pushbutton 7",
+        "Pushbutton 8",
+        "Knob 1",
+        "Knob 2"
+      ]
+    },
+    {
+      "id": "21-adirs",
+      "title": "ADIRS",
+      "file": "circuits/21-adirs.txt",
+      "controls": [
+        "IR 1",
+        "IR 2",
+        "IR 3",
+        "ADR 1",
+        "ADR 2",
+        "ADR 3",
+        "ATT HDG",
+        "ON BAT",
+        "IR 1 fault / align",
+        "IR 3 fault / align"
+      ]
+    },
+    {
+      "id": "22-evac",
+      "title": "Evacuation",
+      "file": "circuits/22-evac.txt",
+      "controls": [
+        "Pushbutton 1",
+        "Pushbutton 2",
+        "Pushbutton 3",
+        "Knob 1",
+        "Knob 2"
+      ]
+    },
+    {
+      "id": "23-audio",
+      "title": "Audio",
+      "file": "circuits/23-audio.txt",
+      "controls": [
+        "Pushbutton 1",
+        "Pushbutton 2",
+        "Pushbutton 3",
+        "Pushbutton 4",
+        "Pushbutton 5",
+        "Pushbutton 6",
+        "Pushbutton 7",
+        "Pushbutton 8",
+        "Pushbutton 9",
+        "Pushbutton 10"
+      ]
+    },
+    {
+      "id": "24-radio",
+      "title": "Radio",
+      "file": "circuits/24-radio.txt",
+      "controls": [
+        "Pushbutton 1",
+        "Pushbutton 2",
+        "Pushbutton 3",
+        "Pushbutton 4",
+        "Pushbutton 5",
+        "Pushbutton 6",
+        "Pushbutton 7",
+        "Pushbutton 8",
+        "Pushbutton 9",
+        "Pushbutton 10"
+      ]
+    },
+    {
+      "id": "25-cargo-heat",
+      "title": "Cargo heat",
+      "file": "circuits/25-cargo-heat.txt",
+      "controls": [
+        "Pushbutton 1",
+        "Pushbutton 2",
+        "Pushbutton 3",
+        "Pushbutton 4",
+        "Pushbutton 5",
+        "Pushbutton 6",
+        "Pushbutton 7",
+        "Pushbutton 8",
+        "Pushbutton 9",
+        "Pushbutton 10"
+      ]
+    },
+    {
+      "id": "26-emer-elec",
+      "title": "Emer elec",
+      "file": "circuits/26-emer-elec.txt",
+      "controls": [
+        "Pushbutton 1",
+        "Pushbutton 2",
+        "Pushbutton 3",
+        "Pushbutton 4",
+        "Pushbutton 5",
+        "Pushbutton 6",
+        "Pushbutton 7",
+        "Pushbutton 8",
+        "Pushbutton 9",
+        "Pushbutton 10"
+      ]
+    },
+    {
+      "id": "27-aircond",
+      "title": "Air conditioning",
+      "file": "circuits/27-aircond.txt",
+      "controls": [
+        "Pushbutton 1",
+        "Pushbutton 2",
+        "Pushbutton 3",
+        "Pushbutton 4",
+        "Pushbutton 5",
+        "Pushbutton 6",
+        "Pushbutton 7",
+        "Pushbutton 8",
+        "Pushbutton 9",
+        "Pushbutton 10"
+      ]
+    },
+    {
+      "id": "28-flt-ctl",
+      "title": "Flight controls",
+      "file": "circuits/28-flt-ctl.txt",
+      "controls": [
+        "Pushbutton 1",
+        "Pushbutton 2",
+        "Pushbutton 3",
+        "Pushbutton 4",
+        "Pushbutton 5",
+        "Pushbutton 6",
+        "Pushbutton 7",
+        "Pushbutton 8",
+        "Pushbutton 9",
+        "Pushbutton 10"
+      ]
+    },
+    {
+      "id": "29-elec",
+      "title": "Electrical",
+      "file": "circuits/29-elec.txt",
+      "controls": [
+        "Pushbutton 1",
+        "Pushbutton 2",
+        "Pushbutton 3",
+        "Pushbutton 4",
+        "Pushbutton 5",
+        "Pushbutton 6",
+        "Pushbutton 7",
+        "Pushbutton 8",
+        "Pushbutton 9",
+        "Pushbutton 10"
+      ]
+    },
+    {
+      "id": "30-hyd-fuel",
+      "title": "Hydraulics & fuel",
+      "file": "circuits/30-hyd-fuel.txt",
+      "controls": [
+        "Pushbutton 1",
+        "Pushbutton 2",
+        "Pushbutton 3",
+        "Pushbutton 4",
+        "Pushbutton 5",
+        "Pushbutton 6",
+        "Pushbutton 7",
+        "Pushbutton 8",
+        "Pushbutton 9",
+        "Pushbutton 10"
+      ]
+    }
+  ]
+}

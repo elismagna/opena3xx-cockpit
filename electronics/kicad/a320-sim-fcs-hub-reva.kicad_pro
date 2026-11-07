@@ -1,0 +1,35 @@
+{
+  "board": {
+    "design_settings": {
+      "defaults": {
+        "board_outline_line_width": 0.1,
+        "copper_line_width": 0.2,
+        "copper_text_size_h": 1.5,
+        "copper_text_size_v": 1.5,
+        "copper_text_thickness": 0.3,
+        "other_line_width": 0.15,
+        "silk_line_width": 0.15,
+        "silk_text_size_h": 1.0,
+        "silk_text_size_v": 1.0,
+        "silk_text_thickness": 0.15
+      },
+      "rules": {
+        "min_clearance": 0.15,
+        "min_track_width": 0.15,
+        "min_via_diameter": 0.6,
+        "min_through_hole_diameter": 0.3
+      }
+    }
+  },
+  "meta": {
+    "filename": "a320-sim-fcs-hub-reva.kicad_pro",
+    "version": 1
+  },
+  "sheets": [
+    ["", ""]
+  ],
+  "text_variables": {
+    "BOARD": "A320-SIM-FCS-HUB-REVA",
+    "FAB": "PCBWay"
+  }
+}

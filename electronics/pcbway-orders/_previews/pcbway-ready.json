@@ -1,0 +1,1924 @@
+{
+  "boards": [
+    {
+      "id": "01-mcdu",
+      "pcbway_ready": true,
+      "skip_reason": null,
+      "copper_layers": 4,
+      "size_mm": {
+        "w": 142.24,
+        "h": 220.85
+      },
+      "missing_required": [],
+      "has_silk": true,
+      "has_npth": true,
+      "has_paste": true,
+      "bom": {
+        "line_items": 18,
+        "total_qty": 158,
+        "top": [
+          "SKPMAPE010",
+          "HL-A-3014H416W-S1-08HL-HR3_C210336",
+          "100\u03a9",
+          "220\u03a9",
+          "TZ-P2-1206WYCS2-0.9T",
+          "TZ-P2-1206YTCS2-0.9T",
+          "10K",
+          "100nF"
+        ]
+      },
+      "sim_bindings": {
+        "count": 25,
+        "unique_lvars": [
+          "A32NX_ELEC_AC_2_BUS_IS_POWERED",
+          "A32NX_ELEC_AC_ESS_SHED_BUS_IS_POWERED",
+          "A32NX_ELEC_DC_ESS_BUS_IS_POWERED",
+          "A32NX_MCDU_L_ANNUNC_FAIL",
+          "A32NX_MCDU_L_ANNUNC_FM1",
+          "A32NX_MCDU_L_ANNUNC_FM2",
+          "A32NX_MCDU_L_ANNUNC_FMGC",
+          "A32NX_MCDU_L_ANNUNC_IND",
+          "A32NX_MCDU_L_ANNUNC_MCDU_MENU",
+          "A32NX_MCDU_L_ANNUNC_RDY",
+          "A32NX_OVHD_INTLT_ANN",
+          "Generic_Master_Caution_Active",
+          "Generic_Master_Warning_Active"
+        ],
+        "sample": [
+          {
+            "description": "ESS Bus is Powered (DC)",
+            "lvar": "A32NX_ELEC_DC_ESS_BUS_IS_POWERED",
+            "sim_code": "(L:A32NX_ELEC_DC_ESS_BUS_IS_POWERED, bool)",
+            "hardware": null,
+            "config": "pedestal/mcdu/configs/MCDU SMD.mcc",
+            "aircraft": "fbw"
+          },
+          {
+            "description": "Integral Lighting Brightness (Raw)",
+            "lvar": null,
+            "sim_code": "(A:LIGHT POTENTIOMETER:84, PERCENT)",
+            "hardware": null,
+            "config": "pedestal/mcdu/configs/MCDU SMD.mcc",
+            "aircraft": "unknown"
+          },
+          {
+            "description": "Indicator 1 (Airbus)",
+            "lvar": "A32NX_MCDU_L_ANNUNC_FM1",
+            "sim_code": "(L:A32NX_MCDU_L_ANNUNC_FM1)",
+            "hardware": "Output 0",
+            "config": "pedestal/mcdu/configs/MCDU SMD.mcc",
+            "aircraft": "fbw"
+          },
+          {
+            "description": "Indicator 2 (Airbus)",
+            "lvar": "A32NX_MCDU_L_ANNUNC_IND",
+            "sim_code": "(L:A32NX_MCDU_L_ANNUNC_IND)",
+            "hardware": "Output 1",
+            "config": "pedestal/mcdu/configs/MCDU SMD.mcc",
+            "aircraft": "fbw"
+          },
+          {
+            "description": "Indicator 3 (Airbus)",
+            "lvar": "A32NX_MCDU_L_ANNUNC_RDY",
+            "sim_code": "(L:A32NX_MCDU_L_ANNUNC_RDY)",
+            "hardware": "Output 2",
+            "config": "pedestal/mcdu/configs/MCDU SMD.mcc",
+            "aircraft": "fbw"
+          },
+          {
+            "description": "Indicator 4 (Airbus)",
+            "lvar": null,
+            "sim_code": null,
+            "hardware": "Output 3",
+            "config": "pedestal/mcdu/configs/MCDU SMD.mcc",
+            "aircraft": "unknown"
+          },
+          {
+            "description": "Indicator 5 (Airbus)",
+            "lvar": "A32NX_MCDU_L_ANNUNC_FM2",
+            "sim_code": "(L:A32NX_MCDU_L_ANNUNC_FM2)",
+            "hardware": "Output 4",
+            "config": "pedestal/mcdu/configs/MCDU SMD.mcc",
+            "aircraft": "fbw"
+          },
+          {
+            "description": "Indicator 6",
+            "lvar": "A32NX_MCDU_L_ANNUNC_FAIL",
+            "sim_code": "(L:A32NX_MCDU_L_ANNUNC_FAIL)",
+            "hardware": "Output 5",
+            "config": "pedestal/mcdu/configs/MCDU SMD.mcc",
+            "aircraft": "fbw"
+          },
+          {
+            "description": "Indicator 6a (Boeing)",
+            "lvar": null,
+            "sim_code": null,
+            "hardware": "Output 6",
+            "config": "pedestal/mcdu/configs/MCDU SMD.mcc",
+            "aircraft": "unknown"
+          },
+          {
+            "description": "Indicator 7 (Airbus)",
+            "lvar": "A32NX_MCDU_L_ANNUNC_FMGC",
+            "sim_code": "(L:A32NX_MCDU_L_ANNUNC_FMGC)",
+            "hardware": "Output 7",
+            "config": "pedestal/mcdu/configs/MCDU SMD.mcc",
+            "aircraft": "fbw"
+          },
+          {
+            "description": "Indicator 8",
+            "lvar": "A32NX_MCDU_L_ANNUNC_MCDU_MENU",
+            "sim_code": "(L:A32NX_MCDU_L_ANNUNC_MCDU_MENU)",
+            "hardware": "Output 8",
+            "config": "pedestal/mcdu/configs/MCDU SMD.mcc",
+            "aircraft": "fbw"
+          },
+          {
+            "description": "Indicator 9",
+            "lvar": "A32NX_MCDU_L_ANNUNC_MCDU_MENU",
+            "sim_code": "(L:A32NX_MCDU_L_ANNUNC_MCDU_MENU)",
+            "hardware": "Output 9",
+            "config": "pedestal/mcdu/configs/MCDU SMD.mcc",
+            "aircraft": "fbw"
+          }
+        ]
+      },
+      "gerber_zip": "../01-mcdu/Gerber.zip",
+      "preview_top": "01-mcdu-top.svg",
+      "preview_bottom": "01-mcdu-bottom.svg"
+    },
+    {
+      "id": "02-overhead-lights",
+      "pcbway_ready": true,
+      "skip_reason": null,
+      "copper_layers": 2,
+      "size_mm": {
+        "w": 302.26,
+        "h": 125.22
+      },
+      "missing_required": [],
+      "has_silk": true,
+      "has_npth": true,
+      "has_paste": false,
+      "bom": null,
+      "sim_bindings": {
+        "count": 51,
+        "unique_lvars": [
+          "A32NX_ELEC_AC_1_BUS_IS_POWERED",
+          "A32NX_ELEC_AC_2_BUS_IS_POWERED",
+          "A32NX_ELEC_AC_ESS_SHED_BUS_IS_POWERED",
+          "A32NX_ELEC_AC_STAT_INV_BUS_IS_POWERED",
+          "A32NX_MAN_PITOT_HEAT",
+          "A32NX_OVHD_APU_MASTER_SW_PB_HAS_FAULT",
+          "A32NX_OVHD_APU_MASTER_SW_PB_IS_ON",
+          "A32NX_OVHD_APU_START_PB_IS_AVAILABLE",
+          "A32NX_OVHD_APU_START_PB_IS_ON",
+          "A32NX_OVHD_INTLT_ANN",
+          "A32NX_OVHD_PRESS_MODE_SEL_PB_IS_AUTO",
+          "I_OH_ELEC_APU_MASTER_L",
+          "I_OH_ELEC_APU_MASTER_U",
+          "I_OH_ELEC_APU_START_L",
+          "I_OH_ELEC_APU_START_U",
+          "I_OH_INT_LT_EMER_OFF",
+          "I_OH_PNEUMATIC_DITCHING_L",
+          "I_OH_PNEUMATIC_ENG1_ANTI_ICE_L",
+          "I_OH_PNEUMATIC_ENG1_ANTI_ICE_U",
+          "I_OH_PNEUMATIC_ENG2_ANTI_ICE_L",
+          "I_OH_PNEUMATIC_PRESS_MODE_L",
+          "I_OH_PNEUMATIC_PRESS_MODE_U",
+          "I_OH_PNEUMATIC_WING_ANTI_ICE_L",
+          "I_OH_PNEUMATIC_WING_ANTI_ICE_U",
+          "I_OH_PROBE_HEAT_L",
+          "XMLVAR_SWITCH_OVHD_INTLT_EMEREXIT_Position"
+        ],
+        "sample": [
+          {
+            "description": "Annunciator Brt",
+            "lvar": null,
+            "sim_code": null,
+            "hardware": "Annunciator Brt",
+            "config": "overhead/lights/Overhead Lights Fenix.mcc",
+            "aircraft": "fenix"
+          },
+          {
+            "description": "Eng1 Ice Fault",
+            "lvar": "I_OH_PNEUMATIC_ENG1_ANTI_ICE_U",
+            "sim_code": "(L:I_OH_PNEUMATIC_ENG1_ANTI_ICE_U)",
+            "hardware": "Output 0",
+            "config": "overhead/lights/Overhead Lights Fenix.mcc",
+            "aircraft": "fenix"
+          },
+          {
+            "description": "Eng2 Ice Fault",
+            "lvar": "I_OH_PNEUMATIC_ENG2_ANTI_ICE_L",
+            "sim_code": "(L:I_OH_PNEUMATIC_ENG2_ANTI_ICE_L)",
+            "hardware": "Output 15",
+            "config": "overhead/lights/Overhead Lights Fenix.mcc",
+            "aircraft": "fenix"
+          },
+          {
+            "description": "Eng1 Ice On",
+            "lvar": "I_OH_PNEUMATIC_ENG1_ANTI_ICE_L",
+            "sim_code": "(L:I_OH_PNEUMATIC_ENG1_ANTI_ICE_L)",
+            "hardware": "Output 1",
+            "config": "overhead/lights/Overhead Lights Fenix.mcc",
+            "aircraft": "fenix"
+          },
+          {
+            "description": "Eng2 Ice On",
+            "lvar": "I_OH_PNEUMATIC_ENG2_ANTI_ICE_L",
+            "sim_code": "(L:I_OH_PNEUMATIC_ENG2_ANTI_ICE_L)",
+            "hardware": "Output 14",
+            "config": "overhead/lights/Overhead Lights Fenix.mcc",
+            "aircraft": "fenix"
+          },
+          {
+            "description": "Wing Ice Fault",
+            "lvar": "I_OH_PNEUMATIC_WING_ANTI_ICE_U",
+            "sim_code": "(L:I_OH_PNEUMATIC_WING_ANTI_ICE_U)",
+            "hardware": "Output 5",
+            "config": "overhead/lights/Overhead Lights Fenix.mcc",
+            "aircraft": "fenix"
+          },
+          {
+            "description": "Wing Ice On",
+            "lvar": "I_OH_PNEUMATIC_WING_ANTI_ICE_L",
+            "sim_code": "(L:I_OH_PNEUMATIC_WING_ANTI_ICE_L)",
+            "hardware": "Output 6",
+            "config": "overhead/lights/Overhead Lights Fenix.mcc",
+            "aircraft": "fenix"
+          },
+          {
+            "description": "Probe Window on",
+            "lvar": "I_OH_PROBE_HEAT_L",
+            "sim_code": "(L:I_OH_PROBE_HEAT_L)",
+            "hardware": "Output 3",
+            "config": "overhead/lights/Overhead Lights Fenix.mcc",
+            "aircraft": "fenix"
+          },
+          {
+            "description": "Emer Exit Lt Off",
+            "lvar": "I_OH_INT_LT_EMER_OFF",
+            "sim_code": "(L:I_OH_INT_LT_EMER_OFF)",
+            "hardware": "Output 4",
+            "config": "overhead/lights/Overhead Lights Fenix.mcc",
+            "aircraft": "fenix"
+          },
+          {
+            "description": "Ditching On",
+            "lvar": "I_OH_PNEUMATIC_DITCHING_L",
+            "sim_code": "(L:I_OH_PNEUMATIC_DITCHING_L)",
+            "hardware": "Output 7",
+            "config": "overhead/lights/Overhead Lights Fenix.mcc",
+            "aircraft": "fenix"
+          },
+          {
+            "description": "APU Start On",
+            "lvar": "I_OH_ELEC_APU_START_L",
+            "sim_code": "(L:I_OH_ELEC_APU_START_L)",
+            "hardware": "Output 8",
+            "config": "overhead/lights/Overhead Lights Fenix.mcc",
+            "aircraft": "fenix"
+          },
+          {
+            "description": "APU Start Avail",
+            "lvar": "I_OH_ELEC_APU_START_U",
+            "sim_code": "(L:I_OH_ELEC_APU_START_U)",
+            "hardware": "Output 9",
+            "config": "overhead/lights/Overhead Lights Fenix.mcc",
+            "aircraft": "fenix"
+          }
+        ]
+      },
+      "gerber_zip": "../02-overhead-lights/Gerber.zip",
+      "preview_top": "02-overhead-lights-top.svg",
+      "preview_bottom": "02-overhead-lights-bottom.svg"
+    },
+    {
+      "id": "03-engine-start",
+      "pcbway_ready": true,
+      "skip_reason": null,
+      "copper_layers": 2,
+      "size_mm": {
+        "w": 90.0,
+        "h": 72.0
+      },
+      "missing_required": [],
+      "has_silk": true,
+      "has_npth": true,
+      "has_paste": false,
+      "bom": null,
+      "sim_bindings": {
+        "count": 0,
+        "unique_lvars": [],
+        "sample": []
+      },
+      "gerber_zip": "../03-engine-start/Gerber.zip",
+      "preview_top": "03-engine-start-top.svg",
+      "preview_bottom": "03-engine-start-bottom.svg"
+    },
+    {
+      "id": "04-fcu",
+      "pcbway_ready": true,
+      "skip_reason": null,
+      "copper_layers": 2,
+      "size_mm": {
+        "w": 257.3,
+        "h": 89.3
+      },
+      "missing_required": [],
+      "has_silk": true,
+      "has_npth": true,
+      "has_paste": false,
+      "bom": null,
+      "sim_bindings": {
+        "count": 59,
+        "unique_lvars": [
+          "A32NX_AUTOPILOT_1_ACTIVE",
+          "A32NX_AUTOPILOT_2_ACTIVE",
+          "A32NX_AUTOPILOT_FPA_SELECTED",
+          "A32NX_AUTOPILOT_HEADING_SELECTED",
+          "A32NX_AUTOPILOT_SPEED_SELECTED",
+          "A32NX_AUTOPILOT_VS_SELECTED",
+          "A32NX_AUTOTHRUST_STATUS",
+          "A32NX_ELEC_AC_ESS_BUS_IS_POWERED",
+          "A32NX_FCU_ALT_MANAGED",
+          "A32NX_FCU_APPR_MODE_ACTIVE",
+          "A32NX_FCU_HDG_MANAGED_DASHES",
+          "A32NX_FCU_HDG_MANAGED_DOT",
+          "A32NX_FCU_LOC_MODE_ACTIVE",
+          "A32NX_FCU_SPD_MANAGED_DASHES",
+          "A32NX_FCU_SPD_MANAGED_DOT",
+          "A32NX_FCU_VS_MANAGED",
+          "A32NX_FMA_EXPEDITE_MODE",
+          "A32NX_OVHD_INTLT_ANN",
+          "A32NX_TRK_FPA_MODE_ACTIVE"
+        ],
+        "sample": [
+          {
+            "description": "AP1 On",
+            "lvar": "A32NX_AUTOPILOT_1_ACTIVE",
+            "sim_code": "(L:A32NX_AUTOPILOT_1_ACTIVE)",
+            "hardware": "AP1 LED",
+            "config": "glareshield/fcu/FCU.mcc",
+            "aircraft": "fbw"
+          },
+          {
+            "description": "AP2 On",
+            "lvar": "A32NX_AUTOPILOT_2_ACTIVE",
+            "sim_code": "(L:A32NX_AUTOPILOT_2_ACTIVE)",
+            "hardware": "AP2 LED",
+            "config": "glareshield/fcu/FCU.mcc",
+            "aircraft": "fbw"
+          },
+          {
+            "description": "ATHR On",
+            "lvar": "A32NX_AUTOTHRUST_STATUS",
+            "sim_code": "(L:A32NX_AUTOTHRUST_STATUS)",
+            "hardware": "ATHR LED",
+            "config": "glareshield/fcu/FCU.mcc",
+            "aircraft": "fbw"
+          },
+          {
+            "description": "Annunciator Birghtness",
+            "lvar": "A32NX_OVHD_INTLT_ANN",
+            "sim_code": "(L:A32NX_OVHD_INTLT_ANN)",
+            "hardware": "Annunciators Brt",
+            "config": "glareshield/fcu/FCU.mcc",
+            "aircraft": "fbw"
+          },
+          {
+            "description": "Overhead Annuciator Mode",
+            "lvar": "A32NX_OVHD_INTLT_ANN",
+            "sim_code": "(L:A32NX_OVHD_INTLT_ANN)",
+            "hardware": null,
+            "config": "glareshield/fcu/FCU.mcc",
+            "aircraft": "fbw"
+          },
+          {
+            "description": "Speed Selected (Knots)",
+            "lvar": "A32NX_AUTOPILOT_SPEED_SELECTED",
+            "sim_code": "(L:A32NX_AUTOPILOT_SPEED_SELECTED, Number)",
+            "hardware": null,
+            "config": "glareshield/fcu/FCU.mcc",
+            "aircraft": "fbw"
+          },
+          {
+            "description": "Speed Selected (Dashes)",
+            "lvar": null,
+            "sim_code": null,
+            "hardware": null,
+            "config": "glareshield/fcu/FCU.mcc",
+            "aircraft": "unknown"
+          },
+          {
+            "description": "Speed Selected (Off)",
+            "lvar": null,
+            "sim_code": null,
+            "hardware": null,
+            "config": "glareshield/fcu/FCU.mcc",
+            "aircraft": "unknown"
+          },
+          {
+            "description": "Speed Selected (Test)",
+            "lvar": null,
+            "sim_code": null,
+            "hardware": null,
+            "config": "glareshield/fcu/FCU.mcc",
+            "aircraft": "unknown"
+          },
+          {
+            "description": "Speed Selected (Mach)",
+            "lvar": null,
+            "sim_code": "(A:AUTOPILOT MACH HOLD VAR, Number) 100 * near",
+            "hardware": null,
+            "config": "glareshield/fcu/FCU.mcc",
+            "aircraft": "unknown"
+          },
+          {
+            "description": "Heading Selected",
+            "lvar": "A32NX_AUTOPILOT_HEADING_SELECTED",
+            "sim_code": "(L:A32NX_AUTOPILOT_HEADING_SELECTED) near",
+            "hardware": null,
+            "config": "glareshield/fcu/FCU.mcc",
+            "aircraft": "fbw"
+          },
+          {
+            "description": "Heading Selected (Dashes)",
+            "lvar": null,
+            "sim_code": null,
+            "hardware": null,
+            "config": "glareshield/fcu/FCU.mcc",
+            "aircraft": "unknown"
+          }
+        ]
+      },
+      "gerber_zip": "../04-fcu/Gerber.zip",
+      "preview_top": "04-fcu-top.svg",
+      "preview_bottom": "04-fcu-bottom.svg"
+    },
+    {
+      "id": "05-efis-left",
+      "pcbway_ready": true,
+      "skip_reason": null,
+      "copper_layers": 2,
+      "size_mm": {
+        "w": 153.73,
+        "h": 88.0
+      },
+      "missing_required": [],
+      "has_silk": true,
+      "has_npth": true,
+      "has_paste": false,
+      "bom": null,
+      "sim_bindings": {
+        "count": 23,
+        "unique_lvars": [
+          "A32NX_EFIS_L_OPTION",
+          "A32NX_ELEC_AC_ESS_BUS_IS_POWERED",
+          "A32NX_OVHD_INTLT_ANN",
+          "BTN_LS_1_FILTER_ACTIVE",
+          "XMLVAR_Baro1_Mode"
+        ],
+        "sample": [
+          {
+            "description": "A32NX EFIS L - 01 - FD",
+            "lvar": null,
+            "sim_code": "(A:AUTOPILOT FLIGHT DIRECTOR ACTIVE:1, Bool)",
+            "hardware": "Output 5",
+            "config": "glareshield/efis/EFIS.mcc",
+            "aircraft": "unknown"
+          },
+          {
+            "description": "A32NX EFIS L - 02 - LS",
+            "lvar": "BTN_LS_1_FILTER_ACTIVE",
+            "sim_code": "(L:BTN_LS_1_FILTER_ACTIVE)",
+            "hardware": "Output 6",
+            "config": "glareshield/efis/EFIS.mcc",
+            "aircraft": "unknown"
+          },
+          {
+            "description": "A32NX EFIS L - 03 - CSTR",
+            "lvar": "A32NX_EFIS_L_OPTION",
+            "sim_code": "(L:A32NX_EFIS_L_OPTION)",
+            "hardware": "Output 0",
+            "config": "glareshield/efis/EFIS.mcc",
+            "aircraft": "fbw"
+          },
+          {
+            "description": "A32NX EFIS L - 04 - WPT",
+            "lvar": "A32NX_EFIS_L_OPTION",
+            "sim_code": "(L:A32NX_EFIS_L_OPTION)",
+            "hardware": "Output 1",
+            "config": "glareshield/efis/EFIS.mcc",
+            "aircraft": "fbw"
+          },
+          {
+            "description": "A32NX EFIS L - 05 - VOR D",
+            "lvar": "A32NX_EFIS_L_OPTION",
+            "sim_code": "(L:A32NX_EFIS_L_OPTION)",
+            "hardware": "Output 2",
+            "config": "glareshield/efis/EFIS.mcc",
+            "aircraft": "fbw"
+          },
+          {
+            "description": "A32NX EFIS L - 06 - NDB",
+            "lvar": "A32NX_EFIS_L_OPTION",
+            "sim_code": "(L:A32NX_EFIS_L_OPTION)",
+            "hardware": "Output 3",
+            "config": "glareshield/efis/EFIS.mcc",
+            "aircraft": "fbw"
+          },
+          {
+            "description": "A32NX EFIS L - 07 - ARPT",
+            "lvar": "A32NX_EFIS_L_OPTION",
+            "sim_code": "(L:A32NX_EFIS_L_OPTION)",
+            "hardware": "Output 7",
+            "config": "glareshield/efis/EFIS.mcc",
+            "aircraft": "fbw"
+          },
+          {
+            "description": "A32NX EFIS L - 08 - BARO QFE",
+            "lvar": "XMLVAR_Baro1_Mode",
+            "sim_code": "(L:XMLVAR_Baro1_Mode)",
+            "hardware": "Output 8",
+            "config": "glareshield/efis/EFIS.mcc",
+            "aircraft": "unknown"
+          },
+          {
+            "description": "A32NX EFIS L - 08 - BARO QNH",
+            "lvar": "XMLVAR_Baro1_Mode",
+            "sim_code": "(L:XMLVAR_Baro1_Mode)",
+            "hardware": "Output 9",
+            "config": "glareshield/efis/EFIS.mcc",
+            "aircraft": "unknown"
+          },
+          {
+            "description": "A32NX EFIS L - 09 - BARO Display",
+            "lvar": null,
+            "sim_code": "(A:KOHLSMAN SETTING HG, Number) 33.866 / near",
+            "hardware": null,
+            "config": "glareshield/efis/EFIS.mcc",
+            "aircraft": "unknown"
+          },
+          {
+            "description": "A32NX EFIS L - 09 - BARO Display (Blank)",
+            "lvar": null,
+            "sim_code": null,
+            "hardware": null,
+            "config": "glareshield/efis/EFIS.mcc",
+            "aircraft": "unknown"
+          },
+          {
+            "description": "A32NX EFIS L - 09 - BARO Display (Test)",
+            "lvar": null,
+            "sim_code": null,
+            "hardware": null,
+            "config": "glareshield/efis/EFIS.mcc",
+            "aircraft": "unknown"
+          }
+        ]
+      },
+      "gerber_zip": "../05-efis-left/Gerber.zip",
+      "preview_top": "05-efis-left-top.svg",
+      "preview_bottom": "05-efis-left-bottom.svg"
+    },
+    {
+      "id": "06-efis-left-mini",
+      "pcbway_ready": true,
+      "skip_reason": null,
+      "copper_layers": 2,
+      "size_mm": {
+        "w": 142.9,
+        "h": 73.12
+      },
+      "missing_required": [],
+      "has_silk": true,
+      "has_npth": true,
+      "has_paste": false,
+      "bom": null,
+      "sim_bindings": {
+        "count": 23,
+        "unique_lvars": [
+          "A32NX_EFIS_L_OPTION",
+          "A32NX_ELEC_AC_ESS_BUS_IS_POWERED",
+          "A32NX_OVHD_INTLT_ANN",
+          "BTN_LS_1_FILTER_ACTIVE",
+          "XMLVAR_Baro1_Mode"
+        ],
+        "sample": [
+          {
+            "description": "A32NX EFIS L - 01 - FD",
+            "lvar": null,
+            "sim_code": "(A:AUTOPILOT FLIGHT DIRECTOR ACTIVE:1, Bool)",
+            "hardware": "Output 5",
+            "config": "glareshield/efis/EFIS.mcc",
+            "aircraft": "unknown"
+          },
+          {
+            "description": "A32NX EFIS L - 02 - LS",
+            "lvar": "BTN_LS_1_FILTER_ACTIVE",
+            "sim_code": "(L:BTN_LS_1_FILTER_ACTIVE)",
+            "hardware": "Output 6",
+            "config": "glareshield/efis/EFIS.mcc",
+            "aircraft": "unknown"
+          },
+          {
+            "description": "A32NX EFIS L - 03 - CSTR",
+            "lvar": "A32NX_EFIS_L_OPTION",
+            "sim_code": "(L:A32NX_EFIS_L_OPTION)",
+            "hardware": "Output 0",
+            "config": "glareshield/efis/EFIS.mcc",
+            "aircraft": "fbw"
+          },
+          {
+            "description": "A32NX EFIS L - 04 - WPT",
+            "lvar": "A32NX_EFIS_L_OPTION",
+            "sim_code": "(L:A32NX_EFIS_L_OPTION)",
+            "hardware": "Output 1",
+            "config": "glareshield/efis/EFIS.mcc",
+            "aircraft": "fbw"
+          },
+          {
+            "description": "A32NX EFIS L - 05 - VOR D",
+            "lvar": "A32NX_EFIS_L_OPTION",
+            "sim_code": "(L:A32NX_EFIS_L_OPTION)",
+            "hardware": "Output 2",
+            "config": "glareshield/efis/EFIS.mcc",
+            "aircraft": "fbw"
+          },
+          {
+            "description": "A32NX EFIS L - 06 - NDB",
+            "lvar": "A32NX_EFIS_L_OPTION",
+            "sim_code": "(L:A32NX_EFIS_L_OPTION)",
+            "hardware": "Output 3",
+            "config": "glareshield/efis/EFIS.mcc",
+            "aircraft": "fbw"
+          },
+          {
+            "description": "A32NX EFIS L - 07 - ARPT",
+            "lvar": "A32NX_EFIS_L_OPTION",
+            "sim_code": "(L:A32NX_EFIS_L_OPTION)",
+            "hardware": "Output 7",
+            "config": "glareshield/efis/EFIS.mcc",
+            "aircraft": "fbw"
+          },
+          {
+            "description": "A32NX EFIS L - 08 - BARO QFE",
+            "lvar": "XMLVAR_Baro1_Mode",
+            "sim_code": "(L:XMLVAR_Baro1_Mode)",
+            "hardware": "Output 8",
+            "config": "glareshield/efis/EFIS.mcc",
+            "aircraft": "unknown"
+          },
+          {
+            "description": "A32NX EFIS L - 08 - BARO QNH",
+            "lvar": "XMLVAR_Baro1_Mode",
+            "sim_code": "(L:XMLVAR_Baro1_Mode)",
+            "hardware": "Output 9",
+            "config": "glareshield/efis/EFIS.mcc",
+            "aircraft": "unknown"
+          },
+          {
+            "description": "A32NX EFIS L - 09 - BARO Display",
+            "lvar": null,
+            "sim_code": "(A:KOHLSMAN SETTING HG, Number) 33.866 / near",
+            "hardware": null,
+            "config": "glareshield/efis/EFIS.mcc",
+            "aircraft": "unknown"
+          },
+          {
+            "description": "A32NX EFIS L - 09 - BARO Display (Blank)",
+            "lvar": null,
+            "sim_code": null,
+            "hardware": null,
+            "config": "glareshield/efis/EFIS.mcc",
+            "aircraft": "unknown"
+          },
+          {
+            "description": "A32NX EFIS L - 09 - BARO Display (Test)",
+            "lvar": null,
+            "sim_code": null,
+            "hardware": null,
+            "config": "glareshield/efis/EFIS.mcc",
+            "aircraft": "unknown"
+          }
+        ]
+      },
+      "gerber_zip": "../06-efis-left-mini/Gerber.zip",
+      "preview_top": "06-efis-left-mini-top.svg",
+      "preview_bottom": "06-efis-left-mini-bottom.svg"
+    },
+    {
+      "id": "07-efis-right",
+      "pcbway_ready": true,
+      "skip_reason": null,
+      "copper_layers": 2,
+      "size_mm": {
+        "w": 153.73,
+        "h": 88.0
+      },
+      "missing_required": [],
+      "has_silk": true,
+      "has_npth": true,
+      "has_paste": false,
+      "bom": null,
+      "sim_bindings": {
+        "count": 23,
+        "unique_lvars": [
+          "A32NX_EFIS_L_OPTION",
+          "A32NX_ELEC_AC_ESS_BUS_IS_POWERED",
+          "A32NX_OVHD_INTLT_ANN",
+          "BTN_LS_1_FILTER_ACTIVE",
+          "XMLVAR_Baro1_Mode"
+        ],
+        "sample": [
+          {
+            "description": "A32NX EFIS L - 01 - FD",
+            "lvar": null,
+            "sim_code": "(A:AUTOPILOT FLIGHT DIRECTOR ACTIVE:1, Bool)",
+            "hardware": "Output 5",
+            "config": "glareshield/efis/EFIS.mcc",
+            "aircraft": "unknown"
+          },
+          {
+            "description": "A32NX EFIS L - 02 - LS",
+            "lvar": "BTN_LS_1_FILTER_ACTIVE",
+            "sim_code": "(L:BTN_LS_1_FILTER_ACTIVE)",
+            "hardware": "Output 6",
+            "config": "glareshield/efis/EFIS.mcc",
+            "aircraft": "unknown"
+          },
+          {
+            "description": "A32NX EFIS L - 03 - CSTR",
+            "lvar": "A32NX_EFIS_L_OPTION",
+            "sim_code": "(L:A32NX_EFIS_L_OPTION)",
+            "hardware": "Output 0",
+            "config": "glareshield/efis/EFIS.mcc",
+            "aircraft": "fbw"
+          },
+          {
+            "description": "A32NX EFIS L - 04 - WPT",
+            "lvar": "A32NX_EFIS_L_OPTION",
+            "sim_code": "(L:A32NX_EFIS_L_OPTION)",
+            "hardware": "Output 1",
+            "config": "glareshield/efis/EFIS.mcc",
+            "aircraft": "fbw"
+          },
+          {
+            "description": "A32NX EFIS L - 05 - VOR D",
+            "lvar": "A32NX_EFIS_L_OPTION",
+            "sim_code": "(L:A32NX_EFIS_L_OPTION)",
+            "hardware": "Output 2",
+            "config": "glareshield/efis/EFIS.mcc",
+            "aircraft": "fbw"
+          },
+          {
+            "description": "A32NX EFIS L - 06 - NDB",
+            "lvar": "A32NX_EFIS_L_OPTION",
+            "sim_code": "(L:A32NX_EFIS_L_OPTION)",
+            "hardware": "Output 3",
+            "config": "glareshield/efis/EFIS.mcc",
+            "aircraft": "fbw"
+          },
+          {
+            "description": "A32NX EFIS L - 07 - ARPT",
+            "lvar": "A32NX_EFIS_L_OPTION",
+            "sim_code": "(L:A32NX_EFIS_L_OPTION)",
+            "hardware": "Output 7",
+            "config": "glareshield/efis/EFIS.mcc",
+            "aircraft": "fbw"
+          },
+          {
+            "description": "A32NX EFIS L - 08 - BARO QFE",
+            "lvar": "XMLVAR_Baro1_Mode",
+            "sim_code": "(L:XMLVAR_Baro1_Mode)",
+            "hardware": "Output 8",
+            "config": "glareshield/efis/EFIS.mcc",
+            "aircraft": "unknown"
+          },
+          {
+            "description": "A32NX EFIS L - 08 - BARO QNH",
+            "lvar": "XMLVAR_Baro1_Mode",
+            "sim_code": "(L:XMLVAR_Baro1_Mode)",
+            "hardware": "Output 9",
+            "config": "glareshield/efis/EFIS.mcc",
+            "aircraft": "unknown"
+          },
+          {
+            "description": "A32NX EFIS L - 09 - BARO Display",
+            "lvar": null,
+            "sim_code": "(A:KOHLSMAN SETTING HG, Number) 33.866 / near",
+            "hardware": null,
+            "config": "glareshield/efis/EFIS.mcc",
+            "aircraft": "unknown"
+          },
+          {
+            "description": "A32NX EFIS L - 09 - BARO Display (Blank)",
+            "lvar": null,
+            "sim_code": null,
+            "hardware": null,
+            "config": "glareshield/efis/EFIS.mcc",
+            "aircraft": "unknown"
+          },
+          {
+            "description": "A32NX EFIS L - 09 - BARO Display (Test)",
+            "lvar": null,
+            "sim_code": null,
+            "hardware": null,
+            "config": "glareshield/efis/EFIS.mcc",
+            "aircraft": "unknown"
+          }
+        ]
+      },
+      "gerber_zip": "../07-efis-right/Gerber.zip",
+      "preview_top": "07-efis-right-top.svg",
+      "preview_bottom": "07-efis-right-bottom.svg"
+    },
+    {
+      "id": "08-warning",
+      "pcbway_ready": true,
+      "skip_reason": null,
+      "copper_layers": 2,
+      "size_mm": {
+        "w": 323.0,
+        "h": 78.62
+      },
+      "missing_required": [],
+      "has_silk": true,
+      "has_npth": true,
+      "has_paste": false,
+      "bom": null,
+      "sim_bindings": {
+        "count": 16,
+        "unique_lvars": [
+          "A32NX_AUTOPILOT_AUTOLAND_WARNING",
+          "A32NX_ELEC_AC_2_BUS_IS_POWERED",
+          "A32NX_ELEC_AC_ESS_BUS_IS_POWERED",
+          "A32NX_ELEC_AC_ESS_SHED_BUS_IS_POWERED",
+          "A32NX_OVHD_INTLT_ANN",
+          "Generic_Master_Caution_Active",
+          "Generic_Master_Warning_Active"
+        ],
+        "sample": [
+          {
+            "description": "Warning - Integral Lighting Brightness (Backlight LEDs)",
+            "lvar": null,
+            "sim_code": null,
+            "hardware": "Backlight Brt",
+            "config": "glareshield/warning/Warning.mcc",
+            "aircraft": "unknown"
+          },
+          {
+            "description": "Warning - Annunciator Brightness",
+            "lvar": "A32NX_OVHD_INTLT_ANN",
+            "sim_code": "(L:A32NX_OVHD_INTLT_ANN) 2 == if{ 100 } els{ 255 }",
+            "hardware": "Annunciator Brt",
+            "config": "glareshield/warning/Warning.mcc",
+            "aircraft": "fbw"
+          },
+          {
+            "description": "Warning - Autoland",
+            "lvar": "A32NX_AUTOPILOT_AUTOLAND_WARNING",
+            "sim_code": "(L:A32NX_AUTOPILOT_AUTOLAND_WARNING) (L:A32NX_OVHD_INTLT_ANN) 0 == or",
+            "hardware": "LED AUTOLAND",
+            "config": "glareshield/warning/Warning.mcc",
+            "aircraft": "fbw"
+          },
+          {
+            "description": "Warning - Autoland",
+            "lvar": "A32NX_OVHD_INTLT_ANN",
+            "sim_code": "(L:A32NX_AUTOPILOT_AUTOLAND_WARNING) (L:A32NX_OVHD_INTLT_ANN) 0 == or",
+            "hardware": "LED AUTOLAND",
+            "config": "glareshield/warning/Warning.mcc",
+            "aircraft": "fbw"
+          },
+          {
+            "description": "Warning - Warning",
+            "lvar": "Generic_Master_Warning_Active",
+            "sim_code": "(L:Generic_Master_Warning_Active) (L:A32NX_OVHD_INTLT_ANN) 0 == or (L:A32NX_ELEC_AC_ESS_SHED_BUS_IS_POWERED, Bool) (L:A32NX_ELEC_AC_2_BUS_IS_POWERED, Bool) or a",
+            "hardware": "LED WARN",
+            "config": "glareshield/warning/Warning.mcc",
+            "aircraft": "fbw"
+          },
+          {
+            "description": "Warning - Warning",
+            "lvar": "A32NX_OVHD_INTLT_ANN",
+            "sim_code": "(L:Generic_Master_Warning_Active) (L:A32NX_OVHD_INTLT_ANN) 0 == or (L:A32NX_ELEC_AC_ESS_SHED_BUS_IS_POWERED, Bool) (L:A32NX_ELEC_AC_2_BUS_IS_POWERED, Bool) or a",
+            "hardware": "LED WARN",
+            "config": "glareshield/warning/Warning.mcc",
+            "aircraft": "fbw"
+          },
+          {
+            "description": "Warning - Warning",
+            "lvar": "A32NX_ELEC_AC_ESS_SHED_BUS_IS_POWERED",
+            "sim_code": "(L:Generic_Master_Warning_Active) (L:A32NX_OVHD_INTLT_ANN) 0 == or (L:A32NX_ELEC_AC_ESS_SHED_BUS_IS_POWERED, Bool) (L:A32NX_ELEC_AC_2_BUS_IS_POWERED, Bool) or a",
+            "hardware": "LED WARN",
+            "config": "glareshield/warning/Warning.mcc",
+            "aircraft": "fbw"
+          },
+          {
+            "description": "Warning - Warning",
+            "lvar": "A32NX_ELEC_AC_2_BUS_IS_POWERED",
+            "sim_code": "(L:Generic_Master_Warning_Active) (L:A32NX_OVHD_INTLT_ANN) 0 == or (L:A32NX_ELEC_AC_ESS_SHED_BUS_IS_POWERED, Bool) (L:A32NX_ELEC_AC_2_BUS_IS_POWERED, Bool) or a",
+            "hardware": "LED WARN",
+            "config": "glareshield/warning/Warning.mcc",
+            "aircraft": "fbw"
+          },
+          {
+            "description": "Warning - Caution",
+            "lvar": "Generic_Master_Caution_Active",
+            "sim_code": "(L:Generic_Master_Caution_Active) (L:A32NX_OVHD_INTLT_ANN) 0 == or (L:A32NX_ELEC_AC_ESS_SHED_BUS_IS_POWERED, Bool) (L:A32NX_ELEC_AC_2_BUS_IS_POWERED, Bool) or a",
+            "hardware": "LED CAUT",
+            "config": "glareshield/warning/Warning.mcc",
+            "aircraft": "fbw"
+          },
+          {
+            "description": "Warning - Caution",
+            "lvar": "A32NX_OVHD_INTLT_ANN",
+            "sim_code": "(L:Generic_Master_Caution_Active) (L:A32NX_OVHD_INTLT_ANN) 0 == or (L:A32NX_ELEC_AC_ESS_SHED_BUS_IS_POWERED, Bool) (L:A32NX_ELEC_AC_2_BUS_IS_POWERED, Bool) or a",
+            "hardware": "LED CAUT",
+            "config": "glareshield/warning/Warning.mcc",
+            "aircraft": "fbw"
+          },
+          {
+            "description": "Warning - Caution",
+            "lvar": "A32NX_ELEC_AC_ESS_SHED_BUS_IS_POWERED",
+            "sim_code": "(L:Generic_Master_Caution_Active) (L:A32NX_OVHD_INTLT_ANN) 0 == or (L:A32NX_ELEC_AC_ESS_SHED_BUS_IS_POWERED, Bool) (L:A32NX_ELEC_AC_2_BUS_IS_POWERED, Bool) or a",
+            "hardware": "LED CAUT",
+            "config": "glareshield/warning/Warning.mcc",
+            "aircraft": "fbw"
+          },
+          {
+            "description": "Warning - Caution",
+            "lvar": "A32NX_ELEC_AC_2_BUS_IS_POWERED",
+            "sim_code": "(L:Generic_Master_Caution_Active) (L:A32NX_OVHD_INTLT_ANN) 0 == or (L:A32NX_ELEC_AC_ESS_SHED_BUS_IS_POWERED, Bool) (L:A32NX_ELEC_AC_2_BUS_IS_POWERED, Bool) or a",
+            "hardware": "LED CAUT",
+            "config": "glareshield/warning/Warning.mcc",
+            "aircraft": "fbw"
+          }
+        ]
+      },
+      "gerber_zip": "../08-warning/Gerber.zip",
+      "preview_top": "08-warning-top.svg",
+      "preview_bottom": "08-warning-bottom.svg"
+    },
+    {
+      "id": "09-autobrake",
+      "pcbway_ready": true,
+      "skip_reason": null,
+      "copper_layers": 2,
+      "size_mm": {
+        "w": 124.75,
+        "h": 150.77
+      },
+      "missing_required": [],
+      "has_silk": true,
+      "has_npth": true,
+      "has_paste": false,
+      "bom": null,
+      "sim_bindings": {
+        "count": 50,
+        "unique_lvars": [
+          "A32NX_AUTOBRAKES_ARMED_MODE",
+          "A32NX_AUTOBRAKES_DECEL_LIGHT",
+          "A32NX_BRAKES_HOT",
+          "A32NX_BRAKE_FAN",
+          "A32NX_ELEC_AC_1_BUS_IS_POWERED",
+          "A32NX_ELEC_AC_2_BUS_IS_POWERED",
+          "A32NX_ELEC_DC_ESS_BUS_IS_POWERED",
+          "A32NX_HYD_BRAKE_ALTN_ACC_PRESS",
+          "A32NX_HYD_BRAKE_ALTN_LEFT_PRESS",
+          "A32NX_HYD_BRAKE_ALTN_RIGHT_PRESS",
+          "A32NX_OVHD_INTLT_ANN",
+          "BTN_TERRONND_1_ACTIVE",
+          "BTN_TERRONND_2_ACTIVE"
+        ],
+        "sample": [
+          {
+            "description": "Autobrake - Low",
+            "lvar": "A32NX_AUTOBRAKES_ARMED_MODE",
+            "sim_code": "(L:A32NX_AUTOBRAKES_ARMED_MODE, Number) 1 == (L:A32NX_OVHD_INTLT_ANN) 0 == or 1 and (L:A32NX_ELEC_AC_1_BUS_IS_POWERED, Bool) and (A:CIRCUIT GENERAL PANEL ON, Bo",
+            "hardware": "Output 9",
+            "config": "main-instrument-panel/autobrake/Autobrake.mcc",
+            "aircraft": "fbw"
+          },
+          {
+            "description": "Autobrake - Low",
+            "lvar": "A32NX_OVHD_INTLT_ANN",
+            "sim_code": "(L:A32NX_AUTOBRAKES_ARMED_MODE, Number) 1 == (L:A32NX_OVHD_INTLT_ANN) 0 == or 1 and (L:A32NX_ELEC_AC_1_BUS_IS_POWERED, Bool) and (A:CIRCUIT GENERAL PANEL ON, Bo",
+            "hardware": "Output 9",
+            "config": "main-instrument-panel/autobrake/Autobrake.mcc",
+            "aircraft": "fbw"
+          },
+          {
+            "description": "Autobrake - Low",
+            "lvar": "A32NX_ELEC_AC_1_BUS_IS_POWERED",
+            "sim_code": "(L:A32NX_AUTOBRAKES_ARMED_MODE, Number) 1 == (L:A32NX_OVHD_INTLT_ANN) 0 == or 1 and (L:A32NX_ELEC_AC_1_BUS_IS_POWERED, Bool) and (A:CIRCUIT GENERAL PANEL ON, Bo",
+            "hardware": "Output 9",
+            "config": "main-instrument-panel/autobrake/Autobrake.mcc",
+            "aircraft": "fbw"
+          },
+          {
+            "description": "Autobrake - Medium",
+            "lvar": "A32NX_AUTOBRAKES_ARMED_MODE",
+            "sim_code": "(L:A32NX_AUTOBRAKES_ARMED_MODE, Number) 2 == (L:A32NX_OVHD_INTLT_ANN) 0 == or 1 and (L:A32NX_ELEC_AC_1_BUS_IS_POWERED, Bool) and (A:CIRCUIT GENERAL PANEL ON, Bo",
+            "hardware": "Output 11",
+            "config": "main-instrument-panel/autobrake/Autobrake.mcc",
+            "aircraft": "fbw"
+          },
+          {
+            "description": "Autobrake - Medium",
+            "lvar": "A32NX_OVHD_INTLT_ANN",
+            "sim_code": "(L:A32NX_AUTOBRAKES_ARMED_MODE, Number) 2 == (L:A32NX_OVHD_INTLT_ANN) 0 == or 1 and (L:A32NX_ELEC_AC_1_BUS_IS_POWERED, Bool) and (A:CIRCUIT GENERAL PANEL ON, Bo",
+            "hardware": "Output 11",
+            "config": "main-instrument-panel/autobrake/Autobrake.mcc",
+            "aircraft": "fbw"
+          },
+          {
+            "description": "Autobrake - Medium",
+            "lvar": "A32NX_ELEC_AC_1_BUS_IS_POWERED",
+            "sim_code": "(L:A32NX_AUTOBRAKES_ARMED_MODE, Number) 2 == (L:A32NX_OVHD_INTLT_ANN) 0 == or 1 and (L:A32NX_ELEC_AC_1_BUS_IS_POWERED, Bool) and (A:CIRCUIT GENERAL PANEL ON, Bo",
+            "hardware": "Output 11",
+            "config": "main-instrument-panel/autobrake/Autobrake.mcc",
+            "aircraft": "fbw"
+          },
+          {
+            "description": "Autobrake - Max",
+            "lvar": "A32NX_AUTOBRAKES_ARMED_MODE",
+            "sim_code": "(L:A32NX_AUTOBRAKES_ARMED_MODE, Number) 3 == (L:A32NX_OVHD_INTLT_ANN) 0 == or 1 and (L:A32NX_ELEC_AC_1_BUS_IS_POWERED, Bool) and (A:CIRCUIT GENERAL PANEL ON, Bo",
+            "hardware": "Output 13",
+            "config": "main-instrument-panel/autobrake/Autobrake.mcc",
+            "aircraft": "fbw"
+          },
+          {
+            "description": "Autobrake - Max",
+            "lvar": "A32NX_OVHD_INTLT_ANN",
+            "sim_code": "(L:A32NX_AUTOBRAKES_ARMED_MODE, Number) 3 == (L:A32NX_OVHD_INTLT_ANN) 0 == or 1 and (L:A32NX_ELEC_AC_1_BUS_IS_POWERED, Bool) and (A:CIRCUIT GENERAL PANEL ON, Bo",
+            "hardware": "Output 13",
+            "config": "main-instrument-panel/autobrake/Autobrake.mcc",
+            "aircraft": "fbw"
+          },
+          {
+            "description": "Autobrake - Max",
+            "lvar": "A32NX_ELEC_AC_1_BUS_IS_POWERED",
+            "sim_code": "(L:A32NX_AUTOBRAKES_ARMED_MODE, Number) 3 == (L:A32NX_OVHD_INTLT_ANN) 0 == or 1 and (L:A32NX_ELEC_AC_1_BUS_IS_POWERED, Bool) and (A:CIRCUIT GENERAL PANEL ON, Bo",
+            "hardware": "Output 13",
+            "config": "main-instrument-panel/autobrake/Autobrake.mcc",
+            "aircraft": "fbw"
+          },
+          {
+            "description": "Autobrake - Low Decel",
+            "lvar": "A32NX_AUTOBRAKES_DECEL_LIGHT",
+            "sim_code": "(L:A32NX_AUTOBRAKES_DECEL_LIGHT, Bool) (L:A32NX_AUTOBRAKES_ARMED_MODE, Number) 1 == and (L:A32NX_OVHD_INTLT_ANN) 0 == or 1 and (L:A32NX_ELEC_AC_1_BUS_IS_POWERED",
+            "hardware": "Output 8",
+            "config": "main-instrument-panel/autobrake/Autobrake.mcc",
+            "aircraft": "fbw"
+          },
+          {
+            "description": "Autobrake - Low Decel",
+            "lvar": "A32NX_AUTOBRAKES_ARMED_MODE",
+            "sim_code": "(L:A32NX_AUTOBRAKES_DECEL_LIGHT, Bool) (L:A32NX_AUTOBRAKES_ARMED_MODE, Number) 1 == and (L:A32NX_OVHD_INTLT_ANN) 0 == or 1 and (L:A32NX_ELEC_AC_1_BUS_IS_POWERED",
+            "hardware": "Output 8",
+            "config": "main-instrument-panel/autobrake/Autobrake.mcc",
+            "aircraft": "fbw"
+          },
+          {
+            "description": "Autobrake - Low Decel",
+            "lvar": "A32NX_OVHD_INTLT_ANN",
+            "sim_code": "(L:A32NX_AUTOBRAKES_DECEL_LIGHT, Bool) (L:A32NX_AUTOBRAKES_ARMED_MODE, Number) 1 == and (L:A32NX_OVHD_INTLT_ANN) 0 == or 1 and (L:A32NX_ELEC_AC_1_BUS_IS_POWERED",
+            "hardware": "Output 8",
+            "config": "main-instrument-panel/autobrake/Autobrake.mcc",
+            "aircraft": "fbw"
+          }
+        ]
+      },
+      "gerber_zip": "../09-autobrake/Gerber.zip",
+      "preview_top": "09-autobrake-top.svg",
+      "preview_bottom": "09-autobrake-bottom.svg"
+    },
+    {
+      "id": "10-chrono",
+      "pcbway_ready": true,
+      "skip_reason": null,
+      "copper_layers": 2,
+      "size_mm": {
+        "w": 89.28,
+        "h": 89.28
+      },
+      "missing_required": [],
+      "has_silk": true,
+      "has_npth": true,
+      "has_paste": false,
+      "bom": null,
+      "sim_bindings": {
+        "count": 16,
+        "unique_lvars": [
+          "A32NX_CHRONO_ELAPSED_TIME",
+          "A32NX_CHRONO_ET_ELAPSED_TIME",
+          "A32NX_ELEC_AC_1_BUS_IS_POWERED",
+          "A32NX_ELEC_DC_ESS_BUS_IS_POWERED"
+        ],
+        "sample": [
+          {
+            "description": "Chrono - CHR - Mins",
+            "lvar": "A32NX_CHRONO_ELAPSED_TIME",
+            "sim_code": "(L:A32NX_CHRONO_ELAPSED_TIME) 60 / flr",
+            "hardware": null,
+            "config": "main-instrument-panel/digital-chronometer/Chrono.mcc",
+            "aircraft": "fbw"
+          },
+          {
+            "description": "Chrono - CHR - Mins (Off)",
+            "lvar": "A32NX_CHRONO_ELAPSED_TIME",
+            "sim_code": "(L:A32NX_CHRONO_ELAPSED_TIME) 60 / flr",
+            "hardware": null,
+            "config": "main-instrument-panel/digital-chronometer/Chrono.mcc",
+            "aircraft": "fbw"
+          },
+          {
+            "description": "Chrono - CHR - Seconds",
+            "lvar": "A32NX_CHRONO_ELAPSED_TIME",
+            "sim_code": "(L:A32NX_CHRONO_ELAPSED_TIME) 60 % flr",
+            "hardware": null,
+            "config": "main-instrument-panel/digital-chronometer/Chrono.mcc",
+            "aircraft": "fbw"
+          },
+          {
+            "description": "Chrono - UTC - Hours",
+            "lvar": null,
+            "sim_code": "(E:ZULU TIME,second) 3600 / flr",
+            "hardware": null,
+            "config": "main-instrument-panel/digital-chronometer/Chrono.mcc",
+            "aircraft": "unknown"
+          },
+          {
+            "description": "Chrono - UTC - Mins",
+            "lvar": null,
+            "sim_code": "(E:ZULU TIME,second) 3600 % 60 / flr",
+            "hardware": null,
+            "config": "main-instrument-panel/digital-chronometer/Chrono.mcc",
+            "aircraft": "unknown"
+          },
+          {
+            "description": "Chrono - UTC - Seconds",
+            "lvar": null,
+            "sim_code": "(E:ZULU TIME,second) 60 % flr",
+            "hardware": null,
+            "config": "main-instrument-panel/digital-chronometer/Chrono.mcc",
+            "aircraft": "unknown"
+          },
+          {
+            "description": "Chrono - UTC - Date",
+            "lvar": null,
+            "sim_code": "(E:ZULU MONTH OF YEAR, number) 10000 * (E:ZULU DAY OF MONTH, number) 100 * + (E:ZULU YEAR, number) 2000 - +",
+            "hardware": null,
+            "config": "main-instrument-panel/digital-chronometer/Chrono.mcc",
+            "aircraft": "unknown"
+          },
+          {
+            "description": "Chrono - ET - Hours",
+            "lvar": "A32NX_CHRONO_ET_ELAPSED_TIME",
+            "sim_code": "(L:A32NX_CHRONO_ET_ELAPSED_TIME) 3600 / flr",
+            "hardware": null,
+            "config": "main-instrument-panel/digital-chronometer/Chrono.mcc",
+            "aircraft": "fbw"
+          },
+          {
+            "description": "Chrono - ET - Hours (Decimal Off)",
+            "lvar": "A32NX_CHRONO_ET_ELAPSED_TIME",
+            "sim_code": "(L:A32NX_CHRONO_ET_ELAPSED_TIME) 3600 / flr",
+            "hardware": null,
+            "config": "main-instrument-panel/digital-chronometer/Chrono.mcc",
+            "aircraft": "fbw"
+          },
+          {
+            "description": "Clock - ET - Mins",
+            "lvar": "A32NX_CHRONO_ET_ELAPSED_TIME",
+            "sim_code": "(L:A32NX_CHRONO_ET_ELAPSED_TIME) 3600 % 60 / flr",
+            "hardware": null,
+            "config": "main-instrument-panel/digital-chronometer/Chrono.mcc",
+            "aircraft": "fbw"
+          },
+          {
+            "description": "Lights - Integral Lights On (AC Power)",
+            "lvar": "A32NX_ELEC_AC_1_BUS_IS_POWERED",
+            "sim_code": "(L:A32NX_ELEC_AC_1_BUS_IS_POWERED, Bool)",
+            "hardware": "Output 4|Output 5|Output 6|Output 7",
+            "config": "main-instrument-panel/digital-chronometer/Chrono.mcc",
+            "aircraft": "fbw"
+          },
+          {
+            "description": "Lights - Integral Lighting Brightness",
+            "lvar": null,
+            "sim_code": "(A:LIGHT POTENTIOMETER:85, PERCENT)",
+            "hardware": "Backlight_Brt",
+            "config": "main-instrument-panel/digital-chronometer/Chrono.mcc",
+            "aircraft": "unknown"
+          }
+        ]
+      },
+      "gerber_zip": "../10-chrono/Gerber.zip",
+      "preview_top": "10-chrono-top.svg",
+      "preview_bottom": "10-chrono-bottom.svg"
+    },
+    {
+      "id": "11-illumination",
+      "pcbway_ready": true,
+      "skip_reason": null,
+      "copper_layers": 2,
+      "size_mm": {
+        "w": 113.04,
+        "h": 102.81
+      },
+      "missing_required": [],
+      "has_silk": true,
+      "has_npth": true,
+      "has_paste": false,
+      "bom": null,
+      "sim_bindings": {
+        "count": 0,
+        "unique_lvars": [],
+        "sample": []
+      },
+      "gerber_zip": "../11-illumination/Gerber.zip",
+      "preview_top": "11-illumination-top.svg",
+      "preview_bottom": "11-illumination-bottom.svg"
+    },
+    {
+      "id": "12-mini-overhead",
+      "pcbway_ready": true,
+      "skip_reason": null,
+      "copper_layers": 2,
+      "size_mm": {
+        "w": 190.5,
+        "h": 89.0
+      },
+      "missing_required": [],
+      "has_silk": true,
+      "has_npth": true,
+      "has_paste": false,
+      "bom": null,
+      "sim_bindings": {
+        "count": 63,
+        "unique_lvars": [
+          "A32NX_ELEC_AC_1_BUS_IS_POWERED",
+          "A32NX_ELEC_AC_2_BUS_IS_POWERED",
+          "A32NX_ELEC_AC_ESS_BUS_IS_POWERED",
+          "A32NX_ELEC_AC_ESS_SHED_BUS_IS_POWERED",
+          "A32NX_ELEC_AC_STAT_INV_BUS_IS_POWERED",
+          "A32NX_ELEC_DC_BAT_BUS_IS_POWERED",
+          "A32NX_OVHD_APU_MASTER_SW_PB_HAS_FAULT",
+          "A32NX_OVHD_APU_MASTER_SW_PB_IS_ON",
+          "A32NX_OVHD_APU_START_PB_IS_AVAILABLE",
+          "A32NX_OVHD_APU_START_PB_IS_ON",
+          "A32NX_OVHD_ELEC_BAT_1_PB_HAS_FAULT",
+          "A32NX_OVHD_ELEC_BAT_1_PB_IS_AUTO",
+          "A32NX_OVHD_INTLT_ANN",
+          "A32NX_OVHD_PNEU_APU_BLEED_PB_HAS_FAULT",
+          "A32NX_OVHD_PNEU_APU_BLEED_PB_IS_ON",
+          "I_OH_ELEC_APU_MASTER_L",
+          "I_OH_ELEC_APU_MASTER_U",
+          "I_OH_ELEC_APU_START_L",
+          "I_OH_ELEC_APU_START_U",
+          "I_OH_ELEC_BAT1_L",
+          "I_OH_ELEC_BAT1_U",
+          "I_OH_ELEC_EXT_PWR_L",
+          "I_OH_ELEC_EXT_PWR_U",
+          "I_OH_FUEL_LEFT_1_L",
+          "I_OH_FUEL_LEFT_1_U",
+          "I_OH_PNEUMATIC_APU_BLEED_L",
+          "I_OH_PNEUMATIC_APU_BLEED_U",
+          "I_OH_PNEUMATIC_WING_ANTI_ICE_L",
+          "I_OH_PNEUMATIC_WING_ANTI_ICE_U",
+          "N_BRIGHTNESS_ANNUNCIATORS",
+          "N_OH_LIGHTING_OVD"
+        ],
+        "sample": [
+          {
+            "description": "Mini OVHD - Integral Lighting",
+            "lvar": "N_OH_LIGHTING_OVD",
+            "sim_code": "(L:N_OH_LIGHTING_OVD)",
+            "hardware": "Output 16|Output 17|Output 18|Output 19|Output 20|Output 21|Output 22|Output 23",
+            "config": "overhead/mini-overhead/MiniOverheadFenix.mcc",
+            "aircraft": "fenix"
+          },
+          {
+            "description": "Mini OVHD - Integral Lighting Brightness (Backlight LEDs)",
+            "lvar": null,
+            "sim_code": null,
+            "hardware": "Backlight Brt",
+            "config": "overhead/mini-overhead/MiniOverheadFenix.mcc",
+            "aircraft": "fenix"
+          },
+          {
+            "description": "Mini OVHD - Anti Ice - Fault",
+            "lvar": "I_OH_PNEUMATIC_WING_ANTI_ICE_U",
+            "sim_code": "(L:I_OH_PNEUMATIC_WING_ANTI_ICE_U)",
+            "hardware": "Output 0",
+            "config": "overhead/mini-overhead/MiniOverheadFenix.mcc",
+            "aircraft": "fenix"
+          },
+          {
+            "description": "Mini OVHD - Anti Ice - On",
+            "lvar": "I_OH_PNEUMATIC_WING_ANTI_ICE_L",
+            "sim_code": "(L:I_OH_PNEUMATIC_WING_ANTI_ICE_L)",
+            "hardware": "Output 1",
+            "config": "overhead/mini-overhead/MiniOverheadFenix.mcc",
+            "aircraft": "fenix"
+          },
+          {
+            "description": "Mini OVHD - Battery - Fault",
+            "lvar": "I_OH_ELEC_BAT1_U",
+            "sim_code": "(L:I_OH_ELEC_BAT1_U)",
+            "hardware": "Output 2",
+            "config": "overhead/mini-overhead/MiniOverheadFenix.mcc",
+            "aircraft": "fenix"
+          },
+          {
+            "description": "Mini OVHD - Battery - Off",
+            "lvar": "I_OH_ELEC_BAT1_L",
+            "sim_code": "(L:I_OH_ELEC_BAT1_L)",
+            "hardware": "Output 3",
+            "config": "overhead/mini-overhead/MiniOverheadFenix.mcc",
+            "aircraft": "fenix"
+          },
+          {
+            "description": "Mini OVHD - External Power - Available",
+            "lvar": "I_OH_ELEC_EXT_PWR_U",
+            "sim_code": "(L:I_OH_ELEC_EXT_PWR_U)",
+            "hardware": "Output 4",
+            "config": "overhead/mini-overhead/MiniOverheadFenix.mcc",
+            "aircraft": "fenix"
+          },
+          {
+            "description": "Mini OVHD - External Power - On",
+            "lvar": "I_OH_ELEC_EXT_PWR_L",
+            "sim_code": "(L:I_OH_ELEC_EXT_PWR_L)",
+            "hardware": "Output 5",
+            "config": "overhead/mini-overhead/MiniOverheadFenix.mcc",
+            "aircraft": "fenix"
+          },
+          {
+            "description": "Mini OVHD - Fuel Pumps - Fault",
+            "lvar": "I_OH_FUEL_LEFT_1_U",
+            "sim_code": "(L:I_OH_FUEL_LEFT_1_U)",
+            "hardware": "Output 6",
+            "config": "overhead/mini-overhead/MiniOverheadFenix.mcc",
+            "aircraft": "fenix"
+          },
+          {
+            "description": "Mini OVHD - Fuel Pumps - Off",
+            "lvar": "I_OH_FUEL_LEFT_1_L",
+            "sim_code": "(L:I_OH_FUEL_LEFT_1_L)",
+            "hardware": "Output 7",
+            "config": "overhead/mini-overhead/MiniOverheadFenix.mcc",
+            "aircraft": "fenix"
+          },
+          {
+            "description": "Mini OVHD - APU Master - Fault",
+            "lvar": "I_OH_ELEC_APU_MASTER_U",
+            "sim_code": "(L:I_OH_ELEC_APU_MASTER_U)",
+            "hardware": "Output 8",
+            "config": "overhead/mini-overhead/MiniOverheadFenix.mcc",
+            "aircraft": "fenix"
+          },
+          {
+            "description": "Mini OVHD - APU Master - On",
+            "lvar": "I_OH_ELEC_APU_MASTER_L",
+            "sim_code": "(L:I_OH_ELEC_APU_MASTER_L)",
+            "hardware": "Output 9",
+            "config": "overhead/mini-overhead/MiniOverheadFenix.mcc",
+            "aircraft": "fenix"
+          }
+        ]
+      },
+      "gerber_zip": "../12-mini-overhead/Gerber.zip",
+      "preview_top": "12-mini-overhead-top.svg",
+      "preview_bottom": "12-mini-overhead-bottom.svg"
+    },
+    {
+      "id": "13-atc-tcas",
+      "pcbway_ready": true,
+      "skip_reason": null,
+      "copper_layers": 2,
+      "size_mm": {
+        "w": 125.76,
+        "h": 60.01
+      },
+      "missing_required": [],
+      "has_silk": true,
+      "has_npth": true,
+      "has_paste": false,
+      "bom": null,
+      "sim_bindings": {
+        "count": 16,
+        "unique_lvars": [
+          "A32NX_ELEC_AC_1_BUS_IS_POWERED",
+          "A32NX_ELEC_AC_ESS_BUS_IS_POWERED",
+          "A32NX_OVHD_INTLT_ANN",
+          "I_XPDR_FAIL",
+          "XPNDR_act",
+          "XPNDR_clr",
+          "XPNDR_key",
+          "XPNDR_pos",
+          "XPNDR_temp",
+          "XPNDR_timeout"
+        ],
+        "sample": [
+          {
+            "description": "XPDR - CLR LVAR",
+            "lvar": "XPNDR_clr",
+            "sim_code": "(L:XPNDR_clr)",
+            "hardware": null,
+            "config": "pedestal/atc-tcas/MobiFlight Config/ATC-TCAS.mcc",
+            "aircraft": "unknown"
+          },
+          {
+            "description": "XPDR - POS LVAR",
+            "lvar": "XPNDR_pos",
+            "sim_code": "(L:XPNDR_pos)",
+            "hardware": null,
+            "config": "pedestal/atc-tcas/MobiFlight Config/ATC-TCAS.mcc",
+            "aircraft": "unknown"
+          },
+          {
+            "description": "XPDR - Numeric Keypress Handler",
+            "lvar": "XPNDR_act",
+            "sim_code": "(L:XPNDR_act,bool) if{ 0 (>L:XPNDR_act) \n(E:SIMULATION TIME,second) 7 + (>L:XPNDR_timeout) \n(L:XPNDR_clr) 2 == if{ 1 (>L:XPNDR_clr) } \n(L:XPNDR_key) (L:XPNDR_te",
+            "hardware": null,
+            "config": "pedestal/atc-tcas/MobiFlight Config/ATC-TCAS.mcc",
+            "aircraft": "unknown"
+          },
+          {
+            "description": "XPDR - Numeric Keypress Handler",
+            "lvar": "XPNDR_clr",
+            "sim_code": "(L:XPNDR_act,bool) if{ 0 (>L:XPNDR_act) \n(E:SIMULATION TIME,second) 7 + (>L:XPNDR_timeout) \n(L:XPNDR_clr) 2 == if{ 1 (>L:XPNDR_clr) } \n(L:XPNDR_key) (L:XPNDR_te",
+            "hardware": null,
+            "config": "pedestal/atc-tcas/MobiFlight Config/ATC-TCAS.mcc",
+            "aircraft": "unknown"
+          },
+          {
+            "description": "XPDR - Numeric Keypress Handler",
+            "lvar": "XPNDR_key",
+            "sim_code": "(L:XPNDR_act,bool) if{ 0 (>L:XPNDR_act) \n(E:SIMULATION TIME,second) 7 + (>L:XPNDR_timeout) \n(L:XPNDR_clr) 2 == if{ 1 (>L:XPNDR_clr) } \n(L:XPNDR_key) (L:XPNDR_te",
+            "hardware": null,
+            "config": "pedestal/atc-tcas/MobiFlight Config/ATC-TCAS.mcc",
+            "aircraft": "unknown"
+          },
+          {
+            "description": "XPDR - Numeric Keypress Handler",
+            "lvar": "XPNDR_temp",
+            "sim_code": "(L:XPNDR_act,bool) if{ 0 (>L:XPNDR_act) \n(E:SIMULATION TIME,second) 7 + (>L:XPNDR_timeout) \n(L:XPNDR_clr) 2 == if{ 1 (>L:XPNDR_clr) } \n(L:XPNDR_key) (L:XPNDR_te",
+            "hardware": null,
+            "config": "pedestal/atc-tcas/MobiFlight Config/ATC-TCAS.mcc",
+            "aircraft": "unknown"
+          },
+          {
+            "description": "XPDR - Numeric Keypress Handler",
+            "lvar": "XPNDR_pos",
+            "sim_code": "(L:XPNDR_act,bool) if{ 0 (>L:XPNDR_act) \n(E:SIMULATION TIME,second) 7 + (>L:XPNDR_timeout) \n(L:XPNDR_clr) 2 == if{ 1 (>L:XPNDR_clr) } \n(L:XPNDR_key) (L:XPNDR_te",
+            "hardware": null,
+            "config": "pedestal/atc-tcas/MobiFlight Config/ATC-TCAS.mcc",
+            "aircraft": "unknown"
+          },
+          {
+            "description": "XPDR - Timeout Handler",
+            "lvar": "XPNDR_timeout",
+            "sim_code": "(L:XPNDR_timeout) 0 != if{ (E:SIMULATION TIME,second) (L:XPNDR_timeout) > if{ 0 s0 (>L:XPNDR_timeout) l0 (>L:XPNDR_temp) l0 (>L:XPNDR_pos) l0 (>L:XPNDR_clr) } }",
+            "hardware": null,
+            "config": "pedestal/atc-tcas/MobiFlight Config/ATC-TCAS.mcc",
+            "aircraft": "unknown"
+          },
+          {
+            "description": "XPDR - 7 Segment - Zero Left Pad",
+            "lvar": null,
+            "sim_code": "(A:TRANSPONDER CODE:1,number)",
+            "hardware": null,
+            "config": "pedestal/atc-tcas/MobiFlight Config/ATC-TCAS.mcc",
+            "aircraft": "unknown"
+          },
+          {
+            "description": "XPDR - 7 Segment - Test Mode",
+            "lvar": null,
+            "sim_code": "(A:TRANSPONDER CODE:1,number)",
+            "hardware": null,
+            "config": "pedestal/atc-tcas/MobiFlight Config/ATC-TCAS.mcc",
+            "aircraft": "unknown"
+          },
+          {
+            "description": "99 - ESS Bus is Powered (AC)",
+            "lvar": "A32NX_ELEC_AC_ESS_BUS_IS_POWERED",
+            "sim_code": "(L:A32NX_ELEC_AC_ESS_BUS_IS_POWERED)",
+            "hardware": null,
+            "config": "pedestal/atc-tcas/MobiFlight Config/ATC-TCAS.mcc",
+            "aircraft": "fbw"
+          },
+          {
+            "description": "XPDR - 7 Segment - Edit Mode",
+            "lvar": null,
+            "sim_code": null,
+            "hardware": null,
+            "config": "pedestal/atc-tcas/MobiFlight Config/ATC-TCAS.mcc",
+            "aircraft": "unknown"
+          }
+        ]
+      },
+      "gerber_zip": "../13-atc-tcas/Gerber.zip",
+      "preview_top": "13-atc-tcas-top.svg",
+      "preview_bottom": "13-atc-tcas-bottom.svg"
+    },
+    {
+      "id": "14-ecam",
+      "pcbway_ready": true,
+      "skip_reason": null,
+      "copper_layers": 2,
+      "size_mm": {
+        "w": 164.08,
+        "h": 75.31
+      },
+      "missing_required": [],
+      "has_silk": true,
+      "has_npth": true,
+      "has_paste": false,
+      "bom": null,
+      "sim_bindings": {
+        "count": 0,
+        "unique_lvars": [],
+        "sample": []
+      },
+      "gerber_zip": "../14-ecam/Gerber.zip",
+      "preview_top": "14-ecam-top.svg",
+      "preview_bottom": "14-ecam-bottom.svg"
+    },
+    {
+      "id": "15-mcdu-from-json",
+      "pcbway_ready": false,
+      "skip_reason": "use 01-mcdu",
+      "copper_layers": 2,
+      "size_mm": {
+        "w": 142.24,
+        "h": 220.85
+      },
+      "missing_required": [],
+      "has_silk": true,
+      "has_npth": true,
+      "has_paste": false,
+      "bom": null,
+      "sim_bindings": {
+        "count": 0,
+        "unique_lvars": [],
+        "sample": []
+      },
+      "gerber_zip": "../15-mcdu-from-json/Gerber.zip",
+      "preview_top": "15-mcdu-from-json-top.svg",
+      "preview_bottom": "15-mcdu-from-json-bottom.svg"
+    },
+    {
+      "id": "16-terr-on-nd",
+      "pcbway_ready": true,
+      "skip_reason": null,
+      "copper_layers": 2,
+      "size_mm": {
+        "w": 49.26,
+        "h": 74.26
+      },
+      "missing_required": [],
+      "has_silk": true,
+      "has_npth": true,
+      "has_paste": false,
+      "bom": null,
+      "sim_bindings": {
+        "count": 0,
+        "unique_lvars": [],
+        "sample": []
+      },
+      "gerber_zip": "../16-terr-on-nd/Gerber.zip",
+      "preview_top": "16-terr-on-nd-top.svg",
+      "preview_bottom": "16-terr-on-nd-bottom.svg"
+    },
+    {
+      "id": "17-flood-light",
+      "pcbway_ready": true,
+      "skip_reason": null,
+      "copper_layers": 2,
+      "size_mm": {
+        "w": 147.43,
+        "h": 48.26
+      },
+      "missing_required": [],
+      "has_silk": true,
+      "has_npth": true,
+      "has_paste": false,
+      "bom": null,
+      "sim_bindings": {
+        "count": 0,
+        "unique_lvars": [],
+        "sample": []
+      },
+      "gerber_zip": "../17-flood-light/Gerber.zip",
+      "preview_top": "17-flood-light-top.svg",
+      "preview_bottom": "17-flood-light-bottom.svg"
+    },
+    {
+      "id": "18-flt-ctl-fo",
+      "pcbway_ready": true,
+      "skip_reason": null,
+      "copper_layers": 2,
+      "size_mm": {
+        "w": 146.25,
+        "h": 47.83
+      },
+      "missing_required": [],
+      "has_silk": true,
+      "has_npth": true,
+      "has_paste": false,
+      "bom": null,
+      "sim_bindings": {
+        "count": 0,
+        "unique_lvars": [],
+        "sample": []
+      },
+      "gerber_zip": "../18-flt-ctl-fo/Gerber.zip",
+      "preview_top": "18-flt-ctl-fo-top.svg",
+      "preview_bottom": "18-flt-ctl-fo-bottom.svg"
+    },
+    {
+      "id": "19-gndservices",
+      "pcbway_ready": true,
+      "skip_reason": null,
+      "copper_layers": 2,
+      "size_mm": {
+        "w": 146.25,
+        "h": 104.97
+      },
+      "missing_required": [],
+      "has_silk": true,
+      "has_npth": true,
+      "has_paste": false,
+      "bom": null,
+      "sim_bindings": {
+        "count": 0,
+        "unique_lvars": [],
+        "sample": []
+      },
+      "gerber_zip": "../19-gndservices/Gerber.zip",
+      "preview_top": "19-gndservices-top.svg",
+      "preview_bottom": "19-gndservices-bottom.svg"
+    },
+    {
+      "id": "20-fire",
+      "pcbway_ready": true,
+      "skip_reason": null,
+      "copper_layers": 2,
+      "size_mm": {
+        "w": 325.0,
+        "h": 77.0
+      },
+      "missing_required": [],
+      "has_silk": true,
+      "has_npth": true,
+      "has_paste": false,
+      "bom": null,
+      "sim_bindings": {
+        "count": 0,
+        "unique_lvars": [],
+        "sample": []
+      },
+      "gerber_zip": "../20-fire/Gerber.zip",
+      "preview_top": "20-fire-top.svg",
+      "preview_bottom": "20-fire-bottom.svg"
+    },
+    {
+      "id": "21-adirs",
+      "pcbway_ready": true,
+      "skip_reason": null,
+      "copper_layers": 2,
+      "size_mm": {
+        "w": 146.25,
+        "h": 133.55
+      },
+      "missing_required": [],
+      "has_silk": true,
+      "has_npth": true,
+      "has_paste": false,
+      "bom": null,
+      "sim_bindings": {
+        "count": 0,
+        "unique_lvars": [],
+        "sample": []
+      },
+      "gerber_zip": "../21-adirs/Gerber.zip",
+      "preview_top": "21-adirs-top.svg",
+      "preview_bottom": "21-adirs-bottom.svg"
+    },
+    {
+      "id": "22-evac",
+      "pcbway_ready": true,
+      "skip_reason": null,
+      "copper_layers": 2,
+      "size_mm": {
+        "w": 147.0,
+        "h": 48.0
+      },
+      "missing_required": [],
+      "has_silk": true,
+      "has_npth": true,
+      "has_paste": false,
+      "bom": null,
+      "sim_bindings": {
+        "count": 0,
+        "unique_lvars": [],
+        "sample": []
+      },
+      "gerber_zip": "../22-evac/Gerber.zip",
+      "preview_top": "22-evac-top.svg",
+      "preview_bottom": "22-evac-bottom.svg"
+    },
+    {
+      "id": "23-audio",
+      "pcbway_ready": true,
+      "skip_reason": null,
+      "copper_layers": 2,
+      "size_mm": {
+        "w": 146.25,
+        "h": 85.93
+      },
+      "missing_required": [],
+      "has_silk": true,
+      "has_npth": true,
+      "has_paste": false,
+      "bom": null,
+      "sim_bindings": {
+        "count": 0,
+        "unique_lvars": [],
+        "sample": []
+      },
+      "gerber_zip": "../23-audio/Gerber.zip",
+      "preview_top": "23-audio-top.svg",
+      "preview_bottom": "23-audio-bottom.svg"
+    },
+    {
+      "id": "24-radio",
+      "pcbway_ready": true,
+      "skip_reason": null,
+      "copper_layers": 2,
+      "size_mm": {
+        "w": 146.25,
+        "h": 95.45
+      },
+      "missing_required": [],
+      "has_silk": true,
+      "has_npth": true,
+      "has_paste": false,
+      "bom": null,
+      "sim_bindings": {
+        "count": 0,
+        "unique_lvars": [],
+        "sample": []
+      },
+      "gerber_zip": "../24-radio/Gerber.zip",
+      "preview_top": "24-radio-top.svg",
+      "preview_bottom": "24-radio-bottom.svg"
+    },
+    {
+      "id": "25-cargo-heat",
+      "pcbway_ready": true,
+      "skip_reason": null,
+      "copper_layers": 2,
+      "size_mm": {
+        "w": 146.25,
+        "h": 295.07
+      },
+      "missing_required": [],
+      "has_silk": true,
+      "has_npth": true,
+      "has_paste": false,
+      "bom": null,
+      "sim_bindings": {
+        "count": 0,
+        "unique_lvars": [],
+        "sample": []
+      },
+      "gerber_zip": "../25-cargo-heat/Gerber.zip",
+      "preview_top": "25-cargo-heat-top.svg",
+      "preview_bottom": "25-cargo-heat-bottom.svg"
+    },
+    {
+      "id": "26-emer-elec",
+      "pcbway_ready": true,
+      "skip_reason": null,
+      "copper_layers": 2,
+      "size_mm": {
+        "w": 144.67,
+        "h": 296.38
+      },
+      "missing_required": [],
+      "has_silk": true,
+      "has_npth": true,
+      "has_paste": false,
+      "bom": null,
+      "sim_bindings": {
+        "count": 0,
+        "unique_lvars": [],
+        "sample": []
+      },
+      "gerber_zip": "../26-emer-elec/Gerber.zip",
+      "preview_top": "26-emer-elec-top.svg",
+      "preview_bottom": "26-emer-elec-bottom.svg"
+    },
+    {
+      "id": "27-aircond",
+      "pcbway_ready": true,
+      "skip_reason": null,
+      "copper_layers": 2,
+      "size_mm": {
+        "w": 324.05,
+        "h": 114.5
+      },
+      "missing_required": [],
+      "has_silk": true,
+      "has_npth": true,
+      "has_paste": false,
+      "bom": null,
+      "sim_bindings": {
+        "count": 0,
+        "unique_lvars": [],
+        "sample": []
+      },
+      "gerber_zip": "../27-aircond/Gerber.zip",
+      "preview_top": "27-aircond-top.svg",
+      "preview_bottom": "27-aircond-bottom.svg"
+    },
+    {
+      "id": "28-flt-ctl",
+      "pcbway_ready": true,
+      "skip_reason": null,
+      "copper_layers": 2,
+      "size_mm": {
+        "w": 150.0,
+        "h": 150.0
+      },
+      "missing_required": [],
+      "has_silk": true,
+      "has_npth": true,
+      "has_paste": false,
+      "bom": null,
+      "sim_bindings": {
+        "count": 0,
+        "unique_lvars": [],
+        "sample": []
+      },
+      "gerber_zip": "../28-flt-ctl/Gerber.zip",
+      "preview_top": "28-flt-ctl-top.svg",
+      "preview_bottom": "28-flt-ctl-bottom.svg"
+    },
+    {
+      "id": "29-elec",
+      "pcbway_ready": true,
+      "skip_reason": null,
+      "copper_layers": 2,
+      "size_mm": {
+        "w": 325.0,
+        "h": 106.0
+      },
+      "missing_required": [],
+      "has_silk": true,
+      "has_npth": true,
+      "has_paste": false,
+      "bom": null,
+      "sim_bindings": {
+        "count": 0,
+        "unique_lvars": [],
+        "sample": []
+      },
+      "gerber_zip": "../29-elec/Gerber.zip",
+      "preview_top": "29-elec-top.svg",
+      "preview_bottom": "29-elec-bottom.svg"
+    },
+    {
+      "id": "30-hyd-fuel",
+      "pcbway_ready": true,
+      "skip_reason": null,
+      "copper_layers": 2,
+      "size_mm": {
+        "w": 325.0,
+        "h": 134.0
+      },
+      "missing_required": [],
+      "has_silk": true,
+      "has_npth": true,
+      "has_paste": false,
+      "bom": null,
+      "sim_bindings": {
+        "count": 0,
+        "unique_lvars": [],
+        "sample": []
+      },
+      "gerber_zip": "../30-hyd-fuel/Gerber.zip",
+      "preview_top": "30-hyd-fuel-top.svg",
+      "preview_bottom": "30-hyd-fuel-bottom.svg"
+    }
+  ],
+  "goal": "pcbway_order_then_direct_comparison"
+}

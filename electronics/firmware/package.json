@@ -1,0 +1,8 @@
+{
+  "name": "a320-sim-fcs-hub-firmware",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test:law": "npx --yes tsx src/lawOracle.test.ts"
+  }
+}

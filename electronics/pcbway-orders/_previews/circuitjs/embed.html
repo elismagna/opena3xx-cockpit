@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>CircuitJS</title>
+  <style>
+    html, body { margin: 0; height: 100%; width: 100%; overflow: hidden; background: #000; }
+    #circuitjsdiv { position: absolute; inset: 0; }
+  </style>
+  <script src="lz-string.min.js"></script>
+</head>
+<body>
+  <div id="circuitjsdiv"></div>
+  <script>
+    (function () {
+      const params = new URLSearchParams(location.search);
+      let start = params.get("cct") || "";
+      // URLSearchParams already decodes once
+      window.CircuitJSParams = {
+        startCircuitText: start,
+        // Full Falstad chrome: menus, right sliders, bottom scopes
+        hideMenu: false,
+        mouseWheelSensitivity: 0.85
+      };
+      let queued = null;
+      window.addEventListener("message", (ev) => {
+        const msg = ev.data || {};
+        if (msg.type === "import" && typeof msg.circuit === "string") {
+          if (window.CircuitJS1 && window.CircuitJS1.importCircuit) {
+            window.CircuitJS1.importCircuit(msg.circuit);
+            try { window.CircuitJS1.setSimRunning(true); } catch (_) {}
+          } else {
+            queued = msg.circuit;
+          }
+        }
+        if (msg.type === "run" && window.CircuitJS1) {
+          try { window.CircuitJS1.setSimRunning(!!msg.value); } catch (_) {}
+        }
+      });
+      window.oncircuitjsloaded = function () {
+        if (!window.CircuitJS1 && window.cirsim) window.CircuitJS1 = window.cirsim;
+        if (queued && window.CircuitJS1 && window.CircuitJS1.importCircuit) {
+          window.CircuitJS1.importCircuit(queued);
+          queued = null;
+        }
+        try {
+          if (window.CircuitJS1 && window.CircuitJS1.setSimRunning) {
+            window.CircuitJS1.setSimRunning(true);
+          }
+        } catch (_) {}
+        parent.postMessage({
+          type: "circuitjs-ready",
+          hasApi: !!(window.CircuitJS1 && window.CircuitJS1.importCircuit)
+        }, "*");
+      };
+    })();
+  </script>
+  <script src="circuitjs1/circuitjs1.nocache.js"></script>
+</body>
+</html>

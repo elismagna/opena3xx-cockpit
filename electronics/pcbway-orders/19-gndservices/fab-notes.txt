@@ -1,0 +1,10 @@
+PCBWay fab notes — 19-gndservices (Rev0 from face SVG)
+Source: vendor\mobiflight-panels\aircraft\airbus-a32x\overhead\gndservices\a320-overhead-groundservices.svg
+Size: 146.25 × 104.97 mm
+Mount holes: 8
+Button footprints: 13
+Knob/extra: 0
+Header pins: 28
+
+2-layer, 1.6 mm, HASL, black or green mask, white silk, qty 5.
+VERIFY in Gerber viewer / _previews before order.

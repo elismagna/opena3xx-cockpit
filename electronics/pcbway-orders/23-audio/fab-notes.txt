@@ -1,0 +1,10 @@
+PCBWay fab notes — 23-audio (Rev0 from face SVG)
+Source: vendor\mobiflight-panels\aircraft\airbus-a32x\overhead\audio\a320-overhead-audio.svg
+Size: 146.25 × 85.93 mm
+Mount holes: 8
+Button footprints: 26
+Knob/extra: 16
+Header pins: 40
+
+2-layer, 1.6 mm, HASL, black or green mask, white silk, qty 5.
+VERIFY in Gerber viewer / _previews before order.

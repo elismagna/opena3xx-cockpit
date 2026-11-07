@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>A320 panel boards — 3D</title>
+  <style>
+    :root {
+      --bg: #101214;
+      --panel: #171a1e;
+      --line: #2c333b;
+      --text: #eef1f4;
+      --muted: #9aa3ab;
+      --accent: #3f9d6c;
+      --warn: #c9a227;
+      --card: #1c2127;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0; height: 100%; color: var(--text); background: var(--bg);
+      font-family: "Segoe UI", system-ui, sans-serif; overflow: hidden;
+    }
+    #app {
+      display: grid;
+      grid-template-columns: 240px minmax(0, 1fr) 320px;
+      height: 100%;
+    }
+    .rail, .inspect {
+      background: var(--panel);
+      display: flex; flex-direction: column; min-height: 0;
+    }
+    .rail { border-right: 1px solid var(--line); }
+    .inspect { border-left: 1px solid var(--line); }
+    .brand {
+      padding: 1rem 1rem 0.75rem;
+      border-bottom: 1px solid var(--line);
+    }
+    .brand h1 { margin: 0; font-size: 1.05rem; font-weight: 650; letter-spacing: -0.02em; }
+    .brand p { margin: 0.3rem 0 0; color: var(--muted); font-size: 0.78rem; line-height: 1.35; }
+    .tools {
+      display: flex; flex-wrap: wrap; gap: 0.4rem;
+      padding: 0.65rem 0.75rem; border-bottom: 1px solid var(--line);
+    }
+    button, a.btn {
+      appearance: none; border: 1px solid var(--line); background: var(--card);
+      color: var(--text); border-radius: 8px; padding: 0.42rem 0.65rem;
+      font: inherit; font-size: 0.78rem; cursor: pointer; text-decoration: none;
+    }
+    button:hover, a.btn:hover { border-color: var(--accent); }
+    button.on { border-color: var(--accent); color: #8fe0b4; }
+    #boards { overflow: auto; padding: 0.45rem; flex: 1; }
+    .board {
+      width: 100%; text-align: left; padding: 0.65rem 0.7rem; margin-bottom: 0.35rem;
+      border-radius: 10px; border: 1px solid transparent; background: transparent;
+      display: grid; gap: 0.15rem;
+    }
+    .board:hover { background: #1a1f25; }
+    .board.active { border-color: color-mix(in srgb, var(--accent) 55%, transparent); background: #18241e; }
+    .board .name { font-size: 0.9rem; font-weight: 600; }
+    .board .meta { color: var(--muted); font-size: 0.72rem; }
+    .board .ready {
+      font-size: 0.68rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.04em;
+    }
+    .board .ready.skip { color: var(--warn); }
+    #stage { position: relative; background:
+      radial-gradient(900px 500px at 50% 20%, #1a2420 0%, transparent 55%),
+      radial-gradient(700px 400px at 80% 100%, #151a22 0%, transparent 50%),
+      var(--bg);
+    }
+    #c { width: 100%; height: 100%; display: block; }
+    .hintbar {
+      position: absolute; left: 1rem; right: 1rem; bottom: 1rem;
+      display: flex; justify-content: space-between; gap: 1rem;
+      color: var(--muted); font-size: 0.75rem; pointer-events: none;
+    }
+    .inspect-head {
+      padding: 1rem 1rem 0.75rem; border-bottom: 1px solid var(--line);
+    }
+    .inspect-head h2 { margin: 0; font-size: 1.15rem; font-weight: 650; letter-spacing: -0.02em; }
+    .inspect-head .blurb { margin: 0.35rem 0 0; color: var(--muted); font-size: 0.82rem; line-height: 1.4; }
+    .chips { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.7rem; }
+    .chip {
+      font-size: 0.72rem; color: var(--muted); border: 1px solid var(--line);
+      border-radius: 999px; padding: 0.18rem 0.5rem; background: var(--card);
+    }
+    .chip.good { color: #8fe0b4; border-color: color-mix(in srgb, var(--accent) 45%, transparent); }
+    .body { overflow: auto; padding: 0.85rem 1rem 1.25rem; flex: 1; }
+    .card {
+      background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+      padding: 0.85rem 0.9rem; margin-bottom: 0.85rem;
+    }
+    .card h3 { margin: 0 0 0.35rem; font-size: 0.95rem; }
+    .card p { margin: 0; color: var(--muted); font-size: 0.8rem; line-height: 1.4; }
+    .card .role {
+      margin-top: 0.55rem; padding: 0.55rem 0.65rem; border-radius: 8px;
+      background: #14191e; border: 1px solid var(--line); color: var(--text); font-size: 0.82rem;
+    }
+    .card .role b { color: var(--muted); font-weight: 500; display: block; font-size: 0.7rem; margin-bottom: 0.2rem; }
+    .empty { color: var(--muted); font-size: 0.82rem; line-height: 1.45; }
+    .section-label {
+      font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em;
+      color: var(--muted); margin: 0.4rem 0 0.45rem;
+    }
+    .plist { display: flex; flex-direction: column; gap: 0.3rem; }
+    .prow {
+      display: grid; grid-template-columns: 1fr auto; gap: 0.35rem;
+      align-items: center; text-align: left; width: 100%;
+      padding: 0.55rem 0.6rem; border-radius: 9px; border: 1px solid transparent;
+      background: transparent; color: inherit;
+    }
+    .prow:hover { background: #1a1f25; }
+    .prow.active { border-color: var(--line); background: #1a2220; }
+    .prow .l { font-size: 0.82rem; font-weight: 550; }
+    .prow .s { color: var(--muted); font-size: 0.72rem; margin-top: 0.1rem; }
+    .prow .t { color: var(--muted); font-size: 0.7rem; }
+    .tabs { display: flex; gap: 0.35rem; margin-bottom: 0.65rem; }
+    .tabs button { flex: 1; }
+    @media (max-width: 980px) {
+      #app { grid-template-columns: 1fr; grid-template-rows: 30vh 1fr 34vh; }
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <aside class="rail">
+      <div class="brand">
+        <h1>Panel boards</h1>
+        <p>Pick a board, spin it, click what the pilot touches.</p>
+      </div>
+      <div class="tools">
+        <button type="button" id="btnFlip">Flip board</button>
+        <button type="button" id="btnParts" class="on">Show parts</button>
+        <a class="btn" href="sim.html" id="linkSim">Sim</a>
+        <a class="btn" href="index.html">Gallery</a>
+      </div>
+      <div id="boards"></div>
+    </aside>
+
+    <main id="stage">
+      <canvas id="c"></canvas>
+      <div class="hintbar">
+        <span>Drag to orbit · scroll to zoom</span>
+        <span id="status">Loading…</span>
+      </div>
+    </main>
+
+    <aside class="inspect">
+      <div class="inspect-head">
+        <h2 id="title">—</h2>
+        <p class="blurb" id="blurb"></p>
+        <div class="chips" id="chips"></div>
+      </div>
+      <div class="body">
+        <div class="card" id="selection">
+          <p class="empty">Click a button, knob, or light on the board. You’ll see what it is for in plain language.</p>
+        </div>
+        <div class="tabs">
+          <button type="button" class="on" data-tab="face" id="tabFace">On the face</button>
+          <button type="button" data-tab="board" id="tabBoard">On the PCB</button>
+        </div>
+        <div class="section-label" id="listLabel">Pilot controls</div>
+        <div class="plist" id="plist"></div>
+      </div>
+    </aside>
+  </div>
+
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@0.170.0/build/three.module.js",
+      "three/addons/": "https://unpkg.com/three@0.170.0/examples/jsm/"
+    }
+  }
+  </script>
+  <script type="module">
+    import * as THREE from "three";
+    import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+    import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+
+    const ASSET = {
+      switch: "assets/korry.glb",
+      encoder: "assets/knob.glb",
+      led: "assets/led.glb",
+      connector: "assets/header.glb",
+      ic: "assets/chip.glb",
+      mcu: "assets/mcu.glb",
+    };
+    const SCALE = {
+      switch: 1.15,
+      encoder: 1.05,
+      led: 1.25,
+      connector: 1.0,
+      ic: 0.85,
+      mcu: 0.6,
+      mount: 0.5,
+      passive: 0.4,
+      other: 0.6,
+    };
+
+    const params = new URLSearchParams(location.search);
+    let boardId = params.get("board") || "21-adirs";
+    const embed = params.get("embed") === "1";
+    let catalog = { boards: [] };
+    let board = null;
+    let showParts = true;
+    let tab = "face";
+    let selectedId = null;
+    if (embed) {
+      document.documentElement.classList.add("embed");
+      document.getElementById("app").style.gridTemplateColumns = "1fr";
+      document.querySelector(".rail").style.display = "none";
+      document.querySelector(".inspect").style.display = "none";
+    }
+    const prototypes = {};
+    const markerById = new Map();
+
+    const canvas = document.getElementById("c");
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+    renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+    renderer.setClearColor(0x101214, 1);
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(40, 1, 0.1, 2500);
+    const controls = new OrbitControls(camera, canvas);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.06;
+
+    scene.add(new THREE.HemisphereLight(0xdde7ff, 0x1a1c18, 0.85));
+    const key = new THREE.DirectionalLight(0xffffff, 1.15);
+    key.position.set(70, 140, 90);
+    scene.add(key);
+    const rim = new THREE.DirectionalLight(0x88aacc, 0.4);
+    rim.position.set(-90, 40, -60);
+    scene.add(rim);
+
+    const root = new THREE.Group();
+    scene.add(root);
+    const markers = new THREE.Group();
+    root.add(markers);
+
+    const texLoader = new THREE.TextureLoader();
+    const gltfLoader = new GLTFLoader();
+    const raycaster = new THREE.Raycaster();
+    const pointer = new THREE.Vector2();
+
+    function setStatus(t) { document.getElementById("status").textContent = t; }
+
+    function resize() {
+      const stage = document.getElementById("stage");
+      const w = stage.clientWidth, h = stage.clientHeight;
+      renderer.setSize(w, h, false);
+      camera.aspect = w / Math.max(h, 1);
+      camera.updateProjectionMatrix();
+    }
+    addEventListener("resize", resize);
+
+    async function loadPrototype(kind) {
+      if (prototypes[kind]) return prototypes[kind];
+      const url = ASSET[kind];
+      if (!url) {
+        const g = new THREE.Mesh(
+          new THREE.SphereGeometry(1.2, 12, 10),
+          new THREE.MeshStandardMaterial({ color: 0x888888, roughness: 0.5 })
+        );
+        prototypes[kind] = g;
+        return g;
+      }
+      const gltf = await gltfLoader.loadAsync(url);
+      prototypes[kind] = gltf.scene;
+      return prototypes[kind];
+    }
+
+    function clearRoot() {
+      [...root.children].forEach((ch) => {
+        if (ch === markers) return;
+        root.remove(ch);
+        ch.traverse?.((o) => {
+          o.geometry?.dispose?.();
+          const mats = o.material ? (Array.isArray(o.material) ? o.material : [o.material]) : [];
+          mats.forEach((m) => { m.map?.dispose?.(); m.dispose?.(); });
+        });
+      });
+      while (markers.children.length) {
+        const m = markers.children.pop();
+        m.traverse?.((o) => {
+          o.geometry?.dispose?.();
+          o.material?.dispose?.();
+        });
+      }
+      if (!root.children.includes(markers)) root.add(markers);
+      markerById.clear();
+    }
+
+    function loadTex(url) {
+      return new Promise((resolve, reject) => texLoader.load(url, resolve, undefined, reject));
+    }
+
+    function notifySelect(part) {
+      if (!part) return;
+      if (window.parent && window.parent !== window) {
+        parent.postMessage({
+          type: "select-part",
+          board: boardId,
+          id: part.id,
+          label: part.label,
+          kind: part.kind,
+        }, "*");
+      }
+    }
+
+    async function showBoard(id) {
+      board = catalog.boards.find((b) => b.id === id) || catalog.boards[0];
+      boardId = board.id;
+      const q = new URLSearchParams({ board: boardId });
+      if (embed) q.set("embed", "1");
+      history.replaceState(null, "", `?${q}`);
+      const sim = document.getElementById("linkSim");
+      if (sim) sim.href = `sim.html?board=${encodeURIComponent(boardId)}`;
+      setStatus(`Loading ${board.title}…`);
+      clearRoot();
+
+      const vb = board.viewBox;
+      const w = board.size_mm?.w || vb.w;
+      const h = board.size_mm?.h || vb.h;
+      const thick = 1.6;
+
+      const [topTex, botTex] = await Promise.all([
+        loadTex(`${boardId}-top.svg`),
+        loadTex(`${boardId}-bottom.svg`),
+      ]);
+      for (const t of [topTex, botTex]) {
+        t.colorSpace = THREE.SRGBColorSpace;
+        t.anisotropy = renderer.capabilities.getMaxAnisotropy();
+      }
+
+      const geo = new THREE.BoxGeometry(w, thick, h);
+      const edge = new THREE.MeshStandardMaterial({ color: 0x163528, roughness: 0.65, metalness: 0.08 });
+      const top = new THREE.MeshStandardMaterial({ map: topTex, roughness: 0.5, metalness: 0.04 });
+      const bot = new THREE.MeshStandardMaterial({ map: botTex, roughness: 0.5, metalness: 0.04 });
+      root.add(new THREE.Mesh(geo, [edge, edge, top, bot, edge, edge]));
+
+      // Soft ground shadow plane
+      const shadow = new THREE.Mesh(
+        new THREE.CircleGeometry(Math.max(w, h) * 0.55, 48),
+        new THREE.MeshBasicMaterial({ color: 0x000000, transparent: true, opacity: 0.28 })
+      );
+      shadow.rotation.x = -Math.PI / 2;
+      shadow.position.y = -thick / 2 - 0.2;
+      root.add(shadow);
+
+      for (const p of board.parts) {
+        if (p.kind === "mount" || p.kind === "passive") continue;
+        const proto = await loadPrototype(p.kind);
+        const inst = proto.clone(true);
+        const s = SCALE[p.kind] || 0.8;
+        inst.scale.setScalar(s);
+        const lx = (p.x - vb.x) - w / 2;
+        const lz = -((p.y - vb.y) - h / 2);
+        inst.position.set(lx, thick / 2, lz);
+        inst.traverse((o) => {
+          if (o.isMesh) {
+            o.castShadow = false;
+            o.userData.partId = p.id;
+          }
+        });
+        inst.userData.partId = p.id;
+        markers.add(inst);
+        markerById.set(p.id, inst);
+      }
+      markers.visible = showParts;
+
+      // Frame the whole board, not a zoomed corner
+      const box = new THREE.Box3().setFromObject(root);
+      const size = box.getSize(new THREE.Vector3());
+      const center = box.getCenter(new THREE.Vector3());
+      const span = Math.max(size.x, size.z, size.y) * 1.15;
+      controls.target.copy(center);
+      camera.position.set(center.x + span * 0.55, center.y + span * 0.7, center.z + span * 0.75);
+      controls.update();
+
+      renderRail();
+      renderInspect(null);
+      setStatus(board.summary);
+    }
+
+    function renderRail() {
+      const box = document.getElementById("boards");
+      box.innerHTML = "";
+      for (const b of catalog.boards) {
+        if (b.skip) continue;
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "board" + (b.id === boardId ? " active" : "");
+        btn.innerHTML = `
+          <span class="name">${b.title}</span>
+          <span class="meta">${b.summary}</span>
+          <span class="ready">${b.ready ? "Ready to order" : "Check files"}</span>`;
+        btn.addEventListener("click", () => showBoard(b.id));
+        box.appendChild(btn);
+      }
+    }
+
+    function renderInspect(partId) {
+      selectedId = partId;
+      document.getElementById("title").textContent = board.title;
+      document.getElementById("blurb").textContent = board.blurb;
+      const chips = document.getElementById("chips");
+      chips.innerHTML = `
+        <span class="chip good">${board.ready ? "PCBWay ready" : "Needs check"}</span>
+        <span class="chip">${board.layers}-layer</span>
+        <span class="chip">${board.size}</span>
+        <span class="chip">${board.orderNote}</span>`;
+
+      const sel = document.getElementById("selection");
+      const part = board.parts.find((p) => p.id === partId);
+      for (const [id, obj] of markerById) {
+        obj.scale.setScalar((SCALE[obj.userData.kind] || SCALE[board.parts.find(p=>p.id===id)?.kind] || 0.8) * (id === partId ? 1.25 : 1));
+      }
+      // fix scale using part kind
+      for (const p of board.parts) {
+        const obj = markerById.get(p.id);
+        if (!obj) continue;
+        obj.scale.setScalar((SCALE[p.kind] || 0.8) * (p.id === partId ? 1.28 : 1));
+      }
+
+      if (!part) {
+        sel.innerHTML = `<p class="empty">Click something on the board — or a name below — to see what that control is.</p>
+          <div class="role" style="margin-top:0.65rem"><b>Ordering</b>${board.orderNote}</div>`;
+      } else {
+        const simRole = part.role && !part.role.startsWith("Control on") && !part.role.startsWith("Light on")
+          ? `<div class="role"><b>Matches in the sim</b>${part.role}</div>`
+          : "";
+        sel.innerHTML = `
+          <h3>${part.label}</h3>
+          <p>${part.typeLabel} · ${part.help}</p>
+          ${simRole}
+          <div class="role"><b>Where it goes</b>On the ${board.title} board / printed shell.</div>`;
+        notifySelect(part);
+      }
+
+      document.getElementById("listLabel").textContent =
+        tab === "face" ? "Face controls" : "Board electronics";
+      const list = document.getElementById("plist");
+      list.innerHTML = "";
+      const items = board.parts.filter((p) =>
+        tab === "face"
+          ? ["switch", "encoder", "led", "connector"].includes(p.kind)
+          : ["mcu", "ic", "connector"].includes(p.kind)
+      );
+      // Face list: hide anonymous LED floods unless searching board tab; keep switches/knobs/header first
+      const ordered = tab === "face"
+        ? [
+            ...items.filter((p) => p.kind === "switch"),
+            ...items.filter((p) => p.kind === "encoder"),
+            ...items.filter((p) => p.kind === "connector"),
+            ...items.filter((p) => p.kind === "led").slice(0, 8),
+          ]
+        : items;
+      for (const p of ordered) {
+        const row = document.createElement("button");
+        row.type = "button";
+        row.className = "prow" + (p.id === partId ? " active" : "");
+        const sub = (p.role && !p.role.startsWith("Control on") && !p.role.startsWith("Light on"))
+          ? p.role
+          : p.typeLabel;
+        row.innerHTML = `<div><div class="l">${p.label}</div><div class="s">${sub}</div></div>`;
+        row.addEventListener("click", () => {
+          renderInspect(p.id);
+          const obj = markerById.get(p.id);
+          if (obj) {
+            controls.target.copy(obj.position);
+            controls.update();
+          }
+        });
+        list.appendChild(row);
+      }
+      if (!ordered.length) {
+        list.innerHTML = `<p class="empty">Nothing listed for this view.</p>`;
+      }
+
+      document.getElementById("tabFace").classList.toggle("on", tab === "face");
+      document.getElementById("tabBoard").classList.toggle("on", tab === "board");
+    }
+
+    canvas.addEventListener("pointerdown", (ev) => {
+      const rect = canvas.getBoundingClientRect();
+      pointer.x = ((ev.clientX - rect.left) / rect.width) * 2 - 1;
+      pointer.y = -((ev.clientY - rect.top) / rect.height) * 2 + 1;
+      raycaster.setFromCamera(pointer, camera);
+      const hits = raycaster.intersectObjects(markers.children, true);
+      if (!hits.length) return;
+      let obj = hits[0].object;
+      while (obj && !obj.userData.partId && obj.parent) obj = obj.parent;
+      if (obj?.userData.partId) renderInspect(obj.userData.partId);
+    });
+
+    document.getElementById("btnFlip").addEventListener("click", () => { root.rotation.y += Math.PI; });
+    document.getElementById("btnParts").addEventListener("click", (e) => {
+      showParts = !showParts;
+      markers.visible = showParts;
+      e.currentTarget.classList.toggle("on", showParts);
+    });
+    document.getElementById("tabFace").addEventListener("click", () => { tab = "face"; renderInspect(selectedId); });
+    document.getElementById("tabBoard").addEventListener("click", () => { tab = "board"; renderInspect(selectedId); });
+
+    function tick() {
+      controls.update();
+      renderer.render(scene, camera);
+      requestAnimationFrame(tick);
+    }
+
+    async function boot() {
+      catalog = await (await fetch("viewer-catalog.json")).json();
+      if (!catalog.boards.some((b) => b.id === boardId)) boardId = catalog.boards[0].id;
+      // warm assets
+      await Promise.all(Object.keys(ASSET).map(loadPrototype));
+      resize();
+      await showBoard(boardId);
+      tick();
+    }
+
+    boot().catch((e) => {
+      console.error(e);
+      setStatus(String(e.message || e));
+    });
+  </script>
+</body>
+</html>

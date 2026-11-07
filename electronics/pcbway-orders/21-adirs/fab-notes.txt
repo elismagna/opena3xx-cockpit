@@ -1,0 +1,10 @@
+PCBWay fab notes — 21-adirs (Rev0 from face SVG)
+Source: vendor\mobiflight-panels\aircraft\airbus-a32x\overhead\adirs\a320-overhead-adirs.svg
+Size: 146.25 × 133.55 mm
+Mount holes: 12
+Button footprints: 10
+Knob/extra: 3
+Header pins: 22
+
+2-layer, 1.6 mm, HASL, black or green mask, white silk, qty 5.
+VERIFY in Gerber viewer / _previews before order.

@@ -1,0 +1,10 @@
+PCBWay fab notes — 26-emer-elec (Rev0 from face SVG)
+Source: vendor\mobiflight-panels\aircraft\airbus-a32x\overhead\Emer Elec\a320-overhead-emer-elec.svg
+Size: 144.67 × 296.38 mm
+Mount holes: 12
+Button footprints: 20
+Knob/extra: 7
+Header pins: 40
+
+2-layer, 1.6 mm, HASL, black or green mask, white silk, qty 5.
+VERIFY in Gerber viewer / _previews before order.
