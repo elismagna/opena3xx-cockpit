@@ -118,6 +118,8 @@
     @media (max-width: 980px) {
       #app { grid-template-columns: 1fr; grid-template-rows: 30vh 1fr 34vh; }
     }
+    /* the sim page embeds this at ~260x400: hint text would sit on the board */
+    html.embed .hintbar { display: none; }
   </style>
 </head>
 <body>
@@ -254,6 +256,7 @@
       camera.updateProjectionMatrix();
     }
     addEventListener("resize", resize);
+    new ResizeObserver(resize).observe(document.getElementById("stage"));
 
     async function loadPrototype(kind) {
       if (prototypes[kind]) return prototypes[kind];
@@ -362,26 +365,36 @@
           if (o.isMesh) {
             o.castShadow = false;
             o.userData.partId = p.id;
+            // own material per part so one lamp can glow without lighting them all
+            o.material = Array.isArray(o.material) ? o.material.map((m) => m.clone()) : o.material.clone();
           }
         });
+        inst.userData.kind = p.kind;
         inst.userData.partId = p.id;
         markers.add(inst);
         markerById.set(p.id, inst);
       }
       markers.visible = showParts;
 
+      halos.clear();
+      litIds = new Set();
+      frameBoard();
+
+      renderRail();
+      renderInspect(null);
+      setStatus(board.summary);
+      if (embed) parent.postMessage({ type: "viewer-ready", board: boardId }, "*");
+    }
+
+    function frameBoard() {
       // Frame the whole board, not a zoomed corner
       const box = new THREE.Box3().setFromObject(root);
       const size = box.getSize(new THREE.Vector3());
       const center = box.getCenter(new THREE.Vector3());
       const span = Math.max(size.x, size.z, size.y) * 1.15;
       controls.target.copy(center);
-      camera.position.set(center.x + span * 0.55, center.y + span * 0.7, center.z + span * 0.75);
+      camera.position.set(center.x + span * 0.35, center.y + span * 0.85, center.z + span * 0.6);
       controls.update();
-
-      renderRail();
-      renderInspect(null);
-      setStatus(board.summary);
     }
 
     function renderRail() {
@@ -503,6 +516,51 @@
     });
     document.getElementById("tabFace").addEventListener("click", () => { tab = "face"; renderInspect(selectedId); });
     document.getElementById("tabBoard").addEventListener("click", () => { tab = "board"; renderInspect(selectedId); });
+
+    // ---- lamp state from the sim page: {type:"lamps", on:[partId,...]} ----
+    const LAMP = new THREE.Color(0xffb020);
+    const halos = new Map();
+    let litIds = new Set();
+    function setLamp(id, on) {
+      const obj = markerById.get(id);
+      if (!obj) return;
+      obj.traverse((o) => {
+        if (!o.isMesh) return;
+        for (const m of Array.isArray(o.material) ? o.material : [o.material]) {
+          if (!m.emissive) continue;
+          m.emissive.copy(on ? LAMP : new THREE.Color(0x000000));
+          m.emissiveIntensity = on ? 1.4 : 1;
+        }
+      });
+      let halo = halos.get(id);
+      if (on && !halo) {
+        halo = new THREE.Mesh(
+          new THREE.CircleGeometry(9, 32),
+          new THREE.MeshBasicMaterial({ color: 0xffa000, transparent: true, opacity: 0.35,
+            blending: THREE.AdditiveBlending, depthWrite: false })
+        );
+        halo.rotation.x = -Math.PI / 2;
+        halo.position.copy(obj.position);
+        halo.position.y += 0.3;
+        markers.add(halo);
+        halos.set(id, halo);
+      } else if (!on && halo) {
+        markers.remove(halo);
+        halo.geometry.dispose(); halo.material.dispose();
+        halos.delete(id);
+      }
+    }
+    function applyLamps(ids) {
+      const next = new Set(ids || []);
+      for (const id of litIds) if (!next.has(id)) setLamp(id, false);
+      for (const id of next) setLamp(id, true);
+      litIds = next;
+    }
+    addEventListener("message", (ev) => {
+      const msg = ev.data || {};
+      if (msg.type === "lamps") applyLamps(msg.on);
+      if (msg.type === "frame") frameBoard();
+    });
 
     function tick() {
       controls.update();

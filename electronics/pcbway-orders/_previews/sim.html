@@ -3,178 +3,169 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Panel sim — Falstad</title>
+  <title>Panel Simulator</title>
   <style>
     :root {
-      --bg: #000000;
-      --chrome: #1a1a1a;
-      --chrome2: #242424;
-      --line: #3a3a3a;
-      --text: #e8e8e8;
-      --muted: #9a9a9a;
+      --bg: #101214;
+      --panel: #171a1d;
+      --panel2: #1d2125;
+      --line: #2c333b;
+      --text: #eef1f4;
+      --muted: #9aa3ab;
       --accent: #4caf50;
-      --wire: #00e676;
-      --lamp: #ffeb3b;
-      --danger: #ef5350;
+      --accent-dim: #1f4d22;
+      --lamp: #ffb020;
+      --danger: #e5534b;
+      --side: 440px;
     }
     * { box-sizing: border-box; }
     html, body {
       margin: 0; height: 100%; overflow: hidden;
       background: var(--bg); color: var(--text);
-      font-family: Tahoma, "Segoe UI", sans-serif;
+      font-family: system-ui, "Segoe UI", Roboto, sans-serif;
     }
-    #app {
-      height: 100%;
-      display: grid;
-      grid-template-rows: 40px 1fr;
-    }
+    #app { height: 100%; display: grid; grid-template-rows: auto minmax(0, 1fr); }
 
-    /* Falstad-like top icon toolbar */
-    #toolbar {
-      display: flex; align-items: center; gap: 2px;
-      padding: 0 6px;
-      background: linear-gradient(#2b2b2b, #1e1e1e);
-      border-bottom: 1px solid #0d0d0d;
-      box-shadow: inset 0 1px 0 #3a3a3a;
+    /* ---------- top bar ---------- */
+    #bar {
+      display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+      padding: 8px 14px; min-height: 52px;
+      background: var(--panel); border-bottom: 1px solid var(--line);
     }
-    #toolbar .brand {
-      font-size: 12px; font-weight: 700; letter-spacing: 0.02em;
-      padding: 0 10px 0 4px; color: #ddd; white-space: nowrap;
+    .brand { display: flex; align-items: baseline; gap: 10px; min-width: 0; margin-right: 6px; }
+    .brand b { font-size: 14px; letter-spacing: 0.04em; white-space: nowrap; }
+    .brand b i { font-style: normal; color: var(--accent); }
+    #boardLabel {
+      font-size: 13px; color: var(--muted); white-space: nowrap;
+      overflow: hidden; text-overflow: ellipsis; max-width: 220px;
     }
-    #toolbar .brand span { color: var(--wire); font-weight: 600; margin-left: 6px; }
-    .tool {
-      appearance: none; border: 1px solid transparent; background: transparent;
-      color: var(--text); width: 32px; height: 28px; border-radius: 3px;
-      cursor: pointer; font-size: 14px; line-height: 1; padding: 0;
-      display: inline-flex; align-items: center; justify-content: center;
+    #bar select, .btn {
+      height: 32px; border-radius: 6px; border: 1px solid var(--line);
+      background: var(--panel2); color: var(--text); font: inherit; font-size: 13px;
     }
-    .tool:hover { background: #333; border-color: #555; }
-    .tool.on, .tool:active { background: #0d3d12; border-color: var(--accent); color: var(--wire); }
-    .tool.wide {
-      width: auto; padding: 0 10px; font-size: 11px; font-weight: 600;
-      border: 1px solid #444; background: #2a2a2a; margin-left: 4px;
-    }
-    .tool.wide.run { background: #1b5e20; border-color: #2e7d32; color: #c8e6c9; }
-    .tool.wide.run.stopped { background: #5d1a1a; border-color: #8b0000; color: #ffcdd2; }
-    .sep {
-      width: 1px; height: 22px; background: #444; margin: 0 6px;
-    }
-    #toolbar select {
-      background: #111; color: var(--text); border: 1px solid #444;
-      border-radius: 3px; padding: 3px 6px; font: inherit; font-size: 11px;
-      max-width: 180px;
-    }
-    #toolbar a.link {
-      color: var(--muted); font-size: 11px; text-decoration: none;
-      padding: 0 8px;
-    }
-    #toolbar a.link:hover { color: var(--wire); }
+    #bar select { padding: 0 8px; max-width: 200px; }
+    .btn { padding: 0 12px; cursor: pointer; white-space: nowrap; }
+    .btn:hover { border-color: #46505a; background: #23282d; }
+    .btn:focus-visible, #bar select:focus-visible, .tile:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    #btnRun { min-width: 92px; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; justify-content: center; }
+    #btnRun::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 6px var(--accent); }
+    #btnRun.stopped::before { background: var(--danger); box-shadow: none; }
+    #btnRun.stopped { color: #f3c2bf; }
     #status {
-      margin-left: auto; font-size: 11px; color: var(--muted);
-      padding-right: 8px; white-space: nowrap;
+      flex: 1 1 140px; min-width: 0; font-size: 12px; color: var(--muted);
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: right;
     }
+    .links { display: flex; gap: 14px; }
+    .links a { color: var(--muted); font-size: 13px; text-decoration: none; white-space: nowrap; }
+    .links a:hover { color: var(--accent); }
 
-    /* Main: CircuitJS hero + dock */
-    #workspace {
-      display: grid;
-      grid-template-columns: 260px minmax(0, 1fr);
-      min-height: 0;
-      background: #000;
+    /* ---------- workspace ---------- */
+    #work {
+      display: grid; min-height: 0; gap: 1px; background: var(--line);
+      grid-template-columns: minmax(0, 1fr) var(--side);
+      grid-template-rows: minmax(0, 1fr) minmax(0, 0.92fr);
+      grid-template-areas: "big tiles" "big small";
     }
-    #dock {
-      display: grid;
-      grid-template-rows: 1fr 1fr;
-      border-right: 1px solid #111;
-      background: var(--chrome);
-      min-height: 0;
+    .pane { position: relative; min-width: 0; min-height: 0; background: var(--bg); display: flex; flex-direction: column; }
+    .pane .cap {
+      display: flex; align-items: center; justify-content: space-between; gap: 8px;
+      font-size: 11px; text-transform: uppercase; letter-spacing: 0.09em; color: var(--muted);
+      padding: 7px 12px; background: var(--panel); border-bottom: 1px solid var(--line);
     }
-    #dock .block {
-      display: flex; flex-direction: column; min-height: 0;
-      border-bottom: 1px solid #111;
-    }
-    #dock .block:last-child { border-bottom: 0; }
-    #dock .cap {
-      font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em;
-      color: var(--muted); padding: 6px 8px 4px;
-      background: var(--chrome2); border-bottom: 1px solid #111;
-    }
-    #view3d, #falstad {
-      border: 0; width: 100%; flex: 1; background: #000; min-height: 0;
-    }
-    #falstad-wrap {
-      display: flex; flex-direction: column; min-width: 0; min-height: 0;
-      background: #000;
-    }
-    #list {
-      overflow: auto; padding: 6px; flex: 1;
-    }
-    .hint {
-      color: var(--muted); font-size: 10px; line-height: 1.35;
-      padding: 4px 2px 8px;
-    }
-    .sw {
-      display: grid; grid-template-columns: 1fr auto; gap: 6px; align-items: center;
-      width: 100%; text-align: left; margin-bottom: 4px;
-      padding: 7px 8px; border-radius: 2px;
-      border: 1px solid #333; background: #151515; color: inherit;
-      cursor: pointer; font: inherit;
-    }
-    .sw:hover { border-color: #555; }
-    .sw.on {
-      border-color: var(--accent); background: #0d1f10;
-      box-shadow: inset 0 0 0 1px #1b5e20;
-    }
-    .sw .n { font-size: 12px; font-weight: 700; }
-    .sw .s { font-size: 10px; color: var(--muted); margin-top: 2px; }
-    .lamp {
-      width: 10px; height: 10px; border-radius: 50%;
-      background: #222; box-shadow: inset 0 0 0 1px #555;
-    }
-    .sw.on .lamp {
-      background: var(--lamp);
-      box-shadow: 0 0 8px #ffeb3b99, 0 0 2px #fff;
-    }
+    .pane .cap span:last-child { text-transform: none; letter-spacing: 0; }
+    .pane iframe { flex: 1; width: 100%; min-height: 0; border: 0; display: block; background: var(--bg); }
+    #p3d { grid-area: big; }
+    #psch { grid-area: small; }
+    #ptiles { grid-area: tiles; background: var(--panel); }
+    #work.swapped #p3d { grid-area: small; }
+    #work.swapped #psch { grid-area: big; }
+    #psch iframe { background: #000; }
 
+    /* ---------- Korry tiles ---------- */
+    #tiles {
+      flex: 1; min-height: 0; overflow: auto; padding: 10px;
+      display: grid; gap: 8px; align-content: start;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .tile {
+      appearance: none; cursor: pointer; font: inherit; color: inherit; text-align: center;
+      display: flex; flex-direction: column; justify-content: space-between; gap: 6px;
+      min-height: 84px; padding: 8px 6px 7px; border-radius: 4px;
+      background: linear-gradient(#202428, #15181b);
+      border: 1px solid #2f363d;
+      box-shadow: inset 0 1px 0 #2d3338, 0 2px 0 #0a0b0c;
+      transition: transform 60ms, box-shadow 120ms, border-color 120ms;
+    }
+    .tile:hover { border-color: #4a545e; }
+    .tile:active { transform: translateY(1px); box-shadow: inset 0 1px 0 #2d3338, 0 1px 0 #0a0b0c; }
+    .tile .legend {
+      font-size: 12px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;
+      color: #d9dee2; line-height: 1.2; overflow-wrap: anywhere;
+    }
+    .tile .ref { font-size: 10px; color: var(--muted); letter-spacing: 0.04em; }
+    .tile .strip {
+      height: 14px; border-radius: 2px; background: #2a2318;
+      box-shadow: inset 0 0 0 1px #3a3020;
+      font-size: 9px; font-weight: 800; letter-spacing: 0.14em; line-height: 14px;
+      color: #4a3e2a;
+    }
+    .tile.on { border-color: #6b4c12; }
+    .tile.on .strip {
+      background: var(--lamp); color: #3a2600;
+      box-shadow: 0 0 10px #ffb020aa, 0 0 22px #ffb02055, inset 0 0 4px #fff3;
+    }
+    .tile.on .legend { color: #fff; }
+    .empty { grid-column: 1 / -1; color: var(--muted); font-size: 13px; padding: 12px; }
+
+    /* ---------- phone ---------- */
     @media (max-width: 900px) {
-      #workspace { grid-template-columns: 1fr; grid-template-rows: 38vh 1fr; }
-      #dock { grid-template-rows: 1fr 140px; border-right: 0; border-bottom: 1px solid #111; }
+      html, body { overflow: auto; height: auto; }
+      #app { height: auto; display: block; }
+      #bar { padding: 8px 16px; }
+      #status { flex-basis: 100%; text-align: left; order: 10; }
+      #boardLabel { display: none; }
+      #work, #work.swapped {
+        display: flex; flex-direction: column; gap: 1px;
+      }
+      #p3d, #work.swapped #psch { height: 45vh; order: 1; }
+      #ptiles { order: 2; }
+      #psch, #work.swapped #p3d { height: 55vh; order: 3; }
+      #tiles { grid-template-columns: repeat(3, minmax(0, 1fr)); max-height: 50vh; padding: 10px 16px; }
+    }
+    @media (max-width: 420px) {
+      #tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
   </style>
 </head>
 <body>
   <div id="app">
-    <div id="toolbar">
-      <div class="brand">CircuitJS<span id="boardLabel">ADIRS</span></div>
-      <div class="sep"></div>
-      <button type="button" class="tool" id="btnNew" title="Reload blank open switches">⟲</button>
-      <button type="button" class="tool" id="btnReload" title="Reload circuit">↻</button>
-      <div class="sep"></div>
-      <select id="boardSelect" title="Panel board"></select>
-      <button type="button" class="tool wide run" id="btnRun">RUN</button>
-      <button type="button" class="tool wide" id="btnStop">Stop</button>
-      <div class="sep"></div>
+    <header id="bar">
+      <div class="brand"><b>A320 <i>PANEL SIM</i></b><span id="boardLabel"></span></div>
+      <select id="boardSelect" title="Panel board" aria-label="Panel board"></select>
+      <button type="button" class="btn" id="btnRun" title="Start / stop the circuit simulation">RUN</button>
+      <button type="button" class="btn" id="btnRelease" title="Release every pressed control">Release all</button>
+      <button type="button" class="btn" id="btnSwap" title="Swap the 3D board and schematic">Swap view</button>
       <span id="status">Starting…</span>
-      <a class="link" href="viewer3d.html" id="link3d">3D only</a>
-      <a class="link" href="index.html">Gallery</a>
-    </div>
+      <nav class="links">
+        <a href="viewer3d.html" id="link3d">3D viewer</a>
+        <a href="index.html">Gallery</a>
+      </nav>
+    </header>
 
-    <div id="workspace">
-      <aside id="dock">
-        <div class="block">
-          <div class="cap">Board</div>
-          <iframe id="view3d" title="3D board"></iframe>
-        </div>
-        <div class="block">
-          <div class="cap">Panel controls</div>
-          <div id="list">
-            <div class="hint">Press a face control — switch closes in the schematic. Yellow current dots = live path. Use Falstad’s right sliders &amp; bottom scopes as usual.</div>
-          </div>
-        </div>
-      </aside>
-      <div id="falstad-wrap">
-        <iframe id="falstad" title="CircuitJS Falstad" src="about:blank"></iframe>
-      </div>
-    </div>
+    <main id="work">
+      <section class="pane" id="p3d">
+        <div class="cap"><span>3D board</span><span>click a switch to press it</span></div>
+        <iframe id="view3d" title="3D board"></iframe>
+      </section>
+      <section class="pane" id="ptiles">
+        <div class="cap"><span>Panel controls</span><span id="pressedCount">0 pressed</span></div>
+        <div id="tiles"></div>
+      </section>
+      <section class="pane" id="psch">
+        <div class="cap"><span>Schematic · CircuitJS</span><span>live current</span></div>
+        <iframe id="falstad" title="CircuitJS schematic" src="about:blank"></iframe>
+      </section>
+    </main>
   </div>
   <script>
     const params = new URLSearchParams(location.search);
@@ -183,15 +174,16 @@
     let current = null;
     let circuitText = "";
     let closed = new Set();
-    let falstadReady = false;
     let running = true;
 
-    const boardSelect = document.getElementById("boardSelect");
-    const list = document.getElementById("list");
-    const status = document.getElementById("status");
-    const falstad = document.getElementById("falstad");
-    const view3d = document.getElementById("view3d");
-    const btnRun = document.getElementById("btnRun");
+    const $ = (id) => document.getElementById(id);
+    const boardSelect = $("boardSelect");
+    const tiles = $("tiles");
+    const status = $("status");
+    const falstad = $("falstad");
+    const view3d = $("view3d");
+    const btnRun = $("btnRun");
+    const work = $("work");
 
     function setStatus(t) { status.textContent = t; }
 
@@ -199,10 +191,11 @@
       running = !!on;
       btnRun.classList.toggle("stopped", !running);
       btnRun.textContent = running ? "RUN" : "Stopped";
+      btnRun.setAttribute("aria-pressed", String(running));
       try {
-        falstad.contentWindow?.postMessage({ type: "run", value: running }, "*");
         const api = falstad.contentWindow?.CircuitJS1;
         if (api?.setSimRunning) api.setSimRunning(running);
+        else falstad.contentWindow?.postMessage({ type: "run", value: running }, "*");
       } catch (_) {}
     }
 
@@ -229,29 +222,48 @@
     function applySwitchStates(text, closedSet) {
       let i = 0;
       return text.split("\n").map((line) => {
-        if (!line.startsWith("S ")) return line;
+        if (!line.startsWith("s ")) return line;
         const parts = line.split(" ");
-        if (parts.length >= 7) parts[6] = closedSet.has(i) ? "1" : "0";
+        // CircuitJS SwitchElm: position 0 = closed, 1 = open
+        if (parts.length >= 7) parts[6] = closedSet.has(i) ? "0" : "1";
         i += 1;
         return parts.join(" ");
       }).join("\n");
     }
 
     function renderControls() {
-      const hint = `<div class="hint">Press a face control — switch closes in the schematic. Yellow current dots = live path. Use Falstad’s right sliders &amp; bottom scopes as usual.</div>`;
-      list.innerHTML = hint;
-      (current?.controls || []).forEach((name, i) => {
+      tiles.innerHTML = "";
+      const ctrls = current?.controls || [];
+      if (!ctrls.length) tiles.innerHTML = `<div class="empty">No controls on this board.</div>`;
+      ctrls.forEach((name, i) => {
         const btn = document.createElement("button");
         btn.type = "button";
-        btn.className = "sw" + (closed.has(i) ? " on" : "");
-        btn.innerHTML = `<div><div class="n">${name}</div><div class="s">${closed.has(i) ? "Closed — path live" : "Open — click"}</div></div><span class="lamp"></span>`;
-        btn.addEventListener("click", () => {
-          if (closed.has(i)) closed.delete(i); else closed.add(i);
-          pushCircuit();
-          renderControls();
-        });
-        list.appendChild(btn);
+        btn.className = "tile";
+        btn.dataset.i = i;
+        const ref = (current.part_ids || [])[i] || "";
+        btn.innerHTML = `<span class="legend"></span><span class="ref"></span><span class="strip">ON</span>`;
+        btn.querySelector(".legend").textContent = name;
+        btn.querySelector(".ref").textContent = ref;
+        btn.title = `${name}${ref ? " (" + ref + ")" : ""}`;
+        btn.addEventListener("click", () => toggle(i));
+        tiles.appendChild(btn);
       });
+      syncTiles();
+    }
+
+    function syncTiles() {
+      for (const el of tiles.querySelectorAll(".tile")) {
+        const on = closed.has(+el.dataset.i);
+        el.classList.toggle("on", on);
+        el.setAttribute("aria-pressed", String(on));
+      }
+      $("pressedCount").textContent = `${closed.size} pressed`;
+    }
+
+    function sendLamps() {
+      const ids = current?.part_ids || [];
+      const on = [...closed].map((i) => ids[i]).filter(Boolean);
+      try { view3d.contentWindow?.postMessage({ type: "lamps", on }, "*"); } catch (_) {}
     }
 
     function pushCircuit() {
@@ -265,62 +277,73 @@
           usedApi = true;
         }
       } catch (_) {}
-      if (!usedApi) {
-        falstadReady = false;
-        falstad.src = "circuitjs/embed.html?cct=" + encodeURIComponent(text);
-      } else {
-        falstad.contentWindow.postMessage({ type: "import", circuit: text }, "*");
-      }
+      if (!usedApi) falstad.src = "circuitjs/embed.html?cct=" + encodeURIComponent(text);
       setStatus(`${current.title} · ${closed.size} pressed`);
+    }
+
+    // Single entry point whenever the pressed set changes.
+    function pressedChanged() {
+      pushCircuit();
+      syncTiles();
+      sendLamps();
+    }
+
+    function toggle(i) {
+      if (closed.has(i)) closed.delete(i); else closed.add(i);
+      pressedChanged();
     }
 
     async function showBoard(id) {
       boardId = id;
       closed = new Set();
       history.replaceState(null, "", `?board=${encodeURIComponent(id)}`);
-      document.getElementById("link3d").href = `viewer3d.html?board=${encodeURIComponent(id)}`;
-      document.getElementById("boardLabel").textContent = "";
+      $("link3d").href = `viewer3d.html?board=${encodeURIComponent(id)}`;
       view3d.src = `viewer3d.html?board=${encodeURIComponent(id)}&embed=1`;
       const { meta, text } = await fetchCircuit(id);
       current = meta;
       circuitText = text;
       boardSelect.value = id;
-      document.getElementById("boardLabel").textContent = meta.title;
-      falstadReady = false;
-      falstad.src = "circuitjs/embed.html?cct=" + encodeURIComponent(text);
+      $("boardLabel").textContent = meta.title;
+      document.title = `${meta.title} · Panel Simulator`;
+      falstad.src = "circuitjs/embed.html?cct=" + encodeURIComponent(applySwitchStates(text, closed));
       renderControls();
-      setStatus(`Loaded ${meta.title}`);
+      setStatus(`Loading ${meta.title}…`);
       setRunning(true);
     }
 
     window.addEventListener("message", (ev) => {
       const msg = ev.data || {};
-      if (msg.type === "circuitjs-ready") {
-        falstadReady = true;
+      if (msg.type === "circuitjs-ready" && ev.source === falstad.contentWindow) {
         setRunning(running);
-        setStatus(`${current?.title || ""} · Falstad ready`);
+        setStatus(`${current?.title || ""} · schematic ready`);
       }
-      if (msg.type === "select-part" && current) {
-        const i = current.controls.findIndex(
+      if (msg.type === "viewer-ready" && ev.source === view3d.contentWindow) {
+        sendLamps();
+      }
+      if (msg.type === "select-part" && current && ev.source === view3d.contentWindow) {
+        let i = (current.part_ids || []).indexOf(msg.id);
+        if (i < 0) i = current.controls.findIndex(
           (c) => c === msg.label || c.replace(/\s/g, "_") === String(msg.label || "").replace(/\s/g, "_")
         );
-        if (i >= 0) {
-          closed.add(i);
-          pushCircuit();
-          renderControls();
-        }
+        if (i >= 0) toggle(i);
       }
     });
 
     boardSelect.addEventListener("change", () => showBoard(boardSelect.value));
-    document.getElementById("btnReload").addEventListener("click", () => showBoard(boardId));
-    document.getElementById("btnNew").addEventListener("click", () => {
+    $("btnRelease").addEventListener("click", () => {
+      if (!current) return;
       closed = new Set();
-      pushCircuit();
-      renderControls();
+      pressedChanged();
     });
-    btnRun.addEventListener("click", () => setRunning(true));
-    document.getElementById("btnStop").addEventListener("click", () => setRunning(false));
+    btnRun.addEventListener("click", () => setRunning(!running));
+    $("btnSwap").addEventListener("click", () => {
+      const sw = work.classList.toggle("swapped");
+      $("btnSwap").setAttribute("aria-pressed", String(sw));
+      // let layout settle, then re-frame the 3D camera for its new size
+      requestAnimationFrame(() => setTimeout(() => {
+        try { view3d.contentWindow?.postMessage({ type: "frame" }, "*"); } catch (_) {}
+      }, 60));
+    });
 
     (async function boot() {
       try {
