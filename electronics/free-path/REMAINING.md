@@ -28,6 +28,6 @@ Existing packs `pcbway-orders/01`–`14` are already staged. These have face SVG
 ## Pipeline
 
 1. Place footprints from face SVG hole centers (match existing MobiFlight button footprints where possible).
-2. Route to IDC / pin header for Mega + MobiFlight.
+2. Route to IDC / pin header for Mega + MobiFlight. ✅ `tools/maze_router.py` — all 15 route with 0 unrouted nets, DRC clean (`tools/check_rev0_drc.py`).
 3. Emit `Gerber.zip` + top-copper SVG preview under `pcbway-orders/`.
 4. User reviews gallery → then order whole cart.

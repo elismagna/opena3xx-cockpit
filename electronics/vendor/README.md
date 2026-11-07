@@ -9,3 +9,9 @@ Upstream references:
 - https://github.com/MobiFlight/mobiflight-panels
 - https://github.com/JA3297/A320-Home-Cockpit
 - https://github.com/apoloval/open-airbus-cockpit
+
+To rebuild the Rev0 boards (16–30) or the preview/catalog JSON, fetch the
+upstream panels here first (git-ignored):
+
+    git clone --depth 1 --filter=blob:none --sparse https://github.com/MobiFlight/mobiflight-panels electronics/vendor/mobiflight-panels
+    git -C electronics/vendor/mobiflight-panels sparse-checkout set aircraft/airbus-a32x

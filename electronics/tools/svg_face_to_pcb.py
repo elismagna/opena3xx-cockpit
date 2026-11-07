@@ -17,6 +17,8 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from xml.etree import ElementTree as ET
 
+from maze_router import TRACK, VIA_DRILL, VIA_PAD, Router
+
 ROOT = Path(__file__).resolve().parents[1]
 VENDOR = ROOT / "vendor" / "mobiflight-panels" / "aircraft" / "airbus-a32x"
 ORDERS = ROOT / "pcbway-orders"
@@ -410,36 +412,75 @@ def build_from_svg(svg_path: Path, slug: str, folder_id: str) -> Path:
 
     board = Board(w, h)
     board.outline()
+    router = Router(w, h)
 
     for x, y, r in cut.mounts:
-        board.mount(x, y, hole=max(2.8, r * 2 + 0.3))
+        hole = max(2.8, r * 2 + 0.3)
+        board.mount(x, y, hole=hole)
+        router.add_hole(x, y, hole)
 
-    pin_targets: list[tuple[float, float]] = []
-    for x, y, _s in cut.buttons:
+    # Footprint pin roles (see illuminated_button):
+    #   0,1 switch side A (bridged inside a 4-pin tact)  -> SWn
+    #   2,3 switch side B                                -> GND
+    #   4   LED anode                                    -> LEDn (series R on Mega side)
+    #   5   LED cathode                                  -> GND
+    buttons = sorted(cut.buttons, key=lambda b: (b[0], b[1]))
+    signals: list[tuple[str, float]] = []
+    for n, (x, y, _s) in enumerate(buttons, start=1):
         pins = board.illuminated_button(x, y)
-        pin_targets.append(pins[0])
-        pin_targets.append(pins[4])
+        nets = [f"SW{n}", f"SW{n}.int", "GND", f"GND.int{n}", f"LED{n}", "GND"]
+        for (px, py), net in zip(pins, nets):
+            router.add_pad(px, py, 1.7, net)
+        signals += [(f"SW{n}", x), (f"LED{n}", x)]
 
-    n_hdr = max(8, min(40, len(pin_targets) + 2))
-    # if many buttons, use dual-row style by capping and noting
-    if len(pin_targets) + 2 > 40:
-        pin_targets = pin_targets[:38]
-        n_hdr = 40
-    hdr_w = (n_hdr - 1) * 2.54
-    hx0 = max(2.0, (w - hdr_w) / 2)
-    hy = min(h - 3.5, h - 2.5)
-    if hy < 5:
-        hy = h * 0.92
-    hdr = board.header(n_hdr, hx0, hy)
+    # Header: 2x GND then signals ordered left->right. One row if it fits,
+    # otherwise a 2-row (2.54 mm) header.
+    hdr_nets = ["GND", "GND"] + [s for s, _x in sorted(signals, key=lambda t: t[1])]
+    per_row = max(4, int((w - 6) // 2.54))
+    rows = 1 if len(hdr_nets) <= per_row else 2
+    cols = math.ceil(len(hdr_nets) / rows)
+    if cols > per_row:
+        raise SystemExit(f"{slug}: {len(hdr_nets)} header pins do not fit on a {w:.0f} mm board")
+    hdr_w = (cols - 1) * 2.54
+    hx0 = (w - hdr_w) / 2
 
-    for i, (px, py) in enumerate(pin_targets):
-        if i + 2 >= len(hdr):
+    def header_rows(y_edge: float, step: float) -> list[tuple[float, float]]:
+        return [(hx0 + (k % cols) * 2.54, y_edge + step * (k // cols)) for k in range(len(hdr_nets))]
+
+    def clearance(pts: list[tuple[float, float]]) -> float:
+        others = [(p.x, p.y) for p in router.pads] + [(m[0], m[1]) for m in cut.mounts]
+        return min((math.hypot(a - c, b - d) for a, b in pts for c, d in others), default=99.0)
+
+    cands = [header_rows(h - 3.0, -2.54), header_rows(3.0, 2.54)]
+    hdr = max(cands, key=clearance)
+    if clearance(hdr) < 3.0:
+        raise SystemExit(f"{slug}: no clear edge for the header")
+    for (hx, hy), net in zip(hdr, hdr_nets):
+        board.thru_pad(hx, hy, pad=1.9, hole=1.0)
+        router.add_pad(hx, hy, 1.9, net)
+    n_hdr = len(hdr_nets)
+
+    # Route signals first (short nets first), GND last; retry failures first.
+    order = sorted({s for s, _x in signals}, key=lambda s: _net_span(router, s)) + ["GND"]
+    for attempt in range(4):
+        trial = Router.__new__(Router)
+        trial.__dict__ = _clone_router(router)
+        for net in order:
+            trial.route_net(net)
+        if not trial.failed:
             break
-        hx, hyy = hdr[i + 2]
-        mid_y = (py + hyy) / 2
-        board.track("GTL", [(px, py), (px, mid_y), (hx, mid_y), (hx, hyy)], 0.3)
+        order = trial.failed + [n for n in order if n not in trial.failed]
+    router = trial
+    if router.failed:
+        raise SystemExit(f"{slug}: unrouted nets {router.failed}")
 
-    board.track("GBL", [(1, 1), (w - 1, 1), (w - 1, h - 6), (1, h - 6), (1, 1)], 0.25)
+    for rt in router.routes:
+        for L, pts in rt.layer_paths:
+            board.track("GTL" if L == 0 else "GBL", pts, TRACK)
+        for vx, vy in rt.vias:
+            board.flash("GTL", vx, vy, VIA_PAD)
+            board.flash("GBL", vx, vy, VIA_PAD)
+            board.plated.append((vx, h - vy, VIA_DRILL))
 
     out_dir = ORDERS / f"{folder_id}-{slug}"
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -465,6 +506,7 @@ def build_from_svg(svg_path: Path, slug: str, folder_id: str) -> Path:
         for name, body in files.items():
             zf.writestr(name, body)
 
+    write_pinout(out_dir, hdr, hdr_nets)
     (out_dir / "fab-notes.txt").write_text(
         f"""PCBWay fab notes — {folder_id}-{slug} (Rev0 from face SVG)
 Source: {svg_path.relative_to(ROOT)}
@@ -472,10 +514,17 @@ Size: {w:.2f} × {h:.2f} mm
 Mount holes: {len(cut.mounts)}
 Button footprints: {len(cut.buttons)}
 Knob/extra: {len(cut.knobs)}
-Header pins: {n_hdr}
+Header pins: {n_hdr} ({rows} row{"s" if rows > 1 else ""}, 2.54 mm) — see PINOUT.csv
+Routed: {len(router.routes)} nets, {sum(len(r.vias) for r in router.routes)} vias, 0 unrouted
+Rules: 0.30 mm track, >=0.20 mm clearance, 0.4/0.7 mm vias (tented)
+
+Button footprint pins: 1-2 switch -> SWn, 3-4 switch -> GND,
+5 LED anode -> LEDn, 6 LED cathode -> GND.
+LEDs need a series resistor (e.g. 330R) on the Mega/MobiFlight side.
+Rotary knob cutouts get the same pushbutton footprint in Rev0.
 
 2-layer, 1.6 mm, HASL, black or green mask, white silk, qty 5.
-VERIFY in Gerber viewer / _previews before order.
+Check with tools/check_rev0_drc.py and the _previews before ordering.
 """,
         encoding="utf-8",
     )
@@ -484,6 +533,27 @@ VERIFY in Gerber viewer / _previews before order.
         f"buttons={len(cut.buttons)} knobs={len(cut.knobs)} → {zip_path.name}"
     )
     return out_dir
+
+
+def _net_span(router: Router, net: str) -> float:
+    pts = [(p.x, p.y) for p in router.pads if p.net == net]
+    return max(abs(a[0] - b[0]) + abs(a[1] - b[1]) for a in pts for b in pts) if len(pts) > 1 else 0.0
+
+
+def _clone_router(r: Router) -> dict:
+    d = dict(r.__dict__)
+    d["keep"] = [list(r.keep[0]), list(r.keep[1])]
+    d["copper"] = [list(r.copper[0]), list(r.copper[1])]
+    d["via_keep"] = list(r.via_keep)
+    d["routes"], d["failed"] = [], []
+    return d
+
+
+def write_pinout(out_dir: Path, hdr: list[tuple[float, float]], nets: list[str]) -> None:
+    lines = ["pin,net,x_mm,y_mm"]
+    for k, ((x, y), net) in enumerate(zip(hdr, nets), start=1):
+        lines.append(f"{k},{net},{x:.2f},{y:.2f}")
+    (out_dir / "PINOUT.csv").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
 JOBS = [
@@ -507,7 +577,7 @@ JOBS = [
 
 def main() -> None:
     for fid, slug, rel in JOBS:
-        svg = VENDOR / rel
+        svg = VENDOR.joinpath(*rel.split("\\"))
         if not svg.exists():
             print("missing", svg)
             continue

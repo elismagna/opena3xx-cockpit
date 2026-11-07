@@ -1,10 +1,17 @@
 PCBWay fab notes — 16-terr-on-nd (Rev0 from face SVG)
-Source: vendor\mobiflight-panels\aircraft\airbus-a32x\main-instrument-panel\terr-on-nd\A320-terr-on-nd.svg
+Source: vendor/mobiflight-panels/aircraft/airbus-a32x/main-instrument-panel/terr-on-nd/A320-terr-on-nd.svg
 Size: 49.26 × 74.26 mm
 Mount holes: 4
 Button footprints: 2
 Knob/extra: 0
-Header pins: 8
+Header pins: 6 (1 row, 2.54 mm) — see PINOUT.csv
+Routed: 5 nets, 0 vias, 0 unrouted
+Rules: 0.30 mm track, >=0.20 mm clearance, 0.4/0.7 mm vias (tented)
+
+Button footprint pins: 1-2 switch -> SWn, 3-4 switch -> GND,
+5 LED anode -> LEDn, 6 LED cathode -> GND.
+LEDs need a series resistor (e.g. 330R) on the Mega/MobiFlight side.
+Rotary knob cutouts get the same pushbutton footprint in Rev0.
 
 2-layer, 1.6 mm, HASL, black or green mask, white silk, qty 5.
-VERIFY in Gerber viewer / _previews before order.
+Check with tools/check_rev0_drc.py and the _previews before ordering.
