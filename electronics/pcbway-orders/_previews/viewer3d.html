@@ -209,7 +209,8 @@
     let selectedId = null;
     if (embed) {
       document.documentElement.classList.add("embed");
-      document.getElementById("app").style.gridTemplateColumns = "1fr";
+      document.getElementById("app").style.gridTemplateColumns = "minmax(0, 1fr)";
+      document.getElementById("app").style.gridTemplateRows = "minmax(0, 1fr)";
       document.querySelector(".rail").style.display = "none";
       document.querySelector(".inspect").style.display = "none";
     }
@@ -391,7 +392,7 @@
       const box = new THREE.Box3().setFromObject(root);
       const size = box.getSize(new THREE.Vector3());
       const center = box.getCenter(new THREE.Vector3());
-      const span = Math.max(size.x, size.z, size.y) * 1.15;
+      const span = Math.max(size.x, size.z, size.y) * (embed ? 1.65 : 1.15);
       controls.target.copy(center);
       camera.position.set(center.x + span * 0.35, center.y + span * 0.85, center.z + span * 0.6);
       controls.update();
