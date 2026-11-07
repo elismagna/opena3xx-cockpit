@@ -8,6 +8,8 @@
     #circuitjsdiv { position: absolute; inset: 0; }
   </style>
   <script src="lz-string.min.js"></script>
+  <link rel="stylesheet" href="circuitjs116/font/fontello.css" />
+  <link rel="stylesheet" href="circuitjs116/circuitjs-C9R-4DXA.css" />
 </head>
 <body>
   <div id="circuitjsdiv"></div>
@@ -37,7 +39,8 @@
           try { window.CircuitJS1.setSimRunning(!!msg.value); } catch (_) {}
         }
       });
-      window.oncircuitjsloaded = function () {
+      window.oncircuitjsloaded = function (api) {
+        if (api && !window.CircuitJS1) window.CircuitJS1 = api;
         if (!window.CircuitJS1 && window.cirsim) window.CircuitJS1 = window.cirsim;
         if (queued && window.CircuitJS1 && window.CircuitJS1.importCircuit) {
           window.CircuitJS1.importCircuit(queued);
@@ -55,6 +58,8 @@
       };
     })();
   </script>
-  <script src="circuitjs1/circuitjs1.nocache.js"></script>
+  <!-- CircuitJS 1.16 (falstad.com/circuit, GPL-2.0). The older circuitjs1/ GWT
+       build has no JS API, so presses could not reach the running sim. -->
+  <script type="module" src="circuitjs116/circuitjs-D4ylC0oc.js"></script>
 </body>
 </html>
