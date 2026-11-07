@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>A320 PCBWay gallery — color · 3D flip</title>
+  <style>
+    :root {
+      --bg: #0e1114;
+      --panel: #171b20;
+      --line: #2a323a;
+      --text: #e8ecef;
+      --muted: #8b969f;
+      --accent: #3d9a6a;
+      --copper: #c9933a;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", system-ui, sans-serif;
+      background:
+        radial-gradient(1200px 600px at 10% -10%, #1a2a22 0%, transparent 55%),
+        radial-gradient(900px 500px at 100% 0%, #1a2030 0%, transparent 50%),
+        var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+    header {
+      padding: 1.25rem 1.5rem 0.5rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    header h1 {
+      font-size: 1.35rem;
+      font-weight: 650;
+      letter-spacing: -0.02em;
+      margin: 0 0 0.35rem;
+    }
+    header p { margin: 0; color: var(--muted); font-size: 0.9rem; }
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+      margin-top: 1rem;
+    }
+    .toolbar label { font-size: 0.8rem; color: var(--muted); }
+    select, button {
+      background: var(--panel);
+      color: var(--text);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 0.45rem 0.75rem;
+      font: inherit;
+    }
+    button { cursor: pointer; }
+    button:hover { border-color: var(--accent); }
+    .stats { margin-left: auto; font-size: 0.8rem; color: var(--muted); }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.1rem;
+      padding: 1.25rem 1.5rem 3rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .card-head {
+      padding: 0.75rem 0.9rem 0.35rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 0.5rem;
+      align-items: baseline;
+    }
+    .card-head strong { font-size: 0.92rem; }
+    .tag {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--accent);
+      border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
+      padding: 0.12rem 0.4rem;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+    .tag.warn { color: #d4a017; border-color: color-mix(in srgb, #d4a017 45%, transparent); }
+    .tag.skip { color: var(--muted); border-color: var(--line); }
+    .tag.ready { color: #5ecf8e; border-color: color-mix(in srgb, #5ecf8e 50%, transparent); }
+    .meta { padding: 0 0.9rem 0.35rem; font-size: 0.75rem; color: var(--muted); }
+    .facts {
+      display: flex; flex-wrap: wrap; gap: 0.35rem;
+      padding: 0 0.9rem 0.55rem; font-size: 0.68rem; color: var(--muted);
+    }
+    .facts span {
+      border: 1px solid var(--line); border-radius: 6px; padding: 0.1rem 0.35rem;
+    }
+    .facts .ok { color: #5ecf8e; border-color: color-mix(in srgb, #5ecf8e 40%, transparent); }
+    .facts .bad { color: #d4a017; }
+
+    /* 3D flip stage — avoid overflow+backface combo (Chromium blanks the paint) */
+    .stage {
+      perspective: 1100px;
+      padding: 0.5rem 0.75rem 0.9rem;
+      min-height: 220px;
+    }
+    .flip {
+      position: relative;
+      width: 100%;
+      height: 210px;
+      transform-style: preserve-3d;
+      transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+      cursor: pointer;
+    }
+    .card.flipped .flip { transform: rotateY(180deg); }
+    .face {
+      position: absolute;
+      inset: 0;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      border-radius: 10px;
+      background: #1a1f24;
+      border: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow:
+        0 12px 28px rgba(0,0,0,0.35),
+        inset 0 1px 0 rgba(255,255,255,0.04);
+    }
+    .face.back { transform: rotateY(180deg); }
+    .face img {
+      display: block;
+      max-width: 92%;
+      max-height: 92%;
+      width: auto;
+      height: auto;
+      filter: drop-shadow(0 8px 16px rgba(0,0,0,0.45));
+    }
+    .hint {
+      text-align: center;
+      font-size: 0.7rem;
+      color: var(--muted);
+      padding-bottom: 0.75rem;
+    }
+    .actions {
+      display: flex;
+      gap: 0.4rem;
+      padding: 0 0.75rem 0.85rem;
+    }
+    .actions a, .actions button {
+      flex: 1;
+      text-align: center;
+      text-decoration: none;
+      font-size: 0.75rem;
+      padding: 0.4rem;
+    }
+    section.deferred {
+      max-width: 1400px;
+      margin: 0 auto 2rem;
+      padding: 0 1.5rem;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>A320 PCBWay gallery</h1>
+    <p>PCBWay-ready Gerbers · color 3D flip · later: direct comparison of components vs Fenix/FS LVars</p>
+    <div class="toolbar">
+      <label>Filter
+        <select id="filter">
+          <option value="ready">PCBWay ready</option>
+          <option value="all">All boards</option>
+          <option value="official">Official / upstream</option>
+          <option value="converted">Converted EasyEDA</option>
+          <option value="rev0">Rev0 custom</option>
+          <option value="skip">Skip</option>
+        </select>
+      </label>
+      <button type="button" id="flipAll">Flip all</button>
+      <button type="button" id="unflipAll">Show tops</button>
+      <a href="sim.html?board=21-adirs" style="color:var(--text);text-decoration:none;border:1px solid var(--line);border-radius:8px;padding:0.45rem 0.75rem;background:var(--panel)">Panel sim (3D + Falstad)</a>
+      <span class="stats" id="stats"></span>
+    </div>
+  </header>
+  <div class="grid" id="grid"></div>
+  <section class="deferred">
+    Deferred (not flat PCB packs): MIP gear lever, brake-pressure gauge, pedestal parking brake.
+    Comparison path: upload Gerbers → build panels → MobiFlight LVar matrix in <code>pcbway-ready.json</code> → side-by-side vs sim/real electrical data.
+  </section>
+  <script>
+    const META = {
+      "01-mcdu": ["MCDU", "official"],
+      "02-overhead-lights": ["Overhead lights", "official"],
+      "03-engine-start": ["Engine start", "official"],
+      "04-fcu": ["FCU", "converted"],
+      "05-efis-left": ["EFIS left", "converted"],
+      "06-efis-left-mini": ["EFIS left mini", "converted"],
+      "07-efis-right": ["EFIS right", "converted"],
+      "08-warning": ["Warning", "converted"],
+      "09-autobrake": ["Autobrake", "converted"],
+      "10-chrono": ["Chrono", "converted"],
+      "11-illumination": ["Illumination", "converted"],
+      "12-mini-overhead": ["Mini overhead", "converted"],
+      "13-atc-tcas": ["ATC/TCAS", "converted"],
+      "14-ecam": ["ECAM", "converted"],
+      "15-mcdu-from-json": ["MCDU reconvert (use 01)", "skip"],
+      "16-terr-on-nd": ["TERR ON ND", "rev0"],
+      "17-flood-light": ["Flood light", "rev0"],
+      "18-flt-ctl-fo": ["Flt ctl FO", "rev0"],
+      "19-gndservices": ["Ground services", "rev0"],
+      "20-fire": ["Fire", "rev0"],
+      "21-adirs": ["ADIRS", "rev0"],
+      "22-evac": ["Evac", "rev0"],
+      "23-audio": ["Audio", "rev0"],
+      "24-radio": ["Radio", "rev0"],
+      "25-cargo-heat": ["Cargo heat", "rev0"],
+      "26-emer-elec": ["Emer elec", "rev0"],
+      "27-aircond": ["Aircond", "rev0"],
+      "28-flt-ctl": ["Flt ctl", "rev0"],
+      "29-elec": ["Elec", "rev0"],
+      "30-hyd-fuel": ["Hyd/fuel", "rev0"],
+    };
+
+    const grid = document.getElementById("grid");
+    const cards = [];
+
+    function applyFilter(v) {
+      for (const c of cards) {
+        const show =
+          v === "all" ||
+          (v === "ready" && c.dataset.ready === "1") ||
+          c.dataset.tag === v;
+        c.style.display = show ? "" : "none";
+      }
+    }
+
+    async function boot() {
+      let manifest = [];
+      let readyMap = {};
+      try {
+        manifest = await (await fetch("manifest.json")).json();
+      } catch {
+        manifest = Object.keys(META).map((id) => ({ id, top: id + "-top.svg", bottom: id + "-bottom.svg" }));
+      }
+      try {
+        const ready = await (await fetch("pcbway-ready.json")).json();
+        for (const b of ready.boards || []) readyMap[b.id] = b;
+      } catch { /* optional */ }
+
+      const readyN = Object.values(readyMap).filter((b) => b.pcbway_ready).length;
+      document.getElementById("stats").textContent =
+        readyN + "/" + manifest.length + " PCBWay-ready · Gerber.zip per folder";
+
+      for (const m of manifest) {
+        const [title, tag] = META[m.id] || [m.id, "rev0"];
+        const r = readyMap[m.id] || {};
+        const isReady = !!r.pcbway_ready;
+        const card = document.createElement("article");
+        card.className = "card";
+        card.dataset.tag = tag;
+        card.dataset.ready = isReady ? "1" : "0";
+        const tagClass = tag === "skip" ? "skip" : tag === "rev0" ? "warn" : "";
+        const size = r.size_mm ? `${r.size_mm.w}×${r.size_mm.h} mm` : "size ?";
+        const layers = r.copper_layers ? `${r.copper_layers}L` : "?L";
+        const mf = (r.sim_bindings && r.sim_bindings.count) || 0;
+        const bomQ = r.bom ? r.bom.total_qty + " BOM" : null;
+        card.innerHTML = `
+          <div class="card-head">
+            <strong>${m.id}</strong>
+            <span class="tag ${isReady ? "ready" : "skip"}">${isReady ? "PCBWay ready" : (r.skip_reason || "not ready")}</span>
+          </div>
+          <div class="meta">${title} · <span class="tag ${tagClass}" style="margin-left:0.25rem">${tag}</span></div>
+          <div class="facts">
+            <span class="${isReady ? "ok" : "bad"}">${layers}</span>
+            <span>${size}</span>
+            ${bomQ ? `<span>${bomQ}</span>` : ""}
+            <span title="MobiFlight / Fenix LVar bindings parsed">${mf} sim maps</span>
+          </div>
+          <div class="stage">
+            <div class="flip" title="Click to flip">
+              <div class="face front"><img alt="${m.id} top" src="${m.top}" loading="lazy" /></div>
+              <div class="face back"><img alt="${m.id} bottom" src="${m.bottom}" loading="lazy" /></div>
+            </div>
+          </div>
+          <div class="hint">click board · top ↔ bottom</div>
+          <div class="actions">
+            <a href="viewer3d.html?board=${m.id}">3D + parts</a>
+            <a href="sim.html?board=${m.id}">Sim</a>
+            <a href="../${m.id}/Gerber.zip">Gerber.zip</a>
+          </div>`;
+        card.querySelector(".flip").addEventListener("click", () => card.classList.toggle("flipped"));
+        grid.appendChild(card);
+        cards.push(card);
+      }
+      applyFilter(document.getElementById("filter").value);
+    }
+
+    document.getElementById("filter").addEventListener("change", (e) => applyFilter(e.target.value));
+    document.getElementById("flipAll").addEventListener("click", () => {
+      cards.forEach((c) => c.classList.add("flipped"));
+    });
+    document.getElementById("unflipAll").addEventListener("click", () => {
+      cards.forEach((c) => c.classList.remove("flipped"));
+    });
+
+    boot();
+  </script>
+</body>
+</html>

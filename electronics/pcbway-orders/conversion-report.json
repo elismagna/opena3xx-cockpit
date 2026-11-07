@@ -1,0 +1,218 @@
+[
+  {
+    "id": "04-fcu",
+    "source": "C:\\Users\\Elis\\Downloads\\Fenix v3 Installer\\A320-panels\\electronics\\vendor\\mobiflight-panels\\aircraft\\airbus-a32x\\glareshield\\fcu\\PCB_A320 FCU.json",
+    "zip": "C:\\Users\\Elis\\Downloads\\Fenix v3 Installer\\A320-panels\\electronics\\pcbway-orders\\04-fcu\\Gerber.zip",
+    "files": [
+      "GTL.GTL",
+      "GBL.GBL",
+      "GTO.GTO",
+      "GBS.GBS",
+      "GKO.GKO",
+      "GBO.GBO",
+      "GTS.GTS",
+      "Drill_PTH.DRL",
+      "Drill_NPTH.DRL",
+      "board-size.txt"
+    ],
+    "size_bytes": 51911
+  },
+  {
+    "id": "05-efis-left",
+    "source": "C:\\Users\\Elis\\Downloads\\Fenix v3 Installer\\A320-panels\\electronics\\vendor\\mobiflight-panels\\aircraft\\airbus-a32x\\glareshield\\efis\\PCB_A320 EFIS Left.json",
+    "zip": "C:\\Users\\Elis\\Downloads\\Fenix v3 Installer\\A320-panels\\electronics\\pcbway-orders\\05-efis-left\\Gerber.zip",
+    "files": [
+      "GTL.GTL",
+      "GBL.GBL",
+      "GTO.GTO",
+      "GBS.GBS",
+      "GKO.GKO",
+      "GBO.GBO",
+      "GTS.GTS",
+      "Drill_PTH.DRL",
+      "Drill_NPTH.DRL",
+      "board-size.txt"
+    ],
+    "size_bytes": 32730
+  },
+  {
+    "id": "06-efis-left-mini",
+    "source": "C:\\Users\\Elis\\Downloads\\Fenix v3 Installer\\A320-panels\\electronics\\vendor\\mobiflight-panels\\aircraft\\airbus-a32x\\glareshield\\efis\\PCB_A320 EFIS Left (Mini).json",
+    "zip": "C:\\Users\\Elis\\Downloads\\Fenix v3 Installer\\A320-panels\\electronics\\pcbway-orders\\06-efis-left-mini\\Gerber.zip",
+    "files": [
+      "GTL.GTL",
+      "GBL.GBL",
+      "GTO.GTO",
+      "GBS.GBS",
+      "GKO.GKO",
+      "GBO.GBO",
+      "GTS.GTS",
+      "Drill_PTH.DRL",
+      "Drill_NPTH.DRL",
+      "board-size.txt"
+    ],
+    "size_bytes": 34697
+  },
+  {
+    "id": "07-efis-right",
+    "source": "C:\\Users\\Elis\\Downloads\\Fenix v3 Installer\\A320-panels\\electronics\\vendor\\mobiflight-panels\\aircraft\\airbus-a32x\\glareshield\\efis\\PCB_A320 EFIS Right.json",
+    "zip": "C:\\Users\\Elis\\Downloads\\Fenix v3 Installer\\A320-panels\\electronics\\pcbway-orders\\07-efis-right\\Gerber.zip",
+    "files": [
+      "GTL.GTL",
+      "GBL.GBL",
+      "GTO.GTO",
+      "GBS.GBS",
+      "GKO.GKO",
+      "GBO.GBO",
+      "GTS.GTS",
+      "Drill_PTH.DRL",
+      "Drill_NPTH.DRL",
+      "board-size.txt"
+    ],
+    "size_bytes": 32466
+  },
+  {
+    "id": "08-warning",
+    "source": "C:\\Users\\Elis\\Downloads\\Fenix v3 Installer\\A320-panels\\electronics\\vendor\\mobiflight-panels\\aircraft\\airbus-a32x\\glareshield\\warning\\PCB_A320 Warning.json",
+    "zip": "C:\\Users\\Elis\\Downloads\\Fenix v3 Installer\\A320-panels\\electronics\\pcbway-orders\\08-warning\\Gerber.zip",
+    "files": [
+      "GTL.GTL",
+      "GBL.GBL",
+      "GTO.GTO",
+      "GBS.GBS",
+      "GKO.GKO",
+      "GBO.GBO",
+      "GTS.GTS",
+      "Drill_PTH.DRL",
+      "Drill_NPTH.DRL",
+      "board-size.txt"
+    ],
+    "size_bytes": 14766
+  },
+  {
+    "id": "09-autobrake",
+    "source": "C:\\Users\\Elis\\Downloads\\Fenix v3 Installer\\A320-panels\\electronics\\vendor\\mobiflight-panels\\aircraft\\airbus-a32x\\main-instrument-panel\\autobrake\\PCB_A320 Autobrake.json",
+    "zip": "C:\\Users\\Elis\\Downloads\\Fenix v3 Installer\\A320-panels\\electronics\\pcbway-orders\\09-autobrake\\Gerber.zip",
+    "files": [
+      "GTL.GTL",
+      "GBL.GBL",
+      "GTO.GTO",
+      "GBS.GBS",
+      "GKO.GKO",
+      "GBO.GBO",
+      "GTS.GTS",
+      "Drill_PTH.DRL",
+      "Drill_NPTH.DRL",
+      "board-size.txt"
+    ],
+    "size_bytes": 25622
+  },
+  {
+    "id": "10-chrono",
+    "source": "C:\\Users\\Elis\\Downloads\\Fenix v3 Installer\\A320-panels\\electronics\\vendor\\mobiflight-panels\\aircraft\\airbus-a32x\\main-instrument-panel\\digital-chronometer\\PCB_A320 Chrono.json",
+    "zip": "C:\\Users\\Elis\\Downloads\\Fenix v3 Installer\\A320-panels\\electronics\\pcbway-orders\\10-chrono\\Gerber.zip",
+    "files": [
+      "GTL.GTL",
+      "GBL.GBL",
+      "GTO.GTO",
+      "GBS.GBS",
+      "GKO.GKO",
+      "GBO.GBO",
+      "GTS.GTS",
+      "Drill_PTH.DRL",
+      "Drill_NPTH.DRL",
+      "board-size.txt"
+    ],
+    "size_bytes": 29904
+  },
+  {
+    "id": "11-illumination",
+    "source": "C:\\Users\\Elis\\Downloads\\Fenix v3 Installer\\A320-panels\\electronics\\vendor\\mobiflight-panels\\aircraft\\airbus-a32x\\main-instrument-panel\\illumination\\PCB_A320 Illumination.json",
+    "zip": "C:\\Users\\Elis\\Downloads\\Fenix v3 Installer\\A320-panels\\electronics\\pcbway-orders\\11-illumination\\Gerber.zip",
+    "files": [
+      "GTL.GTL",
+      "GBL.GBL",
+      "GTO.GTO",
+      "GBS.GBS",
+      "GKO.GKO",
+      "GBO.GBO",
+      "GTS.GTS",
+      "Drill_PTH.DRL",
+      "Drill_NPTH.DRL",
+      "board-size.txt"
+    ],
+    "size_bytes": 19501
+  },
+  {
+    "id": "12-mini-overhead",
+    "source": "C:\\Users\\Elis\\Downloads\\Fenix v3 Installer\\A320-panels\\electronics\\vendor\\mobiflight-panels\\aircraft\\airbus-a32x\\overhead\\mini-overhead\\PCB_A320 Mini Overhead.json",
+    "zip": "C:\\Users\\Elis\\Downloads\\Fenix v3 Installer\\A320-panels\\electronics\\pcbway-orders\\12-mini-overhead\\Gerber.zip",
+    "files": [
+      "GTL.GTL",
+      "GBL.GBL",
+      "GTO.GTO",
+      "GBS.GBS",
+      "GKO.GKO",
+      "GBO.GBO",
+      "GTS.GTS",
+      "Drill_PTH.DRL",
+      "Drill_NPTH.DRL",
+      "board-size.txt"
+    ],
+    "size_bytes": 32785
+  },
+  {
+    "id": "13-atc-tcas",
+    "source": "C:\\Users\\Elis\\Downloads\\Fenix v3 Installer\\A320-panels\\electronics\\vendor\\mobiflight-panels\\aircraft\\airbus-a32x\\pedestal\\atc-tcas\\PCB\\PCB_A320 ATC-TCAS.json",
+    "zip": "C:\\Users\\Elis\\Downloads\\Fenix v3 Installer\\A320-panels\\electronics\\pcbway-orders\\13-atc-tcas\\Gerber.zip",
+    "files": [
+      "GTL.GTL",
+      "GBL.GBL",
+      "GTO.GTO",
+      "GBS.GBS",
+      "GKO.GKO",
+      "GBO.GBO",
+      "GTS.GTS",
+      "Drill_PTH.DRL",
+      "Drill_NPTH.DRL",
+      "board-size.txt"
+    ],
+    "size_bytes": 29606
+  },
+  {
+    "id": "14-ecam",
+    "source": "C:\\Users\\Elis\\Downloads\\Fenix v3 Installer\\A320-panels\\electronics\\vendor\\mobiflight-panels\\aircraft\\airbus-a32x\\pedestal\\ecam\\PCB_A320 ECAM.json",
+    "zip": "C:\\Users\\Elis\\Downloads\\Fenix v3 Installer\\A320-panels\\electronics\\pcbway-orders\\14-ecam\\Gerber.zip",
+    "files": [
+      "GTL.GTL",
+      "GBL.GBL",
+      "GTO.GTO",
+      "GBS.GBS",
+      "GKO.GKO",
+      "GBO.GBO",
+      "GTS.GTS",
+      "Drill_PTH.DRL",
+      "Drill_NPTH.DRL",
+      "board-size.txt"
+    ],
+    "size_bytes": 37343
+  },
+  {
+    "id": "15-mcdu-from-json",
+    "source": "C:\\Users\\Elis\\Downloads\\Fenix v3 Installer\\A320-panels\\electronics\\vendor\\mobiflight-panels\\aircraft\\airbus-a32x\\pedestal\\mcdu\\PCB_PCB_A320 MCDU SMD_2023-03-08.json",
+    "zip": "C:\\Users\\Elis\\Downloads\\Fenix v3 Installer\\A320-panels\\electronics\\pcbway-orders\\15-mcdu-from-json\\Gerber.zip",
+    "files": [
+      "GTL.GTL",
+      "GBL.GBL",
+      "GTO.GTO",
+      "GBS.GBS",
+      "GKO.GKO",
+      "GBO.GBO",
+      "GTS.GTS",
+      "Drill_PTH.DRL",
+      "Drill_NPTH.DRL",
+      "board-size.txt"
+    ],
+    "size_bytes": 63053
+  }
+]

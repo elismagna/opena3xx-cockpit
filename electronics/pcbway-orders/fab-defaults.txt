@@ -1,0 +1,18 @@
+PCBWay defaults for every A320 MobiFlight panel in this pack
+============================================================
+
+Layers: 2
+Thickness: 1.6 mm
+Copper: 1 oz
+Solder mask: Black (or green)
+Silkscreen: White
+Surface finish: HASL lead-free (ENIG if fine-pitch SMD like MCDU)
+Min trace/space: 6/6 mil
+Min hole: 0.3 mm
+Edge rails: none
+Electrical test: flying probe
+Qty: 5 per board design
+
+Comment to paste:
+"Hobbyist flight-sim panel (MobiFlight A320). Not for aircraft installation.
+Gerber from open-source EasyEDA design. Please DFM-check outline and drills."

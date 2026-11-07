@@ -1,0 +1,28 @@
+PCBWay order notes — A320 Sim FCS Hub Rev A
+============================================
+
+Board name: A320-SIM-FCS-HUB-REVA
+Qty: 5
+Layers: 4
+Size: 100mm x 100mm
+Thickness: 1.6mm
+Copper weight: 1oz outer / 0.5oz inner (PCBWay default OK)
+Solder mask: Black
+Silkscreen: White
+Surface finish: ENIG
+Min trace/space: 0.15mm / 0.15mm
+Min hole: 0.3mm
+Impedance: USB DP/DM as 90ohm differential if your 4-layer stackup supports it; otherwise best-effort short length <30mm.
+
+Edge: rectangular outline in Edge.Cuts. Four M3 mounting holes.
+
+Assembly (optional turnkey SMT):
+- Assemble TOP only.
+- Use bom.csv + cpl.csv.
+- Do Not Place (DNP): U_ARINC1, U_ARINC2, all ARINC magnetics, J8.
+- Through-hole IDC headers J3/J4 and barrel J2 may be consigned / hand-solder if cheaper.
+
+Electrical test: flying probe OK.
+No controlled impedance coupon required for Rev A.
+
+Contact intent: hobbyist flight-sim cockpit I/O + flight-law status hub. Not for aircraft installation.

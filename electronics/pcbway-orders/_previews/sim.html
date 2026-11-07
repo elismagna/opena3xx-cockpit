@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Panel Simulator</title>
+  <style>
+    :root {
+      --bg: #101214;
+      --panel: #171a1d;
+      --panel2: #1d2125;
+      --line: #2c333b;
+      --text: #eef1f4;
+      --muted: #9aa3ab;
+      --accent: #4caf50;
+      --accent-dim: #1f4d22;
+      --lamp: #ffb020;
+      --danger: #e5534b;
+      --side: 440px;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0; height: 100%; overflow: hidden;
+      background: var(--bg); color: var(--text);
+      font-family: system-ui, "Segoe UI", Roboto, sans-serif;
+    }
+    #app { height: 100%; display: grid; grid-template-rows: auto minmax(0, 1fr); }
+
+    /* ---------- top bar ---------- */
+    #bar {
+      display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+      padding: 8px 14px; min-height: 52px;
+      background: var(--panel); border-bottom: 1px solid var(--line);
+    }
+    .brand { display: flex; align-items: baseline; gap: 10px; min-width: 0; margin-right: 6px; }
+    .brand b { font-size: 14px; letter-spacing: 0.04em; white-space: nowrap; }
+    .brand b i { font-style: normal; color: var(--accent); }
+    #boardLabel {
+      font-size: 13px; color: var(--muted); white-space: nowrap;
+      overflow: hidden; text-overflow: ellipsis; max-width: 220px;
+    }
+    #bar select, .btn {
+      height: 32px; border-radius: 6px; border: 1px solid var(--line);
+      background: var(--panel2); color: var(--text); font: inherit; font-size: 13px;
+    }
+    #bar select { padding: 0 8px; max-width: 200px; }
+    .btn { padding: 0 12px; cursor: pointer; white-space: nowrap; }
+    .btn:hover { border-color: #46505a; background: #23282d; }
+    .btn:focus-visible, #bar select:focus-visible, .tile:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    #btnRun { min-width: 92px; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; justify-content: center; }
+    #btnRun::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 6px var(--accent); }
+    #btnRun.stopped::before { background: var(--danger); box-shadow: none; }
+    #btnRun.stopped { color: #f3c2bf; }
+    #status {
+      flex: 1 1 140px; min-width: 0; font-size: 12px; color: var(--muted);
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: right;
+    }
+    .links { display: flex; gap: 14px; }
+    .links a { color: var(--muted); font-size: 13px; text-decoration: none; white-space: nowrap; }
+    .links a:hover { color: var(--accent); }
+
+    /* ---------- workspace ---------- */
+    #work {
+      display: grid; min-height: 0; gap: 1px; background: var(--line);
+      grid-template-columns: minmax(0, 1fr) var(--side);
+      grid-template-rows: minmax(0, 1fr) minmax(0, 0.92fr);
+      grid-template-areas: "big tiles" "big small";
+    }
+    .pane { position: relative; min-width: 0; min-height: 0; background: var(--bg); display: flex; flex-direction: column; }
+    .pane .cap {
+      display: flex; align-items: center; justify-content: space-between; gap: 8px;
+      font-size: 11px; text-transform: uppercase; letter-spacing: 0.09em; color: var(--muted);
+      padding: 7px 12px; background: var(--panel); border-bottom: 1px solid var(--line);
+    }
+    .pane .cap span:last-child { text-transform: none; letter-spacing: 0; }
+    .pane iframe { flex: 1; width: 100%; min-height: 0; border: 0; display: block; background: var(--bg); }
+    #p3d { grid-area: big; }
+    #psch { grid-area: small; }
+    #ptiles { grid-area: tiles; background: var(--panel); }
+    #work.swapped #p3d { grid-area: small; }
+    #work.swapped #psch { grid-area: big; }
+    #psch iframe { background: #000; }
+
+    /* ---------- Korry tiles ---------- */
+    #tiles {
+      flex: 1; min-height: 0; overflow: auto; padding: 10px;
+      display: grid; gap: 8px; align-content: start;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .tile {
+      appearance: none; cursor: pointer; font: inherit; color: inherit; text-align: center;
+      display: flex; flex-direction: column; justify-content: space-between; gap: 6px;
+      min-height: 84px; padding: 8px 6px 7px; border-radius: 4px;
+      background: linear-gradient(#202428, #15181b);
+      border: 1px solid #2f363d;
+      box-shadow: inset 0 1px 0 #2d3338, 0 2px 0 #0a0b0c;
+      transition: transform 60ms, box-shadow 120ms, border-color 120ms;
+    }
+    .tile:hover { border-color: #4a545e; }
+    .tile:active { transform: translateY(1px); box-shadow: inset 0 1px 0 #2d3338, 0 1px 0 #0a0b0c; }
+    .tile .legend {
+      font-size: 12px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;
+      color: #d9dee2; line-height: 1.2; overflow-wrap: anywhere;
+    }
+    .tile .ref { font-size: 10px; color: var(--muted); letter-spacing: 0.04em; }
+    .tile .strip {
+      height: 14px; border-radius: 2px; background: #2a2318;
+      box-shadow: inset 0 0 0 1px #3a3020;
+      font-size: 9px; font-weight: 800; letter-spacing: 0.14em; line-height: 14px;
+      color: #4a3e2a;
+    }
+    .tile.on { border-color: #6b4c12; }
+    .tile.on .strip {
+      background: var(--lamp); color: #3a2600;
+      box-shadow: 0 0 10px #ffb020aa, 0 0 22px #ffb02055, inset 0 0 4px #fff3;
+    }
+    .tile.on .legend { color: #fff; }
+    .empty { grid-column: 1 / -1; color: var(--muted); font-size: 13px; padding: 12px; }
+
+    /* ---------- phone ---------- */
+    @media (max-width: 900px) {
+      html, body { overflow: auto; height: auto; }
+      #app { height: auto; display: block; }
+      #bar { padding: 8px 16px; }
+      #status { flex-basis: 100%; text-align: left; order: 10; }
+      #boardLabel { display: none; }
+      #work, #work.swapped {
+        display: flex; flex-direction: column; gap: 1px;
+      }
+      #p3d, #work.swapped #psch { height: 45vh; order: 1; }
+      #ptiles { order: 2; }
+      #psch, #work.swapped #p3d { height: 55vh; order: 3; }
+      #tiles { grid-template-columns: repeat(3, minmax(0, 1fr)); max-height: 50vh; padding: 10px 16px; }
+    }
+    @media (max-width: 420px) {
+      #tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <header id="bar">
+      <div class="brand"><b>A320 <i>PANEL SIM</i></b><span id="boardLabel"></span></div>
+      <select id="boardSelect" title="Panel board" aria-label="Panel board"></select>
+      <button type="button" class="btn" id="btnRun" title="Start / stop the circuit simulation">RUN</button>
+      <button type="button" class="btn" id="btnRelease" title="Release every pressed control">Release all</button>
+      <button type="button" class="btn" id="btnSwap" title="Swap the 3D board and schematic">Swap view</button>
+      <span id="status">Starting…</span>
+      <nav class="links">
+        <a href="viewer3d.html" id="link3d">3D viewer</a>
+        <a href="index.html">Gallery</a>
+      </nav>
+    </header>
+
+    <main id="work">
+      <section class="pane" id="p3d">
+        <div class="cap"><span>3D board</span><span>click a switch to press it</span></div>
+        <iframe id="view3d" title="3D board"></iframe>
+      </section>
+      <section class="pane" id="ptiles">
+        <div class="cap"><span>Panel controls</span><span id="pressedCount">0 pressed</span></div>
+        <div id="tiles"></div>
+      </section>
+      <section class="pane" id="psch">
+        <div class="cap"><span>Schematic · CircuitJS</span><span>live current</span></div>
+        <iframe id="falstad" title="CircuitJS schematic" src="about:blank"></iframe>
+      </section>
+    </main>
+  </div>
+  <script>
+    const params = new URLSearchParams(location.search);
+    let boardId = params.get("board") || "21-adirs";
+    let index = { boards: [] };
+    let current = null;
+    let circuitText = "";
+    let closed = new Set();
+    let running = true;
+
+    const $ = (id) => document.getElementById(id);
+    const boardSelect = $("boardSelect");
+    const tiles = $("tiles");
+    const status = $("status");
+    const falstad = $("falstad");
+    const view3d = $("view3d");
+    const btnRun = $("btnRun");
+    const work = $("work");
+
+    function setStatus(t) { status.textContent = t; }
+
+    function setRunning(on) {
+      running = !!on;
+      btnRun.classList.toggle("stopped", !running);
+      btnRun.textContent = running ? "RUN" : "Stopped";
+      btnRun.setAttribute("aria-pressed", String(running));
+      try {
+        const api = falstad.contentWindow?.CircuitJS1;
+        if (api?.setSimRunning) api.setSimRunning(running);
+        else falstad.contentWindow?.postMessage({ type: "run", value: running }, "*");
+      } catch (_) {}
+    }
+
+    async function loadIndex() {
+      index = await (await fetch("circuitjs/circuits-index.json")).json();
+      boardSelect.innerHTML = "";
+      for (const b of index.boards) {
+        const opt = document.createElement("option");
+        opt.value = b.id;
+        opt.textContent = b.title;
+        boardSelect.appendChild(opt);
+      }
+      if (!index.boards.some((b) => b.id === boardId)) boardId = index.boards[0]?.id;
+      boardSelect.value = boardId;
+    }
+
+    async function fetchCircuit(id) {
+      const meta = index.boards.find((b) => b.id === id);
+      if (!meta) throw new Error("Unknown board");
+      const text = await (await fetch("circuitjs/" + meta.file)).text();
+      return { meta, text };
+    }
+
+    function applySwitchStates(text, closedSet) {
+      let i = 0;
+      return text.split("\n").map((line) => {
+        if (!line.startsWith("s ")) return line;
+        const parts = line.split(" ");
+        // CircuitJS SwitchElm: position 0 = closed, 1 = open
+        if (parts.length >= 7) parts[6] = closedSet.has(i) ? "0" : "1";
+        i += 1;
+        return parts.join(" ");
+      }).join("\n");
+    }
+
+    function renderControls() {
+      tiles.innerHTML = "";
+      const ctrls = current?.controls || [];
+      if (!ctrls.length) tiles.innerHTML = `<div class="empty">No controls on this board.</div>`;
+      ctrls.forEach((name, i) => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "tile";
+        btn.dataset.i = i;
+        const ref = (current.part_ids || [])[i] || "";
+        btn.innerHTML = `<span class="legend"></span><span class="ref"></span><span class="strip">ON</span>`;
+        btn.querySelector(".legend").textContent = name;
+        btn.querySelector(".ref").textContent = ref;
+        btn.title = `${name}${ref ? " (" + ref + ")" : ""}`;
+        btn.addEventListener("click", () => toggle(i));
+        tiles.appendChild(btn);
+      });
+      syncTiles();
+    }
+
+    function syncTiles() {
+      for (const el of tiles.querySelectorAll(".tile")) {
+        const on = closed.has(+el.dataset.i);
+        el.classList.toggle("on", on);
+        el.setAttribute("aria-pressed", String(on));
+      }
+      $("pressedCount").textContent = `${closed.size} pressed`;
+    }
+
+    function sendLamps() {
+      const ids = current?.part_ids || [];
+      const on = [...closed].map((i) => ids[i]).filter(Boolean);
+      try { view3d.contentWindow?.postMessage({ type: "lamps", on }, "*"); } catch (_) {}
+    }
+
+    function pushCircuit() {
+      const text = applySwitchStates(circuitText, closed);
+      let usedApi = false;
+      try {
+        const api = falstad.contentWindow && falstad.contentWindow.CircuitJS1;
+        if (api && typeof api.importCircuit === "function") {
+          api.importCircuit(text);
+          try { api.setSimRunning(running); } catch (_) {}
+          usedApi = true;
+        }
+      } catch (_) {}
+      if (!usedApi) falstad.src = "circuitjs/embed.html?cct=" + encodeURIComponent(text);
+      setStatus(`${current.title} · ${closed.size} pressed`);
+    }
+
+    // Single entry point whenever the pressed set changes.
+    function pressedChanged() {
+      pushCircuit();
+      syncTiles();
+      sendLamps();
+    }
+
+    function toggle(i) {
+      if (closed.has(i)) closed.delete(i); else closed.add(i);
+      pressedChanged();
+    }
+
+    async function showBoard(id) {
+      boardId = id;
+      closed = new Set();
+      history.replaceState(null, "", `?board=${encodeURIComponent(id)}`);
+      $("link3d").href = `viewer3d.html?board=${encodeURIComponent(id)}`;
+      view3d.src = `viewer3d.html?board=${encodeURIComponent(id)}&embed=1`;
+      const { meta, text } = await fetchCircuit(id);
+      current = meta;
+      circuitText = text;
+      boardSelect.value = id;
+      $("boardLabel").textContent = meta.title;
+      document.title = `${meta.title} · Panel Simulator`;
+      falstad.src = "circuitjs/embed.html?cct=" + encodeURIComponent(applySwitchStates(text, closed));
+      renderControls();
+      setStatus(`Loading ${meta.title}…`);
+      setRunning(true);
+    }
+
+    window.addEventListener("message", (ev) => {
+      const msg = ev.data || {};
+      if (msg.type === "circuitjs-ready" && ev.source === falstad.contentWindow) {
+        setRunning(running);
+        setStatus(`${current?.title || ""} · schematic ready`);
+      }
+      if (msg.type === "viewer-ready" && ev.source === view3d.contentWindow) {
+        sendLamps();
+      }
+      if (msg.type === "select-part" && current && ev.source === view3d.contentWindow) {
+        let i = (current.part_ids || []).indexOf(msg.id);
+        if (i < 0) i = current.controls.findIndex(
+          (c) => c === msg.label || c.replace(/\s/g, "_") === String(msg.label || "").replace(/\s/g, "_")
+        );
+        if (i >= 0) toggle(i);
+      }
+    });
+
+    boardSelect.addEventListener("change", () => showBoard(boardSelect.value));
+    $("btnRelease").addEventListener("click", () => {
+      if (!current) return;
+      closed = new Set();
+      pressedChanged();
+    });
+    btnRun.addEventListener("click", () => setRunning(!running));
+    $("btnSwap").addEventListener("click", () => {
+      const sw = work.classList.toggle("swapped");
+      $("btnSwap").setAttribute("aria-pressed", String(sw));
+      // let layout settle, then re-frame the 3D camera for its new size
+      requestAnimationFrame(() => setTimeout(() => {
+        try { view3d.contentWindow?.postMessage({ type: "frame" }, "*"); } catch (_) {}
+      }, 60));
+    });
+
+    (async function boot() {
+      try {
+        await loadIndex();
+        await showBoard(boardId);
+      } catch (e) {
+        console.error(e);
+        setStatus(String(e.message || e));
+      }
+    })();
+  </script>
+</body>
+</html>

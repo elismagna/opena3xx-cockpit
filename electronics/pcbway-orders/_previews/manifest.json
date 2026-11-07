@@ -1,0 +1,1642 @@
+[
+  {
+    "id": "01-mcdu",
+    "top": "01-mcdu-top.svg",
+    "bottom": "01-mcdu-bottom.svg",
+    "layers": [
+      {
+        "filename": "Drill_NPTH_Through.DRL",
+        "side": "all",
+        "type": "drill"
+      },
+      {
+        "filename": "Drill_PTH_Through.DRL",
+        "side": "all",
+        "type": "drill"
+      },
+      {
+        "filename": "Drill_PTH_Through_2.DRL",
+        "side": "all",
+        "type": "drill"
+      },
+      {
+        "filename": "Gerber_TopLayer.GTL",
+        "side": "top",
+        "type": "copper"
+      },
+      {
+        "filename": "Gerber_BottomLayer.GBL",
+        "side": "bottom",
+        "type": "copper"
+      },
+      {
+        "filename": "Gerber_TopSilkscreenLayer.GTO",
+        "side": "top",
+        "type": "silkscreen"
+      },
+      {
+        "filename": "Gerber_BottomSilkscreenLayer.GBO",
+        "side": "bottom",
+        "type": "silkscreen"
+      },
+      {
+        "filename": "Gerber_TopPasteMaskLayer.GTP",
+        "side": "top",
+        "type": "solderpaste"
+      },
+      {
+        "filename": "Gerber_TopSolderMaskLayer.GTS",
+        "side": "top",
+        "type": "soldermask"
+      },
+      {
+        "filename": "Gerber_BottomSolderMaskLayer.GBS",
+        "side": "bottom",
+        "type": "soldermask"
+      },
+      {
+        "filename": "Gerber_BoardOutlineLayer.GKO",
+        "side": "all",
+        "type": "outline"
+      },
+      {
+        "filename": "Gerber_InnerLayer1.G1",
+        "side": "inner",
+        "type": "copper"
+      },
+      {
+        "filename": "Gerber_InnerLayer2.G2",
+        "side": "inner",
+        "type": "copper"
+      }
+    ],
+    "viewBox": "7.62 -88.773 142.24 220.853",
+    "pcbwayZip": "../01-mcdu/Gerber.zip"
+  },
+  {
+    "id": "02-overhead-lights",
+    "top": "02-overhead-lights-top.svg",
+    "bottom": "02-overhead-lights-bottom.svg",
+    "layers": [
+      {
+        "filename": "Drill_NPTH_Through.DRL",
+        "side": "all",
+        "type": "drill"
+      },
+      {
+        "filename": "Drill_PTH_Through.DRL",
+        "side": "all",
+        "type": "drill"
+      },
+      {
+        "filename": "Gerber_TopLayer.GTL",
+        "side": "top",
+        "type": "copper"
+      },
+      {
+        "filename": "Gerber_BottomLayer.GBL",
+        "side": "bottom",
+        "type": "copper"
+      },
+      {
+        "filename": "Gerber_TopSilkscreenLayer.GTO",
+        "side": "top",
+        "type": "silkscreen"
+      },
+      {
+        "filename": "Gerber_BottomSilkscreenLayer.GBO",
+        "side": "bottom",
+        "type": "silkscreen"
+      },
+      {
+        "filename": "Gerber_TopSolderMaskLayer.GTS",
+        "side": "top",
+        "type": "soldermask"
+      },
+      {
+        "filename": "Gerber_BottomSolderMaskLayer.GBS",
+        "side": "bottom",
+        "type": "soldermask"
+      },
+      {
+        "filename": "Gerber_BoardOutlineLayer.GKO",
+        "side": "all",
+        "type": "outline"
+      }
+    ],
+    "viewBox": "6.35 2.032 302.26 125.22200000000001",
+    "pcbwayZip": "../02-overhead-lights/Gerber.zip"
+  },
+  {
+    "id": "03-engine-start",
+    "top": "03-engine-start-top.svg",
+    "bottom": "03-engine-start-bottom.svg",
+    "layers": [
+      {
+        "filename": "Drill_NPTH_Through.DRL",
+        "side": "all",
+        "type": "drill"
+      },
+      {
+        "filename": "Drill_PTH_Through.DRL",
+        "side": "all",
+        "type": "drill"
+      },
+      {
+        "filename": "Gerber_TopLayer.GTL",
+        "side": "top",
+        "type": "copper"
+      },
+      {
+        "filename": "Gerber_BottomLayer.GBL",
+        "side": "bottom",
+        "type": "copper"
+      },
+      {
+        "filename": "Gerber_TopSilkscreenLayer.GTO",
+        "side": "top",
+        "type": "silkscreen"
+      },
+      {
+        "filename": "Gerber_BottomSilkscreenLayer.GBO",
+        "side": "bottom",
+        "type": "silkscreen"
+      },
+      {
+        "filename": "Gerber_TopSolderMaskLayer.GTS",
+        "side": "top",
+        "type": "soldermask"
+      },
+      {
+        "filename": "Gerber_BottomSolderMaskLayer.GBS",
+        "side": "bottom",
+        "type": "soldermask"
+      },
+      {
+        "filename": "Gerber_BoardOutlineLayer.GKO",
+        "side": "all",
+        "type": "outline"
+      }
+    ],
+    "viewBox": "7.00001 -40.99999 89.99999 71.99996999999999",
+    "pcbwayZip": "../03-engine-start/Gerber.zip"
+  },
+  {
+    "id": "04-fcu",
+    "top": "04-fcu-top.svg",
+    "bottom": "04-fcu-bottom.svg",
+    "layers": [
+      {
+        "filename": "Gerber_TopLayer.GTL",
+        "side": "top",
+        "type": "copper"
+      },
+      {
+        "filename": "Gerber_BottomLayer.GBL",
+        "side": "bottom",
+        "type": "copper"
+      },
+      {
+        "filename": "Gerber_TopSilkscreenLayer.GTO",
+        "side": "top",
+        "type": "silkscreen"
+      },
+      {
+        "filename": "Gerber_BottomSolderMaskLayer.GBS",
+        "side": "bottom",
+        "type": "soldermask"
+      },
+      {
+        "filename": "Gerber_BoardOutlineLayer.GKO",
+        "side": "all",
+        "type": "outline"
+      },
+      {
+        "filename": "Gerber_BottomSilkscreenLayer.GBO",
+        "side": "bottom",
+        "type": "silkscreen"
+      },
+      {
+        "filename": "Gerber_TopSolderMaskLayer.GTS",
+        "side": "top",
+        "type": "soldermask"
+      },
+      {
+        "filename": "Drill_PTH_Through.DRL",
+        "side": "all",
+        "type": "drill"
+      },
+      {
+        "filename": "Drill_NPTH_Through.DRL",
+        "side": "all",
+        "type": "drill"
+      }
+    ],
+    "viewBox": "2.413 -92.583 257.29999 89.3",
+    "pcbwayZip": "../04-fcu/Gerber.zip"
+  },
+  {
+    "id": "05-efis-left",
+    "top": "05-efis-left-top.svg",
+    "bottom": "05-efis-left-bottom.svg",
+    "layers": [
+      {
+        "filename": "Gerber_TopLayer.GTL",
+        "side": "top",
+        "type": "copper"
+      },
+      {
+        "filename": "Gerber_BottomLayer.GBL",
+        "side": "bottom",
+        "type": "copper"
+      },
+      {
+        "filename": "Gerber_TopSilkscreenLayer.GTO",
+        "side": "top",
+        "type": "silkscreen"
+      },
+      {
+        "filename": "Gerber_BottomSolderMaskLayer.GBS",
+        "side": "bottom",
+        "type": "soldermask"
+      },
+      {
+        "filename": "Gerber_BoardOutlineLayer.GKO",
+        "side": "all",
+        "type": "outline"
+      },
+      {
+        "filename": "Gerber_BottomSilkscreenLayer.GBO",
+        "side": "bottom",
+        "type": "silkscreen"
+      },
+      {
+        "filename": "Gerber_TopSolderMaskLayer.GTS",
+        "side": "top",
+        "type": "soldermask"
+      },
+      {
+        "filename": "Drill_PTH_Through.DRL",
+        "side": "all",
+        "type": "drill"
+      },
+      {
+        "filename": "Drill_NPTH_Through.DRL",
+        "side": "all",
+        "type": "drill"
+      }
+    ],
+    "viewBox": "3.83431 -92.5352 153.72791 88.00265",
+    "pcbwayZip": "../05-efis-left/Gerber.zip"
+  },
+  {
+    "id": "06-efis-left-mini",
+    "top": "06-efis-left-mini-top.svg",
+    "bottom": "06-efis-left-mini-bottom.svg",
+    "layers": [
+      {
+        "filename": "Gerber_TopLayer.GTL",
+        "side": "top",
+        "type": "copper"
+      },
+      {
+        "filename": "Gerber_BottomLayer.GBL",
+        "side": "bottom",
+        "type": "copper"
+      },
+      {
+        "filename": "Gerber_TopSilkscreenLayer.GTO",
+        "side": "top",
+        "type": "silkscreen"
+      },
+      {
+        "filename": "Gerber_BottomSolderMaskLayer.GBS",
+        "side": "bottom",
+        "type": "soldermask"
+      },
+      {
+        "filename": "Gerber_BoardOutlineLayer.GKO",
+        "side": "all",
+        "type": "outline"
+      },
+      {
+        "filename": "Gerber_BottomSilkscreenLayer.GBO",
+        "side": "bottom",
+        "type": "silkscreen"
+      },
+      {
+        "filename": "Gerber_TopSolderMaskLayer.GTS",
+        "side": "top",
+        "type": "soldermask"
+      },
+      {
+        "filename": "Drill_PTH_Through.DRL",
+        "side": "all",
+        "type": "drill"
+      },
+      {
+        "filename": "Drill_NPTH_Through.DRL",
+        "side": "all",
+        "type": "drill"
+      }
+    ],
+    "viewBox": "12.54473 -80.44391 142.90327000000002 73.12071",
+    "pcbwayZip": "../06-efis-left-mini/Gerber.zip"
+  },
+  {
+    "id": "07-efis-right",
+    "top": "07-efis-right-top.svg",
+    "bottom": "07-efis-right-bottom.svg",
+    "layers": [
+      {
+        "filename": "Gerber_TopLayer.GTL",
+        "side": "top",
+        "type": "copper"
+      },
+      {
+        "filename": "Gerber_BottomLayer.GBL",
+        "side": "bottom",
+        "type": "copper"
+      },
+      {
+        "filename": "Gerber_TopSilkscreenLayer.GTO",
+        "side": "top",
+        "type": "silkscreen"
+      },
+      {
+        "filename": "Gerber_BottomSolderMaskLayer.GBS",
+        "side": "bottom",
+        "type": "soldermask"
+      },
+      {
+        "filename": "Gerber_BoardOutlineLayer.GKO",
+        "side": "all",
+        "type": "outline"
+      },
+      {
+        "filename": "Gerber_BottomSilkscreenLayer.GBO",
+        "side": "bottom",
+        "type": "silkscreen"
+      },
+      {
+        "filename": "Gerber_TopSolderMaskLayer.GTS",
+        "side": "top",
+        "type": "soldermask"
+      },
+      {
+        "filename": "Drill_PTH_Through.DRL",
+        "side": "all",
+        "type": "drill"
+      },
+      {
+        "filename": "Drill_NPTH_Through.DRL",
+        "side": "all",
+        "type": "drill"
+      }
+    ],
+    "viewBox": "4.23558 -92.53538 153.72816 88.00245000000001",
+    "pcbwayZip": "../07-efis-right/Gerber.zip"
+  },
+  {
+    "id": "08-warning",
+    "top": "08-warning-top.svg",
+    "bottom": "08-warning-bottom.svg",
+    "layers": [
+      {
+        "filename": "Gerber_TopLayer.GTL",
+        "side": "top",
+        "type": "copper"
+      },
+      {
+        "filename": "Gerber_BottomLayer.GBL",
+        "side": "bottom",
+        "type": "copper"
+      },
+      {
+        "filename": "Gerber_TopSilkscreenLayer.GTO",
+        "side": "top",
+        "type": "silkscreen"
+      },
+      {
+        "filename": "Gerber_BottomSolderMaskLayer.GBS",
+        "side": "bottom",
+        "type": "soldermask"
+      },
+      {
+        "filename": "Gerber_BoardOutlineLayer.GKO",
+        "side": "all",
+        "type": "outline"
+      },
+      {
+        "filename": "Gerber_BottomSilkscreenLayer.GBO",
+        "side": "bottom",
+        "type": "silkscreen"
+      },
+      {
+        "filename": "Gerber_TopSolderMaskLayer.GTS",
+        "side": "top",
+        "type": "soldermask"
+      },
+      {
+        "filename": "Drill_PTH_Through.DRL",
+        "side": "all",
+        "type": "drill"
+      },
+      {
+        "filename": "Drill_NPTH_Through.DRL",
+        "side": "all",
+        "type": "drill"
+      }
+    ],
+    "viewBox": "4.36598 -82.81386 323.00001000000003 78.62286",
+    "pcbwayZip": "../08-warning/Gerber.zip"
+  },
+  {
+    "id": "09-autobrake",
+    "top": "09-autobrake-top.svg",
+    "bottom": "09-autobrake-bottom.svg",
+    "layers": [
+      {
+        "filename": "Gerber_TopLayer.GTL",
+        "side": "top",
+        "type": "copper"
+      },
+      {
+        "filename": "Gerber_BottomLayer.GBL",
+        "side": "bottom",
+        "type": "copper"
+      },
+      {
+        "filename": "Gerber_TopSilkscreenLayer.GTO",
+        "side": "top",
+        "type": "silkscreen"
+      },
+      {
+        "filename": "Gerber_BottomSolderMaskLayer.GBS",
+        "side": "bottom",
+        "type": "soldermask"
+      },
+      {
+        "filename": "Gerber_BoardOutlineLayer.GKO",
+        "side": "all",
+        "type": "outline"
+      },
+      {
+        "filename": "Gerber_BottomSilkscreenLayer.GBO",
+        "side": "bottom",
+        "type": "silkscreen"
+      },
+      {
+        "filename": "Gerber_TopSolderMaskLayer.GTS",
+        "side": "top",
+        "type": "soldermask"
+      },
+      {
+        "filename": "Drill_PTH_Through.DRL",
+        "side": "all",
+        "type": "drill"
+      },
+      {
+        "filename": "Drill_NPTH_Through.DRL",
+        "side": "all",
+        "type": "drill"
+      }
+    ],
+    "viewBox": "3.39042 -158.35201 124.75073 150.7681",
+    "pcbwayZip": "../09-autobrake/Gerber.zip"
+  },
+  {
+    "id": "10-chrono",
+    "top": "10-chrono-top.svg",
+    "bottom": "10-chrono-bottom.svg",
+    "layers": [
+      {
+        "filename": "Gerber_TopLayer.GTL",
+        "side": "top",
+        "type": "copper"
+      },
+      {
+        "filename": "Gerber_BottomLayer.GBL",
+        "side": "bottom",
+        "type": "copper"
+      },
+      {
+        "filename": "Gerber_TopSilkscreenLayer.GTO",
+        "side": "top",
+        "type": "silkscreen"
+      },
+      {
+        "filename": "Gerber_BottomSolderMaskLayer.GBS",
+        "side": "bottom",
+        "type": "soldermask"
+      },
+      {
+        "filename": "Gerber_BoardOutlineLayer.GKO",
+        "side": "all",
+        "type": "outline"
+      },
+      {
+        "filename": "Gerber_BottomSilkscreenLayer.GBO",
+        "side": "bottom",
+        "type": "silkscreen"
+      },
+      {
+        "filename": "Gerber_TopSolderMaskLayer.GTS",
+        "side": "top",
+        "type": "soldermask"
+      },
+      {
+        "filename": "Drill_PTH_Through.DRL",
+        "side": "all",
+        "type": "drill"
+      },
+      {
+        "filename": "Drill_NPTH_Through.DRL",
+        "side": "all",
+        "type": "drill"
+      }
+    ],
+    "viewBox": "3.52176 -91.821 89.27506 89.28323999999999",
+    "pcbwayZip": "../10-chrono/Gerber.zip"
+  },
+  {
+    "id": "11-illumination",
+    "top": "11-illumination-top.svg",
+    "bottom": "11-illumination-bottom.svg",
+    "layers": [
+      {
+        "filename": "Gerber_TopLayer.GTL",
+        "side": "top",
+        "type": "copper"
+      },
+      {
+        "filename": "Gerber_BottomLayer.GBL",
+        "side": "bottom",
+        "type": "copper"
+      },
+      {
+        "filename": "Gerber_TopSilkscreenLayer.GTO",
+        "side": "top",
+        "type": "silkscreen"
+      },
+      {
+        "filename": "Gerber_BottomSolderMaskLayer.GBS",
+        "side": "bottom",
+        "type": "soldermask"
+      },
+      {
+        "filename": "Gerber_BoardOutlineLayer.GKO",
+        "side": "all",
+        "type": "outline"
+      },
+      {
+        "filename": "Gerber_BottomSilkscreenLayer.GBO",
+        "side": "bottom",
+        "type": "silkscreen"
+      },
+      {
+        "filename": "Gerber_TopSolderMaskLayer.GTS",
+        "side": "top",
+        "type": "soldermask"
+      },
+      {
+        "filename": "Drill_PTH_Through.DRL",
+        "side": "all",
+        "type": "drill"
+      },
+      {
+        "filename": "Drill_NPTH_Through.DRL",
+        "side": "all",
+        "type": "drill"
+      }
+    ],
+    "viewBox": "12.3477 -113.86977 113.04359 102.81269",
+    "pcbwayZip": "../11-illumination/Gerber.zip"
+  },
+  {
+    "id": "12-mini-overhead",
+    "top": "12-mini-overhead-top.svg",
+    "bottom": "12-mini-overhead-bottom.svg",
+    "layers": [
+      {
+        "filename": "Gerber_TopLayer.GTL",
+        "side": "top",
+        "type": "copper"
+      },
+      {
+        "filename": "Gerber_BottomLayer.GBL",
+        "side": "bottom",
+        "type": "copper"
+      },
+      {
+        "filename": "Gerber_TopSilkscreenLayer.GTO",
+        "side": "top",
+        "type": "silkscreen"
+      },
+      {
+        "filename": "Gerber_BottomSolderMaskLayer.GBS",
+        "side": "bottom",
+        "type": "soldermask"
+      },
+      {
+        "filename": "Gerber_BoardOutlineLayer.GKO",
+        "side": "all",
+        "type": "outline"
+      },
+      {
+        "filename": "Gerber_BottomSilkscreenLayer.GBO",
+        "side": "bottom",
+        "type": "silkscreen"
+      },
+      {
+        "filename": "Gerber_TopSolderMaskLayer.GTS",
+        "side": "top",
+        "type": "soldermask"
+      },
+      {
+        "filename": "Drill_PTH_Through.DRL",
+        "side": "all",
+        "type": "drill"
+      },
+      {
+        "filename": "Drill_NPTH_Through.DRL",
+        "side": "all",
+        "type": "drill"
+      }
+    ],
+    "viewBox": "2.032 -91.821 190.5 89",
+    "pcbwayZip": "../12-mini-overhead/Gerber.zip"
+  },
+  {
+    "id": "13-atc-tcas",
+    "top": "13-atc-tcas-top.svg",
+    "bottom": "13-atc-tcas-bottom.svg",
+    "layers": [
+      {
+        "filename": "Gerber_TopLayer.GTL",
+        "side": "top",
+        "type": "copper"
+      },
+      {
+        "filename": "Gerber_BottomLayer.GBL",
+        "side": "bottom",
+        "type": "copper"
+      },
+      {
+        "filename": "Gerber_TopSilkscreenLayer.GTO",
+        "side": "top",
+        "type": "silkscreen"
+      },
+      {
+        "filename": "Gerber_BottomSolderMaskLayer.GBS",
+        "side": "bottom",
+        "type": "soldermask"
+      },
+      {
+        "filename": "Gerber_BoardOutlineLayer.GKO",
+        "side": "all",
+        "type": "outline"
+      },
+      {
+        "filename": "Gerber_BottomSilkscreenLayer.GBO",
+        "side": "bottom",
+        "type": "silkscreen"
+      },
+      {
+        "filename": "Gerber_TopSolderMaskLayer.GTS",
+        "side": "top",
+        "type": "soldermask"
+      },
+      {
+        "filename": "Drill_PTH_Through.DRL",
+        "side": "all",
+        "type": "drill"
+      },
+      {
+        "filename": "Drill_NPTH_Through.DRL",
+        "side": "all",
+        "type": "drill"
+      }
+    ],
+    "viewBox": "10.14636 -63.98834 125.75728 60.006280000000004",
+    "pcbwayZip": "../13-atc-tcas/Gerber.zip"
+  },
+  {
+    "id": "14-ecam",
+    "top": "14-ecam-top.svg",
+    "bottom": "14-ecam-bottom.svg",
+    "layers": [
+      {
+        "filename": "Gerber_TopLayer.GTL",
+        "side": "top",
+        "type": "copper"
+      },
+      {
+        "filename": "Gerber_BottomLayer.GBL",
+        "side": "bottom",
+        "type": "copper"
+      },
+      {
+        "filename": "Gerber_TopSilkscreenLayer.GTO",
+        "side": "top",
+        "type": "silkscreen"
+      },
+      {
+        "filename": "Gerber_BottomSolderMaskLayer.GBS",
+        "side": "bottom",
+        "type": "soldermask"
+      },
+      {
+        "filename": "Gerber_BoardOutlineLayer.GKO",
+        "side": "all",
+        "type": "outline"
+      },
+      {
+        "filename": "Gerber_BottomSilkscreenLayer.GBO",
+        "side": "bottom",
+        "type": "silkscreen"
+      },
+      {
+        "filename": "Gerber_TopSolderMaskLayer.GTS",
+        "side": "top",
+        "type": "soldermask"
+      },
+      {
+        "filename": "Drill_PTH_Through.DRL",
+        "side": "all",
+        "type": "drill"
+      },
+      {
+        "filename": "Drill_NPTH_Through.DRL",
+        "side": "all",
+        "type": "drill"
+      }
+    ],
+    "viewBox": "-0.127 -75.184 164.08400000000003 75.31099999999999",
+    "pcbwayZip": "../14-ecam/Gerber.zip"
+  },
+  {
+    "id": "15-mcdu-from-json",
+    "top": "15-mcdu-from-json-top.svg",
+    "bottom": "15-mcdu-from-json-bottom.svg",
+    "layers": [
+      {
+        "filename": "Gerber_TopLayer.GTL",
+        "side": "top",
+        "type": "copper"
+      },
+      {
+        "filename": "Gerber_BottomLayer.GBL",
+        "side": "bottom",
+        "type": "copper"
+      },
+      {
+        "filename": "Gerber_TopSilkscreenLayer.GTO",
+        "side": "top",
+        "type": "silkscreen"
+      },
+      {
+        "filename": "Gerber_BottomSolderMaskLayer.GBS",
+        "side": "bottom",
+        "type": "soldermask"
+      },
+      {
+        "filename": "Gerber_BoardOutlineLayer.GKO",
+        "side": "all",
+        "type": "outline"
+      },
+      {
+        "filename": "Gerber_BottomSilkscreenLayer.GBO",
+        "side": "bottom",
+        "type": "silkscreen"
+      },
+      {
+        "filename": "Gerber_TopSolderMaskLayer.GTS",
+        "side": "top",
+        "type": "soldermask"
+      },
+      {
+        "filename": "Drill_PTH_Through.DRL",
+        "side": "all",
+        "type": "drill"
+      },
+      {
+        "filename": "Drill_NPTH_Through.DRL",
+        "side": "all",
+        "type": "drill"
+      }
+    ],
+    "viewBox": "1.5494 -225.7552 142.24 220.853",
+    "pcbwayZip": "../15-mcdu-from-json/Gerber.zip"
+  },
+  {
+    "id": "16-terr-on-nd",
+    "top": "16-terr-on-nd-top.svg",
+    "bottom": "16-terr-on-nd-bottom.svg",
+    "layers": [
+      {
+        "filename": "Gerber_TopLayer.GTL",
+        "side": "top",
+        "type": "copper"
+      },
+      {
+        "filename": "Gerber_BottomLayer.GBL",
+        "side": "bottom",
+        "type": "copper"
+      },
+      {
+        "filename": "Gerber_TopSilkscreenLayer.GTO",
+        "side": "top",
+        "type": "silkscreen"
+      },
+      {
+        "filename": "Gerber_BottomSilkscreenLayer.GBO",
+        "side": "bottom",
+        "type": "silkscreen"
+      },
+      {
+        "filename": "Gerber_TopSolderMaskLayer.GTS",
+        "side": "top",
+        "type": "soldermask"
+      },
+      {
+        "filename": "Gerber_BottomSolderMaskLayer.GBS",
+        "side": "bottom",
+        "type": "soldermask"
+      },
+      {
+        "filename": "Gerber_BoardOutlineLayer.GKO",
+        "side": "all",
+        "type": "outline"
+      },
+      {
+        "filename": "Drill_PTH_Through.DRL",
+        "side": "all",
+        "type": "drill"
+      },
+      {
+        "filename": "Drill_NPTH_Through.DRL",
+        "side": "all",
+        "type": "drill"
+      }
+    ],
+    "viewBox": "0 -74.26459 49.26458 74.26459",
+    "pcbwayZip": "../16-terr-on-nd/Gerber.zip"
+  },
+  {
+    "id": "17-flood-light",
+    "top": "17-flood-light-top.svg",
+    "bottom": "17-flood-light-bottom.svg",
+    "layers": [
+      {
+        "filename": "Gerber_TopLayer.GTL",
+        "side": "top",
+        "type": "copper"
+      },
+      {
+        "filename": "Gerber_BottomLayer.GBL",
+        "side": "bottom",
+        "type": "copper"
+      },
+      {
+        "filename": "Gerber_TopSilkscreenLayer.GTO",
+        "side": "top",
+        "type": "silkscreen"
+      },
+      {
+        "filename": "Gerber_BottomSilkscreenLayer.GBO",
+        "side": "bottom",
+        "type": "silkscreen"
+      },
+      {
+        "filename": "Gerber_TopSolderMaskLayer.GTS",
+        "side": "top",
+        "type": "soldermask"
+      },
+      {
+        "filename": "Gerber_BottomSolderMaskLayer.GBS",
+        "side": "bottom",
+        "type": "soldermask"
+      },
+      {
+        "filename": "Gerber_BoardOutlineLayer.GKO",
+        "side": "all",
+        "type": "outline"
+      },
+      {
+        "filename": "Drill_PTH_Through.DRL",
+        "side": "all",
+        "type": "drill"
+      },
+      {
+        "filename": "Drill_NPTH_Through.DRL",
+        "side": "all",
+        "type": "drill"
+      }
+    ],
+    "viewBox": "0 -48.25894 147.43394 48.25894",
+    "pcbwayZip": "../17-flood-light/Gerber.zip"
+  },
+  {
+    "id": "18-flt-ctl-fo",
+    "top": "18-flt-ctl-fo-top.svg",
+    "bottom": "18-flt-ctl-fo-bottom.svg",
+    "layers": [
+      {
+        "filename": "Gerber_TopLayer.GTL",
+        "side": "top",
+        "type": "copper"
+      },
+      {
+        "filename": "Gerber_BottomLayer.GBL",
+        "side": "bottom",
+        "type": "copper"
+      },
+      {
+        "filename": "Gerber_TopSilkscreenLayer.GTO",
+        "side": "top",
+        "type": "silkscreen"
+      },
+      {
+        "filename": "Gerber_BottomSilkscreenLayer.GBO",
+        "side": "bottom",
+        "type": "silkscreen"
+      },
+      {
+        "filename": "Gerber_TopSolderMaskLayer.GTS",
+        "side": "top",
+        "type": "soldermask"
+      },
+      {
+        "filename": "Gerber_BottomSolderMaskLayer.GBS",
+        "side": "bottom",
+        "type": "soldermask"
+      },
+      {
+        "filename": "Gerber_BoardOutlineLayer.GKO",
+        "side": "all",
+        "type": "outline"
+      },
+      {
+        "filename": "Drill_PTH_Through.DRL",
+        "side": "all",
+        "type": "drill"
+      },
+      {
+        "filename": "Drill_NPTH_Through.DRL",
+        "side": "all",
+        "type": "drill"
+      }
+    ],
+    "viewBox": "0 -47.825 146.24995 47.825",
+    "pcbwayZip": "../18-flt-ctl-fo/Gerber.zip"
+  },
+  {
+    "id": "19-gndservices",
+    "top": "19-gndservices-top.svg",
+    "bottom": "19-gndservices-bottom.svg",
+    "layers": [
+      {
+        "filename": "Gerber_TopLayer.GTL",
+        "side": "top",
+        "type": "copper"
+      },
+      {
+        "filename": "Gerber_BottomLayer.GBL",
+        "side": "bottom",
+        "type": "copper"
+      },
+      {
+        "filename": "Gerber_TopSilkscreenLayer.GTO",
+        "side": "top",
+        "type": "silkscreen"
+      },
+      {
+        "filename": "Gerber_BottomSilkscreenLayer.GBO",
+        "side": "bottom",
+        "type": "silkscreen"
+      },
+      {
+        "filename": "Gerber_TopSolderMaskLayer.GTS",
+        "side": "top",
+        "type": "soldermask"
+      },
+      {
+        "filename": "Gerber_BottomSolderMaskLayer.GBS",
+        "side": "bottom",
+        "type": "soldermask"
+      },
+      {
+        "filename": "Gerber_BoardOutlineLayer.GKO",
+        "side": "all",
+        "type": "outline"
+      },
+      {
+        "filename": "Drill_PTH_Through.DRL",
+        "side": "all",
+        "type": "drill"
+      },
+      {
+        "filename": "Drill_NPTH_Through.DRL",
+        "side": "all",
+        "type": "drill"
+      }
+    ],
+    "viewBox": "0 -104.975 146.24995 104.975",
+    "pcbwayZip": "../19-gndservices/Gerber.zip"
+  },
+  {
+    "id": "20-fire",
+    "top": "20-fire-top.svg",
+    "bottom": "20-fire-bottom.svg",
+    "layers": [
+      {
+        "filename": "Gerber_TopLayer.GTL",
+        "side": "top",
+        "type": "copper"
+      },
+      {
+        "filename": "Gerber_BottomLayer.GBL",
+        "side": "bottom",
+        "type": "copper"
+      },
+      {
+        "filename": "Gerber_TopSilkscreenLayer.GTO",
+        "side": "top",
+        "type": "silkscreen"
+      },
+      {
+        "filename": "Gerber_BottomSilkscreenLayer.GBO",
+        "side": "bottom",
+        "type": "silkscreen"
+      },
+      {
+        "filename": "Gerber_TopSolderMaskLayer.GTS",
+        "side": "top",
+        "type": "soldermask"
+      },
+      {
+        "filename": "Gerber_BottomSolderMaskLayer.GBS",
+        "side": "bottom",
+        "type": "soldermask"
+      },
+      {
+        "filename": "Gerber_BoardOutlineLayer.GKO",
+        "side": "all",
+        "type": "outline"
+      },
+      {
+        "filename": "Drill_PTH_Through.DRL",
+        "side": "all",
+        "type": "drill"
+      },
+      {
+        "filename": "Drill_NPTH_Through.DRL",
+        "side": "all",
+        "type": "drill"
+      }
+    ],
+    "viewBox": "0 -77 325 77",
+    "pcbwayZip": "../20-fire/Gerber.zip"
+  },
+  {
+    "id": "21-adirs",
+    "top": "21-adirs-top.svg",
+    "bottom": "21-adirs-bottom.svg",
+    "layers": [
+      {
+        "filename": "Gerber_TopLayer.GTL",
+        "side": "top",
+        "type": "copper"
+      },
+      {
+        "filename": "Gerber_BottomLayer.GBL",
+        "side": "bottom",
+        "type": "copper"
+      },
+      {
+        "filename": "Gerber_TopSilkscreenLayer.GTO",
+        "side": "top",
+        "type": "silkscreen"
+      },
+      {
+        "filename": "Gerber_BottomSilkscreenLayer.GBO",
+        "side": "bottom",
+        "type": "silkscreen"
+      },
+      {
+        "filename": "Gerber_TopSolderMaskLayer.GTS",
+        "side": "top",
+        "type": "soldermask"
+      },
+      {
+        "filename": "Gerber_BottomSolderMaskLayer.GBS",
+        "side": "bottom",
+        "type": "soldermask"
+      },
+      {
+        "filename": "Gerber_BoardOutlineLayer.GKO",
+        "side": "all",
+        "type": "outline"
+      },
+      {
+        "filename": "Drill_PTH_Through.DRL",
+        "side": "all",
+        "type": "drill"
+      },
+      {
+        "filename": "Drill_NPTH_Through.DRL",
+        "side": "all",
+        "type": "drill"
+      }
+    ],
+    "viewBox": "0 -133.55 146.25 133.55",
+    "pcbwayZip": "../21-adirs/Gerber.zip"
+  },
+  {
+    "id": "22-evac",
+    "top": "22-evac-top.svg",
+    "bottom": "22-evac-bottom.svg",
+    "layers": [
+      {
+        "filename": "Gerber_TopLayer.GTL",
+        "side": "top",
+        "type": "copper"
+      },
+      {
+        "filename": "Gerber_BottomLayer.GBL",
+        "side": "bottom",
+        "type": "copper"
+      },
+      {
+        "filename": "Gerber_TopSilkscreenLayer.GTO",
+        "side": "top",
+        "type": "silkscreen"
+      },
+      {
+        "filename": "Gerber_BottomSilkscreenLayer.GBO",
+        "side": "bottom",
+        "type": "silkscreen"
+      },
+      {
+        "filename": "Gerber_TopSolderMaskLayer.GTS",
+        "side": "top",
+        "type": "soldermask"
+      },
+      {
+        "filename": "Gerber_BottomSolderMaskLayer.GBS",
+        "side": "bottom",
+        "type": "soldermask"
+      },
+      {
+        "filename": "Gerber_BoardOutlineLayer.GKO",
+        "side": "all",
+        "type": "outline"
+      },
+      {
+        "filename": "Drill_PTH_Through.DRL",
+        "side": "all",
+        "type": "drill"
+      },
+      {
+        "filename": "Drill_NPTH_Through.DRL",
+        "side": "all",
+        "type": "drill"
+      }
+    ],
+    "viewBox": "0 -48 147 48",
+    "pcbwayZip": "../22-evac/Gerber.zip"
+  },
+  {
+    "id": "23-audio",
+    "top": "23-audio-top.svg",
+    "bottom": "23-audio-bottom.svg",
+    "layers": [
+      {
+        "filename": "Gerber_TopLayer.GTL",
+        "side": "top",
+        "type": "copper"
+      },
+      {
+        "filename": "Gerber_BottomLayer.GBL",
+        "side": "bottom",
+        "type": "copper"
+      },
+      {
+        "filename": "Gerber_TopSilkscreenLayer.GTO",
+        "side": "top",
+        "type": "silkscreen"
+      },
+      {
+        "filename": "Gerber_BottomSilkscreenLayer.GBO",
+        "side": "bottom",
+        "type": "silkscreen"
+      },
+      {
+        "filename": "Gerber_TopSolderMaskLayer.GTS",
+        "side": "top",
+        "type": "soldermask"
+      },
+      {
+        "filename": "Gerber_BottomSolderMaskLayer.GBS",
+        "side": "bottom",
+        "type": "soldermask"
+      },
+      {
+        "filename": "Gerber_BoardOutlineLayer.GKO",
+        "side": "all",
+        "type": "outline"
+      },
+      {
+        "filename": "Drill_PTH_Through.DRL",
+        "side": "all",
+        "type": "drill"
+      },
+      {
+        "filename": "Drill_NPTH_Through.DRL",
+        "side": "all",
+        "type": "drill"
+      }
+    ],
+    "viewBox": "0 -85.92505 146.24995 85.92505",
+    "pcbwayZip": "../23-audio/Gerber.zip"
+  },
+  {
+    "id": "24-radio",
+    "top": "24-radio-top.svg",
+    "bottom": "24-radio-bottom.svg",
+    "layers": [
+      {
+        "filename": "Gerber_TopLayer.GTL",
+        "side": "top",
+        "type": "copper"
+      },
+      {
+        "filename": "Gerber_BottomLayer.GBL",
+        "side": "bottom",
+        "type": "copper"
+      },
+      {
+        "filename": "Gerber_TopSilkscreenLayer.GTO",
+        "side": "top",
+        "type": "silkscreen"
+      },
+      {
+        "filename": "Gerber_BottomSilkscreenLayer.GBO",
+        "side": "bottom",
+        "type": "silkscreen"
+      },
+      {
+        "filename": "Gerber_TopSolderMaskLayer.GTS",
+        "side": "top",
+        "type": "soldermask"
+      },
+      {
+        "filename": "Gerber_BottomSolderMaskLayer.GBS",
+        "side": "bottom",
+        "type": "soldermask"
+      },
+      {
+        "filename": "Gerber_BoardOutlineLayer.GKO",
+        "side": "all",
+        "type": "outline"
+      },
+      {
+        "filename": "Drill_PTH_Through.DRL",
+        "side": "all",
+        "type": "drill"
+      },
+      {
+        "filename": "Drill_NPTH_Through.DRL",
+        "side": "all",
+        "type": "drill"
+      }
+    ],
+    "viewBox": "0 -95.45 146.24995 95.45",
+    "pcbwayZip": "../24-radio/Gerber.zip"
+  },
+  {
+    "id": "25-cargo-heat",
+    "top": "25-cargo-heat-top.svg",
+    "bottom": "25-cargo-heat-bottom.svg",
+    "layers": [
+      {
+        "filename": "Gerber_TopLayer.GTL",
+        "side": "top",
+        "type": "copper"
+      },
+      {
+        "filename": "Gerber_BottomLayer.GBL",
+        "side": "bottom",
+        "type": "copper"
+      },
+      {
+        "filename": "Gerber_TopSilkscreenLayer.GTO",
+        "side": "top",
+        "type": "silkscreen"
+      },
+      {
+        "filename": "Gerber_BottomSilkscreenLayer.GBO",
+        "side": "bottom",
+        "type": "silkscreen"
+      },
+      {
+        "filename": "Gerber_TopSolderMaskLayer.GTS",
+        "side": "top",
+        "type": "soldermask"
+      },
+      {
+        "filename": "Gerber_BottomSolderMaskLayer.GBS",
+        "side": "bottom",
+        "type": "soldermask"
+      },
+      {
+        "filename": "Gerber_BoardOutlineLayer.GKO",
+        "side": "all",
+        "type": "outline"
+      },
+      {
+        "filename": "Drill_PTH_Through.DRL",
+        "side": "all",
+        "type": "drill"
+      },
+      {
+        "filename": "Drill_NPTH_Through.DRL",
+        "side": "all",
+        "type": "drill"
+      }
+    ],
+    "viewBox": "0 -295.07193 146.24995 295.07193",
+    "pcbwayZip": "../25-cargo-heat/Gerber.zip"
+  },
+  {
+    "id": "26-emer-elec",
+    "top": "26-emer-elec-top.svg",
+    "bottom": "26-emer-elec-bottom.svg",
+    "layers": [
+      {
+        "filename": "Gerber_TopLayer.GTL",
+        "side": "top",
+        "type": "copper"
+      },
+      {
+        "filename": "Gerber_BottomLayer.GBL",
+        "side": "bottom",
+        "type": "copper"
+      },
+      {
+        "filename": "Gerber_TopSilkscreenLayer.GTO",
+        "side": "top",
+        "type": "silkscreen"
+      },
+      {
+        "filename": "Gerber_BottomSilkscreenLayer.GBO",
+        "side": "bottom",
+        "type": "silkscreen"
+      },
+      {
+        "filename": "Gerber_TopSolderMaskLayer.GTS",
+        "side": "top",
+        "type": "soldermask"
+      },
+      {
+        "filename": "Gerber_BottomSolderMaskLayer.GBS",
+        "side": "bottom",
+        "type": "soldermask"
+      },
+      {
+        "filename": "Gerber_BoardOutlineLayer.GKO",
+        "side": "all",
+        "type": "outline"
+      },
+      {
+        "filename": "Drill_PTH_Through.DRL",
+        "side": "all",
+        "type": "drill"
+      },
+      {
+        "filename": "Drill_NPTH_Through.DRL",
+        "side": "all",
+        "type": "drill"
+      }
+    ],
+    "viewBox": "0 -296.38354 144.6741 296.38354",
+    "pcbwayZip": "../26-emer-elec/Gerber.zip"
+  },
+  {
+    "id": "27-aircond",
+    "top": "27-aircond-top.svg",
+    "bottom": "27-aircond-bottom.svg",
+    "layers": [
+      {
+        "filename": "Gerber_TopLayer.GTL",
+        "side": "top",
+        "type": "copper"
+      },
+      {
+        "filename": "Gerber_BottomLayer.GBL",
+        "side": "bottom",
+        "type": "copper"
+      },
+      {
+        "filename": "Gerber_TopSilkscreenLayer.GTO",
+        "side": "top",
+        "type": "silkscreen"
+      },
+      {
+        "filename": "Gerber_BottomSilkscreenLayer.GBO",
+        "side": "bottom",
+        "type": "silkscreen"
+      },
+      {
+        "filename": "Gerber_TopSolderMaskLayer.GTS",
+        "side": "top",
+        "type": "soldermask"
+      },
+      {
+        "filename": "Gerber_BottomSolderMaskLayer.GBS",
+        "side": "bottom",
+        "type": "soldermask"
+      },
+      {
+        "filename": "Gerber_BoardOutlineLayer.GKO",
+        "side": "all",
+        "type": "outline"
+      },
+      {
+        "filename": "Drill_PTH_Through.DRL",
+        "side": "all",
+        "type": "drill"
+      },
+      {
+        "filename": "Drill_NPTH_Through.DRL",
+        "side": "all",
+        "type": "drill"
+      }
+    ],
+    "viewBox": "0 -114.49996 324.04651 114.49996",
+    "pcbwayZip": "../27-aircond/Gerber.zip"
+  },
+  {
+    "id": "28-flt-ctl",
+    "top": "28-flt-ctl-top.svg",
+    "bottom": "28-flt-ctl-bottom.svg",
+    "layers": [
+      {
+        "filename": "Gerber_TopLayer.GTL",
+        "side": "top",
+        "type": "copper"
+      },
+      {
+        "filename": "Gerber_BottomLayer.GBL",
+        "side": "bottom",
+        "type": "copper"
+      },
+      {
+        "filename": "Gerber_TopSilkscreenLayer.GTO",
+        "side": "top",
+        "type": "silkscreen"
+      },
+      {
+        "filename": "Gerber_BottomSilkscreenLayer.GBO",
+        "side": "bottom",
+        "type": "silkscreen"
+      },
+      {
+        "filename": "Gerber_TopSolderMaskLayer.GTS",
+        "side": "top",
+        "type": "soldermask"
+      },
+      {
+        "filename": "Gerber_BottomSolderMaskLayer.GBS",
+        "side": "bottom",
+        "type": "soldermask"
+      },
+      {
+        "filename": "Gerber_BoardOutlineLayer.GKO",
+        "side": "all",
+        "type": "outline"
+      },
+      {
+        "filename": "Drill_PTH_Through.DRL",
+        "side": "all",
+        "type": "drill"
+      },
+      {
+        "filename": "Drill_NPTH_Through.DRL",
+        "side": "all",
+        "type": "drill"
+      }
+    ],
+    "viewBox": "0 -150 150 150",
+    "pcbwayZip": "../28-flt-ctl/Gerber.zip"
+  },
+  {
+    "id": "29-elec",
+    "top": "29-elec-top.svg",
+    "bottom": "29-elec-bottom.svg",
+    "layers": [
+      {
+        "filename": "Gerber_TopLayer.GTL",
+        "side": "top",
+        "type": "copper"
+      },
+      {
+        "filename": "Gerber_BottomLayer.GBL",
+        "side": "bottom",
+        "type": "copper"
+      },
+      {
+        "filename": "Gerber_TopSilkscreenLayer.GTO",
+        "side": "top",
+        "type": "silkscreen"
+      },
+      {
+        "filename": "Gerber_BottomSilkscreenLayer.GBO",
+        "side": "bottom",
+        "type": "silkscreen"
+      },
+      {
+        "filename": "Gerber_TopSolderMaskLayer.GTS",
+        "side": "top",
+        "type": "soldermask"
+      },
+      {
+        "filename": "Gerber_BottomSolderMaskLayer.GBS",
+        "side": "bottom",
+        "type": "soldermask"
+      },
+      {
+        "filename": "Gerber_BoardOutlineLayer.GKO",
+        "side": "all",
+        "type": "outline"
+      },
+      {
+        "filename": "Drill_PTH_Through.DRL",
+        "side": "all",
+        "type": "drill"
+      },
+      {
+        "filename": "Drill_NPTH_Through.DRL",
+        "side": "all",
+        "type": "drill"
+      }
+    ],
+    "viewBox": "0 -106 325 106",
+    "pcbwayZip": "../29-elec/Gerber.zip"
+  },
+  {
+    "id": "30-hyd-fuel",
+    "top": "30-hyd-fuel-top.svg",
+    "bottom": "30-hyd-fuel-bottom.svg",
+    "layers": [
+      {
+        "filename": "Gerber_TopLayer.GTL",
+        "side": "top",
+        "type": "copper"
+      },
+      {
+        "filename": "Gerber_BottomLayer.GBL",
+        "side": "bottom",
+        "type": "copper"
+      },
+      {
+        "filename": "Gerber_TopSilkscreenLayer.GTO",
+        "side": "top",
+        "type": "silkscreen"
+      },
+      {
+        "filename": "Gerber_BottomSilkscreenLayer.GBO",
+        "side": "bottom",
+        "type": "silkscreen"
+      },
+      {
+        "filename": "Gerber_TopSolderMaskLayer.GTS",
+        "side": "top",
+        "type": "soldermask"
+      },
+      {
+        "filename": "Gerber_BottomSolderMaskLayer.GBS",
+        "side": "bottom",
+        "type": "soldermask"
+      },
+      {
+        "filename": "Gerber_BoardOutlineLayer.GKO",
+        "side": "all",
+        "type": "outline"
+      },
+      {
+        "filename": "Drill_PTH_Through.DRL",
+        "side": "all",
+        "type": "drill"
+      },
+      {
+        "filename": "Drill_NPTH_Through.DRL",
+        "side": "all",
+        "type": "drill"
+      }
+    ],
+    "viewBox": "0 -134 325 134",
+    "pcbwayZip": "../30-hyd-fuel/Gerber.zip"
+  }
+]
